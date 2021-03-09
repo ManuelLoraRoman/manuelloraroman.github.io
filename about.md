@@ -13,7 +13,7 @@ Siempre intento ser pragmático en todo lo que hago e intento aprender cada día
 
 Está página llamada **Programa** ha sido creada con la intención de servir como repositorio de prácticas y ejercicios, así como despeje del dia a dia.
 
-Y siempre puedes encontrarme en las siguientes redes sociales:
+Siempre puedes contactar conmigo mediante email, y por otras redes sociales.
 
 
 
@@ -21,6 +21,3 @@ Y siempre puedes encontrarme en las siguientes redes sociales:
 
 
 
-
-
-<---------
