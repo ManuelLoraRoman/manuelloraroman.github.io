@@ -3,6 +3,16 @@ layout: page
 title: About
 ---
 
-**Not Pure Poole** is a simple, beautiful, and powerful Jekyll theme for blogs. It is built on [Poole](https://github.com/poole/poole) and [Pure](https://purecss.io/).
+Mi nombre es **Manuel Lora Román** y soy estudiante del grado superior de Administración de Sistemas Informáticos en Red.
 
-For more information about Not Pure Poole, please browse the [README](https://github.com/vszhub/not-pure-poole) file.
+Siempre intento ser pragmático en todo lo que hago e intento aprender cada día algo nuevo.
+
+
+"Vive como si fueras a morir mañana. Aprende como si fueras a vivir para siempre"
+
+
+Está página llamada **Programa** ha sido creada con la intención de servir como repositorio de prácticas y ejercicios, así como despeje del dia a dia.
+
+Y siempre puedes encontrarme en las siguientes redes sociales:
+
+<---------
