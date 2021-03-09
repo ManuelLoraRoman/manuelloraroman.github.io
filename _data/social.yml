@@ -1,9 +1,15 @@
 - title: Email
-  url: mailto://vszhub@gmail.com
+  url: mailto://manuelloraroman@gmail.com
   icon: fas fa-envelope
 - title: Twitter
-  url: https://twitter.com/vszhub
+  url: https://twitter.com/ManuelLoraRoman
   icon: fab fa-twitter
 - title: GitHub
-  url: https://github.com/vszhub/not-pure-poole
+  url: https://github.com/ManuelLoraRoman
   icon: fab fa-github
+- title: Facebook
+  url: https://www.facebook.com/manu.loraroman
+  icon: fab fa-facebook
+- title: LinkedIn
+  url: https://www.linkedin.com/in/manuelloraroman/
+  icon: fab fa-linkedin

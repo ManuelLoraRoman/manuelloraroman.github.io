@@ -1,6 +1,6 @@
 ---
 layout: page
-title: About
+title: Sobre mí
 ---
 
 Mi nombre es **Manuel Lora Román** y soy estudiante del grado superior de Administración de Sistemas Informáticos en Red.
