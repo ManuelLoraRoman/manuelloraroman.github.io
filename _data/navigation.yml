@@ -1,4 +1,6 @@
-- title: Blog
+- title: Inicio
   url: /
-- title: About
+- title: Sobre mí
   url: /about/
+- title: Documentos
+  url: /
