@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/grids-responsive-min.css">
+  <link rel="stylesheet" href="/assets/styles.css">
+
+   <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon.png">
+   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+   <link rel="manifest" href="/site.webmanifest">
+   <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+   <meta name="msapplication-TileColor" content="#da532c">
+   <meta name="theme-color" content="#ffffff"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Introducción a MarkDown | Programa</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Introducción a MarkDown" />
+<meta name="author" content="Manuel Lora Román" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="Markdown es considerado un lenguaje que permite crear contenido de una manera sencilla de escribir, aunque también es considerado un método de escritura." />
+<meta property="og:description" content="Markdown es considerado un lenguaje que permite crear contenido de una manera sencilla de escribir, aunque también es considerado un método de escritura." />
+<link rel="canonical" href="http://localhost:4000/2021/03/11/introduccion-a-markdown/" />
+<meta property="og:url" content="http://localhost:4000/2021/03/11/introduccion-a-markdown/" />
+<meta property="og:site_name" content="Programa" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-03-11T11:31:00+01:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Introducción a MarkDown" />
+<meta name="twitter:site" content="@ManuelLoraRoman" />
+<meta name="twitter:creator" content="@Manuel Lora Román" />
+<meta name="google-site-verification" content="xxxxx" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","url":"http://localhost:4000/2021/03/11/introduccion-a-markdown/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/logo.png"},"name":"Manuel Lora Román"},"headline":"Introducción a MarkDown","dateModified":"2021-03-11T11:32:25+01:00","datePublished":"2021-03-11T11:31:00+01:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2021/03/11/introduccion-a-markdown/"},"description":"Markdown es considerado un lenguaje que permite crear contenido de una manera sencilla de escribir, aunque también es considerado un método de escritura.","author":{"@type":"Person","name":"Manuel Lora Román"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Programa" />
+</head>
+
+
+  <body>
+
+    <div class="container pure-g"><div class="sidebar-left pure-u-1 pure-u-md-1-4" style="background-color: rgb(40, 73, 77); color: rgb(255, 255, 255); background-image: url(/bg.jpeg);"><header class="masthead">
+  <div class="avatar"><img src="/avatar.jpeg" class="avatar-image" alt="Manuel Lora Román">
+    </div>
+  <div class="masthead-title">
+    <a href="/" title="Home">Programa</a>
+  </div>
+  <div class="masthead-tagline">
+    <small>Blog de pŕacticas y ejercicios</small>
+  </div><nav class="navigation">
+    <ul class="navigation-list"><li class="navigation-item">
+        <a onclick="sessionStorage.setItem('forceCheckScroll', 'true')" href="/">Inicio</a>
+      </li><li class="navigation-item">
+        <a onclick="sessionStorage.setItem('forceCheckScroll', 'true')" href="/about/">Sobre mí</a>
+      </li><li class="navigation-item">
+        <a onclick="sessionStorage.setItem('forceCheckScroll', 'true')" href="/">Documentos</a>
+      </li></ul>
+  </nav><div class="social pure-menu pure-menu-horizontal">
+      <ul class="social-icons pure-menu-list">
+      <li class="pure-menu-item">
+          <a class="social-icon pure-menu-link" href="mailto://manuelloraroman@gmail.com">
+            <i class="fas fa-envelope" title="Email"></i>
+          </a>
+        </li><li class="pure-menu-item">
+          <a class="social-icon pure-menu-link" href="https://twitter.com/ManuelLoraRoman">
+            <i class="fab fa-twitter" title="Twitter"></i>
+          </a>
+        </li><li class="pure-menu-item">
+          <a class="social-icon pure-menu-link" href="https://github.com/ManuelLoraRoman">
+            <i class="fab fa-github" title="GitHub"></i>
+          </a>
+        </li><li class="pure-menu-item">
+          <a class="social-icon pure-menu-link" href="https://www.facebook.com/manu.loraroman">
+            <i class="fab fa-facebook" title="Facebook"></i>
+          </a>
+        </li><li class="pure-menu-item">
+          <a class="social-icon pure-menu-link" href="https://www.linkedin.com/in/manuelloraroman/">
+            <i class="fab fa-linkedin" title="LinkedIn"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+</header>
+</div>
+
+      <div class="content pure-u-1 pure-u-md-1-2"><main>
+  <article class="post">
+  <h1 class="post-title">Introducción a MarkDown</h1>
+  <div class="post-meta"><time datetime="2021-03-11T11:31:00+01:00" itemprop="datePublished">11 Mar 2021</time><span> ~ </span><time datetime="2021-03-11T11:32:25+01:00" itemprop="dateModified">
+        11 Mar 2021
+      </time></div>
+
+  <p class="message">Markdown es considerado un lenguaje que permite crear contenido de una manera sencilla de escribir, aunque también es considerado un método de escritura.</p>
+
+<h2 id="1-encabezado">1. Encabezado</h2>
+
+<p>Con el símbolo # , puedes poner diferentes tipos de encabezados. Mientras más #,
+más irá disminuyendo el tamaño del encabezado. Aquí algunos ejemplos:</p>
+
+<h1 id="h1">H1</h1>
+<h2 id="h2">H2</h2>
+<h3 id="h3">H3</h3>
+<h4 id="h4">H4</h4>
+<h5 id="h5">H5</h5>
+
+<h2 id="2-énfasis">2. Énfasis</h2>
+
+<p>Para añadir el estilo cursiva a tu texto, puedes colocar tanto asteriscos (*) o
+guión bajo (_) al principio y al final del texto.</p>
+
+<p>Ejemplo: <em>Asteriscos</em> <em>Guión Bajo</em></p>
+
+<p>Si por otra parte queremos el estilo negrita, colocaremos dos asteriscos o 
+guiones bajos en vez de uno.</p>
+
+<p>Ejemplo: <strong>Asteriscos</strong> <strong>Guiones Bajos</strong></p>
+
+<p>Se pueden combinar ambos estilos añadiendo al texto 3 de dichos símbolos.</p>
+
+<p>Ejemplo: <strong><em>Asteriscos</em></strong> <strong><em>Guiones Bajos</em></strong></p>
+
+<p>En caso de que queramos tachar alguna porción de un texto, usaremos
+virgulilla (~) al principio y al final del mismo.</p>
+
+<h2 id="3-listas">3. Listas</h2>
+
+<p>Hay dos tipos de listas, las que siguen un orden y las que no. En primer lugar,
+las que siguen un orden: usaremos los números según el orden que queramos
+establecer y después un punto (.). Acto seguido escribiremos lo que queramos:</p>
+
+<ol>
+  <li>Primer ejemplo</li>
+  <li>Segundo ejemplo</li>
+  <li>Tercer ejemplo</li>
+</ol>
+
+<p>Si queremos hacer una sublista, usaremos los <em>leading spaces</em> (  ) antes de escribir
+el número:</p>
+
+<ol>
+  <li>Primer ejemplo
+    <ol>
+      <li>Primer primer ejemplo</li>
+    </ol>
+  </li>
+  <li>Segundo ejemplo</li>
+</ol>
+
+<p>Note que puedes poner tantos <em>leading spaces</em> como quieras para ir añadiendo 
+espacios en blanco para, por ejemplo, añadir párrafos entre las listas.
+No olvidar añadir dos <em>leading spaces</em> al final de cada línea.</p>
+
+<p>Aquí un primer párrafo<br />
+  de ejemplo<br />
+  para ver el funcionamiento.</p>
+
+<p>Si por el contrario, queremos hacer listas sin orden, podemos usar tanto
+asteriscos (*), como menos (-) o más (+).</p>
+
+<ul>
+  <li>
+    <p>Asterisco</p>
+  </li>
+  <li>
+    <p>Menos</p>
+  </li>
+  <li>
+    <p>Más</p>
+  </li>
+</ul>
+
+<h2 id="4-links">4. Links</h2>
+
+<p>Hay dos formas de incorporar un link. La primera y más obvia es añadir 
+directamente la URL o la URL con el soporte (&lt;&gt;).</p>
+
+<p>https://es.wikipedia.org/wiki/Felis_silvestris_catus</p>
+
+<p>Con soporte:</p>
+
+<p><a href="https://es.wikipedia.org/wiki/Felis_silvestris_catus">https://es.wikipedia.org/wiki/Felis_silvestris_catus</a></p>
+
+<p>La otra manera es añadir corchetes ([]) al texto que queramos añadirle un link
+y después entre paréntesis copiar tanto una URL, una búsqueda con referencia,
+un link hacia un archivo de un repositorio. Por ejemplo:</p>
+
+<p><a href="https://es.wikipedia.org/wiki/Felis_silvestris_catus">Este texto nos lleva a una página web</a></p>
+
+<p><a href="../git-y-progit/index.html">Este enlace nos lleva a otro fichero</a></p>
+
+<h2 id="5-imágenes">5. Imágenes</h2>
+
+<p>Para poner imágenes solamente debemos escribir el siguiente:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+</pre></td><td class="code"><pre><span class="o">!</span><span class="p">[</span><span class="nx">image</span><span class="p">](</span><span class="nx">ubicación</span><span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<p>Ejemplo:</p>
+
+<p><img src="/assets/img/jenkins1.png" alt="image" /></p>
+
+<p>o hacer referencia a ella con “[texto]: ubicación del archivo” y luego
+sustituir (ubicación de la imagen) por [texto]</p>
+
+<h2 id="6-bloques-de-programación">6. Bloques de programación</h2>
+
+<p>Si queremos que cierto código se remarque en nuestro texto, usaremos tanto al
+principio como al final las comillas invertidas (`).</p>
+
+<p>Ejemplo:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="code"><pre><span class="nx">python</span>
+<span class="nx">s</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Phyton syntax highlighting</span><span class="dl">"</span>
+<span class="nx">print</span> <span class="nx">s</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<h2 id="7-tablas">7. Tablas</h2>
+
+<p>Las tablas no son algo propiamente de MarkDown, pero se pueden hacer igualmente.
+Se pueden hacer de la siguiente manera:</p>
+
+<div align="center">
+
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="code"><pre>    <span class="o">|</span> <span class="nx">Tablas</span> <span class="o">|</span> <span class="nx">De</span> <span class="o">|</span> <span class="nx">Ejemplo</span> <span class="o">|</span>  
+    <span class="o">|--------|----|---------|</span>  
+    <span class="o">|</span>  <span class="nx">ABC</span>   <span class="o">|</span> <span class="nx">DE</span> <span class="o">|</span>  <span class="nx">FGHI</span>   <span class="o">|</span>  
+    <span class="o">|</span>  <span class="nx">abc</span>   <span class="o">|</span> <span class="nx">de</span> <span class="o">|</span>  <span class="nx">fghi</span>   <span class="o">|</span>  
+
+    <span class="o">|</span> <span class="nx">Tablas</span> <span class="o">|</span> <span class="nx">De</span> <span class="o">|</span> <span class="nx">Ejemplo</span> <span class="o">|</span>
+    <span class="o">|--------|----|---------|</span>
+    <span class="o">|</span>  <span class="nx">ABC</span>   <span class="o">|</span> <span class="nx">DE</span> <span class="o">|</span>  <span class="nx">FGHI</span>   <span class="o">|</span>
+    <span class="o">|</span>  <span class="nx">abc</span>   <span class="o">|</span> <span class="nx">de</span> <span class="o">|</span>  <span class="nx">fghi</span>   <span class="o">|</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+
+</div>
+
+<div align="center"> 
+
+No hace falta que sea algo perfecto puesto que automáticamente nos añadirá la
+tabla correctamente.
+
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="code"><pre>     <span class="nx">Tablas</span> <span class="o">|</span> <span class="nx">De</span> <span class="o">|</span> <span class="nx">Ejemplo</span>   
+    <span class="o">----|----|---</span>  
+      <span class="nx">ABC</span>   <span class="o">|</span> <span class="nx">DE</span> <span class="o">|</span>  <span class="nx">FGHI</span>     
+      <span class="nx">abc</span>   <span class="o">|</span> <span class="nx">de</span> <span class="o">|</span>  <span class="nx">fghi</span>     
+
+
+	<span class="nx">Tablas</span> <span class="o">|</span> <span class="nx">De</span> <span class="o">|</span> <span class="nx">Ejemplo</span>
+	<span class="o">----|----|---</span>
+	<span class="nx">ABC</span>   <span class="o">|</span> <span class="nx">DE</span> <span class="o">|</span>  <span class="nx">FGHI</span>
+	<span class="nx">abc</span>   <span class="o">|</span> <span class="nx">de</span> <span class="o">|</span>  <span class="nx">fghi</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+
+</div>
+
+<h2 id="8-anotaciones">8. Anotaciones</h2>
+
+<p>Para hacer un bloque de anotaciones, usaremos el símbolo de soporte (&gt;)
+Mientras más soportes coloques, más subanotaciones se producirán.</p>
+
+<blockquote>
+  <p>Soporte</p>
+  <blockquote>
+    <p>2 soportes</p>
+    <blockquote>
+      <p>3 soportes
+Se pueden hacer múltiples anotaciones</p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <p>Esto van a ser dos líneas de texto
+metidas en el mismo bloque de anotaciones.</p>
+</blockquote>
+
+<h2 id="9-uso-de-html">9. Uso de HTML</h2>
+
+<p>Como apunte, se puede usar el propio lenguaje de HTML en MarkDown, y prácticamente
+funcionará a la perfección en la mayoría de los casos.</p>
+
+<h2 id="10-regla-horizontal">10. Regla Horizontal</h2>
+
+<p>Si queremos añadir una línea en nuestro texto, usaremos 3 o más de, tanto guiones (-),
+asteriscos (*) o guiones bajos (_).</p>
+
+<hr />
+
+<div align="center"> Guiones </div>
+
+<hr />
+
+<div align="center"> Asteriscos </div>
+
+<hr />
+
+<div align="center"> Guiones Bajos </div>
+
+<h2 id="11-alineamiento">11. Alineamiento</h2>
+
+<p>MarkDown automáticamente, alinea a la izquierda. Para, por ejemplo, centrar en otra posición,
+usaremos &lt;div align=”posición”&gt;</p>
+
+<p>Ejemplo:</p>
+
+<div align="left"> Texto alineado a la izquierda </div>
+
+<div align="center"> Texto alineado en el centro </div>
+
+<div align="right"> Texto alineado a la derecha </div>
+
+<hr />
+
+
+  
+    
+      <div class="post-tags-section">
+  <i class="post-tags-icon fas fa-tags"></i>
+  <ul class="post-tags"><li>
+        <a class="post-tag" href="/tags/#markdown">markdown</a></li><li>
+        <a class="post-tag" href="/tags/#tutorial">tutorial</a></li></ul>
+</div>
+
+  
+
+  
+</article>
+
+
+<aside class="related">
+  <h2>Related posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <a href="/2021/03/11/git-y-progit/">
+          Git y GitHub
+          <small><time datetime="2021-03-11T11:31:00+01:00">11 Mar 2021</time></small>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/2020/10/02/testing-mathjax/">
+          Testing MathJax
+          <small><time datetime="2020-10-02T09:32:00+02:00">02 Oct 2020</time></small>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/2020/09/29/welcome-to-not-pure-poole/">
+          Welcome to Not Pure Poole
+          <small><time datetime="2020-09-29T17:18:00+02:00">29 Sep 2020</time></small>
+        </a>
+      </li>
+    
+  </ul>
+</aside>
+
+
+</main>
+
+<footer class="footer"><small>
+    &copy; 2020&nbsp;-&nbsp;2021 <a href="https://github.com/ManuelLoraRoman">Manuel Lora Román</a>. All rights reserved.
+    Powered by <a href="https://jekyllrb.com/">Jekyll</a> & <a href="https://github.com/vszhub/not-pure-poole">Not Pure Poole</a>.
+  </small>
+</footer>
+</div>
+      <div class="sidebar-right pure-u-1 pure-u-md-1-4">
+<div  class="toc-wrapper">
+  <h2 class="toc-title">Table of Contents</h2>
+    <nav class="toc-nav">
+      <ul class="toc">
+  <li><a href="#1-encabezado">1. Encabezado</a></li>
+  <li><a href="#h2">H2</a>
+    <ul>
+      <li><a href="#h3">H3</a></li>
+    </ul>
+  </li>
+  <li><a href="#2-énfasis">2. Énfasis</a></li>
+  <li><a href="#3-listas">3. Listas</a></li>
+  <li><a href="#4-links">4. Links</a></li>
+  <li><a href="#5-imágenes">5. Imágenes</a></li>
+  <li><a href="#6-bloques-de-programación">6. Bloques de programación</a></li>
+  <li><a href="#7-tablas">7. Tablas</a></li>
+  <li><a href="#8-anotaciones">8. Anotaciones</a></li>
+  <li><a href="#9-uso-de-html">9. Uso de HTML</a></li>
+  <li><a href="#10-regla-horizontal">10. Regla Horizontal</a></li>
+  <li><a href="#11-alineamiento">11. Alineamiento</a></li>
+</ul>
+
+  </nav>
+</div>
+
+</div>
+    </div>
+
+    <script async src="https://use.fontawesome.com/releases/v5.0.12/js/all.js"></script><script>
+  function strip(str, remove) {
+    while (str.length > 0 && remove.indexOf(str.charAt(0)) != -1) {
+      str = str.substr(1);
+    }
+    while (str.length > 0 && remove.indexOf(str.charAt(str.length - 1)) != -1) {
+      str = str.substr(0, str.length - 1);
+    }
+    return str;
+  }
+
+  function scroll() {
+    console.log('scroll');
+    window.scrollTo({
+      left: 0, 
+      top: window.innerHeight,
+      behavior: 'smooth'
+    });
+    sessionStorage.removeItem('forceCheckScroll');
+  }
+
+  const forceCheckScroll = sessionStorage.getItem('forceCheckScroll') === 'true';
+  const checkScroll = strip(window.location.pathname, '/') !== strip('', '/');
+
+  if (forceCheckScroll || checkScroll) {
+    const maxWidth = "(max-width: 48rem)";
+    const result = window.matchMedia(maxWidth);
+    if (result.matches) {
+      scroll();
+    } else {
+      result.addListener((match) => {
+        if (match.media == maxWidth) {
+          if (match.matches) {
+            scroll();
+          }
+        }
+      });
+    }
+  }
+</script>
+</body>
+</html>
