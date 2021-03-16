@@ -1,15 +1,13 @@
 ---
 layout: post
 title: Instalación y Configuración de Openstack
-date: 2021-03-12 23:04 +0800
+date: 2021-03-12 23:05 +0800
 last_modified_at: 2021-03-12 23:04:25 +0800
 tags: [Python, Openstack, Ansible, Kolla, Tutorial]
-toc:  true
+toc: true
 ---
 Openstack es un proyecto realizado en Python, que usa recursos virtuales para gestionar nubes privadas o públicas.
 {: .message }
-
-## Instalación y Configuración de Openstack
 
 Selecciona un método de instalación de OpenStack entre los explicados en clase 
 o alguna alternativa que encuentres e instala una nube privada que tenga al 
@@ -28,7 +26,7 @@ asociarlo a la instancia.
 
 Documentación recogida de : 
 
-* [Página de kolla-ansible](https://docs.openstack.org/project-deploy-guide/kolla-ansible/victoria/quickstart.html)
+[Página de kolla-ansible](https://docs.openstack.org/project-deploy-guide/kolla-ansible/victoria/quickstart.html)
 
 La opción que hemos elegido para instalar Openstack es la utilización de
 _Kolla Ansible_. Para proceder a la instalación, vamos a montar un escenario
@@ -90,29 +88,28 @@ vagrant@installer:~$ ip a
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
     inet 127.0.0.1/8 scope host lo
        valid_lft forever preferred_lft forever
-    inet6 ::1/128 scope host 
+    inet6 ::1/128 scope host
        valid_lft forever preferred_lft forever
 2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
     link/ether 02:a4:4a:b3:a7:36 brd ff:ff:ff:ff:ff:ff
     inet 10.0.2.15/24 brd 10.0.2.255 scope global dynamic enp0s3
        valid_lft 78230sec preferred_lft 78230sec
-    inet6 fe80::a4:4aff:feb3:a736/64 scope link 
+    inet6 fe80::a4:4aff:feb3:a736/64 scope link
        valid_lft forever preferred_lft forever
 3: enp0s8: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
     link/ether 08:00:27:a0:f7:c5 brd ff:ff:ff:ff:ff:ff
     inet 192.168.0.49/24 brd 192.168.0.255 scope global dynamic enp0s8
        valid_lft 78231sec preferred_lft 78231sec
-    inet6 fe80::a00:27ff:fea0:f7c5/64 scope link 
+    inet6 fe80::a00:27ff:fea0:f7c5/64 scope link
        valid_lft forever preferred_lft forever
 4: enp0s9: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
     link/ether 08:00:27:fc:da:a1 brd ff:ff:ff:ff:ff:ff
     inet 10.0.1.2/24 brd 10.0.1.255 scope global enp0s9
        valid_lft forever preferred_lft forever
-    inet6 fe80::a00:27ff:fefc:daa1/64 scope link 
+    inet6 fe80::a00:27ff:fefc:daa1/64 scope link
        valid_lft forever preferred_lft forever
 
 {% endhighlight %}
-
 
 * Master
 
@@ -123,17 +120,17 @@ vagrant@master:~$ ip a
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
     inet 127.0.0.1/8 scope host lo
        valid_lft forever preferred_lft forever
-    inet6 ::1/128 scope host 
+    inet6 ::1/128 scope host
        valid_lft forever preferred_lft forever
 2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
     link/ether 02:a4:4a:b3:a7:36 brd ff:ff:ff:ff:ff:ff
     inet 10.0.2.15/24 brd 10.0.2.255 scope global dynamic enp0s3
        valid_lft 78246sec preferred_lft 78246sec
-    inet6 fe80::a4:4aff:feb3:a736/64 scope link 
+    inet6 fe80::a4:4aff:feb3:a736/64 scope link
        valid_lft forever preferred_lft forever
 3: enp0s8: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel master ovs-system state UP group default qlen 1000
     link/ether 08:00:27:a6:29:f5 brd ff:ff:ff:ff:ff:ff
-    inet6 fe80::a00:27ff:fea6:29f5/64 scope link 
+    inet6 fe80::a00:27ff:fea6:29f5/64 scope link
        valid_lft forever preferred_lft forever
 4: enp0s9: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
     link/ether 08:00:27:6d:bd:fd brd ff:ff:ff:ff:ff:ff
@@ -143,15 +140,15 @@ vagrant@master:~$ ip a
        valid_lft forever preferred_lft forever
     inet 192.168.0.55/32 scope global enp0s9
        valid_lft forever preferred_lft forever
-    inet6 fe80::a00:27ff:fe6d:bdfd/64 scope link 
+    inet6 fe80::a00:27ff:fe6d:bdfd/64 scope link
        valid_lft forever preferred_lft forever
 5: enp0s10: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
     link/ether 08:00:27:22:56:ab brd ff:ff:ff:ff:ff:ff
     inet 192.168.0.50/24 brd 192.168.0.255 scope global dynamic enp0s10
        valid_lft 78247sec preferred_lft 78247sec
-    inet6 fe80::a00:27ff:fe22:56ab/64 scope link 
+    inet6 fe80::a00:27ff:fe22:56ab/64 scope link
        valid_lft forever preferred_lft forever
-6: docker0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default 
+6: docker0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default
     link/ether 02:42:9f:ce:fc:02 brd ff:ff:ff:ff:ff:ff
     inet 172.17.0.1/16 brd 172.17.255.255 scope global docker0
        valid_lft forever preferred_lft forever
@@ -170,33 +167,32 @@ vagrant@master:~$ ip a
 * Compute
 
 {% highlight js linenos %}
-
 vagrant@compute:~$ ip a
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
     inet 127.0.0.1/8 scope host lo
        valid_lft forever preferred_lft forever
-    inet6 ::1/128 scope host 
+    inet6 ::1/128 scope host
        valid_lft forever preferred_lft forever
 2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
     link/ether 02:a4:4a:b3:a7:36 brd ff:ff:ff:ff:ff:ff
     inet 10.0.2.15/24 brd 10.0.2.255 scope global dynamic enp0s3
        valid_lft 78259sec preferred_lft 78259sec
-    inet6 fe80::a4:4aff:feb3:a736/64 scope link 
+    inet6 fe80::a4:4aff:feb3:a736/64 scope link
        valid_lft forever preferred_lft forever
 3: enp0s8: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
     link/ether 08:00:27:61:ba:b8 brd ff:ff:ff:ff:ff:ff
     inet 192.168.0.51/24 brd 192.168.0.255 scope global dynamic enp0s8
        valid_lft 78260sec preferred_lft 78260sec
-    inet6 fe80::a00:27ff:fe61:bab8/64 scope link 
+    inet6 fe80::a00:27ff:fe61:bab8/64 scope link
        valid_lft forever preferred_lft forever
 4: enp0s9: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
     link/ether 08:00:27:65:08:eb brd ff:ff:ff:ff:ff:ff
     inet 10.0.1.4/24 brd 10.0.1.255 scope global enp0s9
        valid_lft forever preferred_lft forever
-    inet6 fe80::a00:27ff:fe65:8eb/64 scope link 
+    inet6 fe80::a00:27ff:fe65:8eb/64 scope link
        valid_lft forever preferred_lft forever
-5: docker0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default 
+5: docker0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default
     link/ether 02:42:e8:14:17:5e brd ff:ff:ff:ff:ff:ff
     inet 172.17.0.1/16 brd 172.17.255.255 scope global docker0
        valid_lft forever preferred_lft forever
@@ -208,7 +204,6 @@ vagrant@compute:~$ ip a
     link/ether 3e:8b:84:5d:6b:4e brd ff:ff:ff:ff:ff:ff
 
 {% endhighlight %}
-
 
 Actualizamos, haciendo _apt update && apt upgrade_ las tres máquinas.
 Hecho esto, en nuestra máquina _installer_ nos descargaremos los siguientes
@@ -222,7 +217,7 @@ sudo apt-get install python3-dev libffi-dev gcc libssl-dev
 
 
 En la máquina _installer_ creamos un entorno virtual. Para ello, vamos a
-descargarnos el paquete _python3-venv_ y despúes procedemos a la
+descargarnos el paquete python3-venv y despúes procedemos a la
 creación del entorno virtual:
 
 {% highlight js linenos %}
@@ -431,7 +426,6 @@ enable_cinder_backend_nfs: "yes"
 
 nova_compute_virt_type: "qemu"
 
-
 {% endhighlight %}
 
 
@@ -628,7 +622,6 @@ fichero _/etc/kolla/globals.yml_:
 kolla_external_vip_address: "192.168.0.55"
 
 {% endhighlight %}
-
 
 ![image](/assets/img/openstackubuntu.png)
 
@@ -888,7 +881,6 @@ Installing collected packages: wcwidth, pyperclip, os-service-types, jsonpointer
 Successfully installed Babel-2.9.0 PrettyTable-0.7.2 WebOb-1.8.7 aodhclient-2.1.1 appdirs-1.4.4 attrs-20.3.0 cliff-3.7.0 cmd2-1.5.0 colorama-0.4.4 decorator-4.4.2 docker-4.4.4 dogpile.cache-1.1.2 fasteners-0.16 futurist-2.3.0 gnocchiclient-7.0.7 jsonpatch-1.28 jsonpointer-2.0 jsonschema-3.2.0 keystoneauth1-4.3.1 monotonic-1.5 msgpack-1.0.2 munch-2.5.0 murano-pkg-check-0.3.0 networkx-2.5 openstackclient-4.0.0 openstacksdk-0.53.0 os-client-config-2.1.0 os-service-types-1.7.0 osc-lib-2.3.1 oslo.concurrency-4.4.0 oslo.context-3.1.1 oslo.log-4.4.0 oslo.serialization-4.1.0 osprofiler-3.4.0 ply-3.11 pyOpenSSL-20.0.1 pydot-1.4.2 pyinotify-0.9.6 pyperclip-1.8.2 pyrsistent-0.17.3 python-barbicanclient-5.0.1 python-cinderclient-7.3.0 python-congressclient-2.0.1 python-dateutil-2.8.1 python-designateclient-4.2.0 python-glanceclient-3.2.2 python-heatclient-2.3.0 python-ironic-inspector-client-4.4.0 python-ironicclient-4.6.0 python-keystoneclient-4.2.0 python-mistralclient-4.2.0 python-muranoclient-2.2.0 python-neutronclient-7.3.0 python-novaclient-17.3.0 python-octaviaclient-2.2.0 python-openstackclient-5.4.0 python-saharaclient-3.3.0 python-searchlightclient-2.1.1 python-senlinclient-2.2.0 python-swiftclient-3.11.0 python-troveclient-7.0.0 python-vitrageclient-4.2.0 python-watcherclient-3.1.1 python-zaqarclient-2.0.1 python-zunclient-4.1.1 requestsexceptions-1.4.0 semantic-version-2.8.5 simplejson-3.17.2 ujson-4.0.2 warlock-1.3.3 wcwidth-0.2.5 websocket-client-0.57.0 yaql-1.1.3
 
 {% endhighlight %}
-
 
 Y ejecutaremos la prueba:
 
@@ -1394,4 +1386,4 @@ Para comprobar que se ha creado correctamente:
 En nuestro caso, nos da error debido a que hemos superado nuestra quota. Dicho
 volumen ya sería totalmente usable por las máquinas.
 
--------
+------------------
