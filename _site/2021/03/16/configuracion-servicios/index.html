@@ -1,0 +1,1784 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/grids-responsive-min.css">
+  <link rel="stylesheet" href="/assets/styles.css">
+
+   <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon.png">
+   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+   <link rel="manifest" href="/site.webmanifest">
+   <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+   <meta name="msapplication-TileColor" content="#da532c">
+   <meta name="theme-color" content="#ffffff"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Servidores Web, Base de datos y DNS | Programa</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Servidores Web, Base de datos y DNS" />
+<meta name="author" content="Manuel Lora Román" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="Práctica en donde instalamos diferentes servicios en las máquinas de nuestro escenario." />
+<meta property="og:description" content="Práctica en donde instalamos diferentes servicios en las máquinas de nuestro escenario." />
+<link rel="canonical" href="http://localhost:4000/2021/03/16/configuracion-servicios/" />
+<meta property="og:url" content="http://localhost:4000/2021/03/16/configuracion-servicios/" />
+<meta property="og:site_name" content="Programa" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-03-16T09:16:00+01:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Servidores Web, Base de datos y DNS" />
+<meta name="twitter:site" content="@ManuelLoraRoman" />
+<meta name="twitter:creator" content="@Manuel Lora Román" />
+<meta name="google-site-verification" content="xxxxx" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","url":"http://localhost:4000/2021/03/16/configuracion-servicios/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/logo.png"},"name":"Manuel Lora Román"},"headline":"Servidores Web, Base de datos y DNS","dateModified":"2021-03-16T11:32:25+01:00","datePublished":"2021-03-16T09:16:00+01:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2021/03/16/configuracion-servicios/"},"description":"Práctica en donde instalamos diferentes servicios en las máquinas de nuestro escenario.","author":{"@type":"Person","name":"Manuel Lora Román"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Programa" />
+</head>
+
+
+  <body>
+
+    <div class="container pure-g"><div class="sidebar-left pure-u-1 pure-u-md-1-4" style="background-color: rgb(40, 73, 77); color: rgb(255, 255, 255); background-image: url(/bg.jpeg);"><header class="masthead">
+  <div class="avatar"><img src="/avatar.jpeg" class="avatar-image" alt="Manuel Lora Román">
+    </div>
+  <div class="masthead-title">
+    <a href="/" title="Home">Programa</a>
+  </div>
+  <div class="masthead-tagline">
+    <small>Blog de pŕacticas y ejercicios</small>
+  </div><nav class="navigation">
+    <ul class="navigation-list"><li class="navigation-item">
+        <a onclick="sessionStorage.setItem('forceCheckScroll', 'true')" href="/">Inicio</a>
+      </li><li class="navigation-item">
+        <a onclick="sessionStorage.setItem('forceCheckScroll', 'true')" href="/about/">Sobre mí</a>
+      </li></ul>
+  </nav><div class="social pure-menu pure-menu-horizontal">
+      <ul class="social-icons pure-menu-list">
+      <li class="pure-menu-item">
+          <a class="social-icon pure-menu-link" href="mailto://manuelloraroman@gmail.com">
+            <i class="fas fa-envelope" title="Email"></i>
+          </a>
+        </li><li class="pure-menu-item">
+          <a class="social-icon pure-menu-link" href="https://twitter.com/ManuelLoraRoman">
+            <i class="fab fa-twitter" title="Twitter"></i>
+          </a>
+        </li><li class="pure-menu-item">
+          <a class="social-icon pure-menu-link" href="https://github.com/ManuelLoraRoman">
+            <i class="fab fa-github" title="GitHub"></i>
+          </a>
+        </li><li class="pure-menu-item">
+          <a class="social-icon pure-menu-link" href="https://www.facebook.com/manu.loraroman">
+            <i class="fab fa-facebook" title="Facebook"></i>
+          </a>
+        </li><li class="pure-menu-item">
+          <a class="social-icon pure-menu-link" href="https://www.linkedin.com/in/manuelloraroman/">
+            <i class="fab fa-linkedin" title="LinkedIn"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+</header>
+</div>
+
+      <div class="content pure-u-1 pure-u-md-1-2"><main>
+  <article class="post">
+  <h1 class="post-title">Servidores Web, Base de datos y DNS</h1>
+  <div class="post-meta"><time datetime="2021-03-16T09:16:00+01:00" itemprop="datePublished">16 Mar 2021</time><span> ~ </span><time datetime="2021-03-16T11:32:25+01:00" itemprop="dateModified">
+        16 Mar 2021
+      </time></div>
+
+  <p class="message">Práctica en donde instalamos diferentes servicios en las máquinas de nuestro escenario.</p>
+
+<h2 id="servidor-dns">Servidor DNS</h2>
+
+<p>Primero de todo, instalaremos el paquete bind9 en nuestra máquina freston.</p>
+
+<p>Después, vamos a configurar el fichero <em>/etc/bind/named.conf.local</em> para tener
+las diferentes vistas:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+</pre></td><td class="code"><pre><span class="nx">view</span> <span class="nx">interna</span> <span class="p">{</span>
+    <span class="nx">match</span><span class="o">-</span><span class="nx">clients</span> <span class="p">{</span> <span class="mf">10.0</span><span class="p">.</span><span class="mf">1.0</span><span class="o">/</span><span class="mi">24</span><span class="p">;</span> <span class="p">};</span>
+    <span class="nx">allow</span><span class="o">-</span><span class="nx">recursion</span> <span class="p">{</span> <span class="nx">any</span><span class="p">;</span> <span class="p">};</span>
+
+        <span class="nx">zone</span> <span class="dl">"</span><span class="s2">manuel-lora.gonzalonazareno.org</span><span class="dl">"</span>
+        <span class="p">{</span>
+                <span class="nx">type</span> <span class="nx">master</span><span class="p">;</span>
+                <span class="nx">file</span> <span class="dl">"</span><span class="s2">db.interna.gonzalonazareno.org</span><span class="dl">"</span><span class="p">;</span>
+        <span class="p">};</span>
+        <span class="nx">zone</span> <span class="dl">"</span><span class="s2">1.0.10.in-addr.arpa</span><span class="dl">"</span>
+        <span class="p">{</span>
+                <span class="nx">type</span> <span class="nx">master</span><span class="p">;</span>
+                <span class="nx">file</span> <span class="dl">"</span><span class="s2">db.1.0.10</span><span class="dl">"</span><span class="p">;</span>
+        <span class="p">};</span>
+        <span class="nx">zone</span> <span class="dl">"</span><span class="s2">2.0.10.in-addr.arpa</span><span class="dl">"</span>
+        <span class="p">{</span>
+                <span class="nx">type</span> <span class="nx">master</span><span class="p">;</span>
+                <span class="nx">file</span> <span class="dl">"</span><span class="s2">db.2.0.10</span><span class="dl">"</span><span class="p">;</span>
+        <span class="p">};</span>
+        <span class="nx">include</span> <span class="dl">"</span><span class="s2">/etc/bind/zones.rfc1918</span><span class="dl">"</span><span class="p">;</span>
+        <span class="nx">include</span> <span class="dl">"</span><span class="s2">/etc/bind/named.conf.default-zones</span><span class="dl">"</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="nx">view</span> <span class="nx">externa</span> <span class="p">{</span>
+    <span class="nx">match</span><span class="o">-</span><span class="nx">clients</span> <span class="p">{</span> <span class="mf">172.22</span><span class="p">.</span><span class="mf">0.0</span><span class="o">/</span><span class="mi">15</span><span class="p">;</span> <span class="mf">192.168</span><span class="p">.</span><span class="mf">202.2</span><span class="p">;};</span>
+    <span class="nx">allow</span><span class="o">-</span><span class="nx">recursion</span> <span class="p">{</span> <span class="nx">any</span><span class="p">;</span> <span class="p">};</span>
+
+        <span class="nx">zone</span> <span class="dl">"</span><span class="s2">manuel-lora.gonzalonazareno.org</span><span class="dl">"</span>
+        <span class="p">{</span>
+                <span class="nx">type</span> <span class="nx">master</span><span class="p">;</span>
+                <span class="nx">file</span> <span class="dl">"</span><span class="s2">db.externa.gonzalonazareno.org</span><span class="dl">"</span><span class="p">;</span>
+        <span class="p">};</span>
+        <span class="nx">include</span> <span class="dl">"</span><span class="s2">/etc/bind/zones.rfc1918</span><span class="dl">"</span><span class="p">;</span>
+        <span class="nx">include</span> <span class="dl">"</span><span class="s2">/etc/bind/named.conf.default-zones</span><span class="dl">"</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="nx">view</span> <span class="nx">DMZ</span> <span class="p">{</span>
+    <span class="nx">match</span><span class="o">-</span><span class="nx">clients</span> <span class="p">{</span> <span class="mf">10.0</span><span class="p">.</span><span class="mf">2.0</span><span class="o">/</span><span class="mi">24</span><span class="p">;</span> <span class="p">};</span>
+    <span class="nx">allow</span><span class="o">-</span><span class="nx">recursion</span> <span class="p">{</span> <span class="nx">any</span><span class="p">;</span> <span class="p">};</span>
+
+        <span class="nx">zone</span> <span class="dl">"</span><span class="s2">manuel-lora.gonzalonazareno.org</span><span class="dl">"</span>
+        <span class="p">{</span>
+                <span class="nx">type</span> <span class="nx">master</span><span class="p">;</span>
+                <span class="nx">file</span> <span class="dl">"</span><span class="s2">db.DMZ.gonzalonazareno.org</span><span class="dl">"</span><span class="p">;</span>
+        <span class="p">};</span>
+        <span class="nx">zone</span> <span class="dl">"</span><span class="s2">2.0.10.in-addr.arpa</span><span class="dl">"</span>
+        <span class="p">{</span>
+                <span class="nx">type</span> <span class="nx">master</span><span class="p">;</span>
+                <span class="nx">file</span> <span class="dl">"</span><span class="s2">db.2.0.10</span><span class="dl">"</span><span class="p">;</span>
+        <span class="p">};</span>
+        <span class="nx">zone</span> <span class="dl">"</span><span class="s2">1.0.10.in-addr.arpa</span><span class="dl">"</span>
+        <span class="p">{</span>
+                <span class="nx">type</span> <span class="nx">master</span><span class="p">;</span>
+                <span class="nx">file</span> <span class="dl">"</span><span class="s2">db.1.0.10</span><span class="dl">"</span><span class="p">;</span>
+        <span class="p">};</span>
+        <span class="nx">include</span> <span class="dl">"</span><span class="s2">/etc/bind/zones.rfc1918</span><span class="dl">"</span><span class="p">;</span>
+        <span class="nx">include</span> <span class="dl">"</span><span class="s2">/etc/bind/named.conf.default-zones</span><span class="dl">"</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<p>Debemos a su vez, comentar la siguiente línea del fichero 
+<em>/etc/bind/named.conf</em>:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+</pre></td><td class="code"><pre><span class="c1">// include "/etc/bind/named.conf.default-zones";</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<p>Ahora, crearemos los diferentes ficheros en <em>/var/cache/bind</em>:</p>
+
+<ul>
+  <li>db.interna.gonzalonazareno.org</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td><td class="code"><pre><span class="nx">$TTL</span>    <span class="mi">86400</span>
+<span class="p">@</span>   <span class="nx">IN</span>  <span class="nx">SOA</span> <span class="nx">freston</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span><span class="p">.</span> <span class="nx">manuelloraroman</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span><span class="p">.</span> <span class="p">{</span>
+                  <span class="mi">1</span>     <span class="p">;</span> <span class="nx">Serial</span>
+             <span class="mi">604800</span>     <span class="p">;</span> <span class="nx">Refresh</span>
+              <span class="mi">86400</span>     <span class="p">;</span> <span class="nx">Retry</span>
+            <span class="mi">2419200</span>     <span class="p">;</span> <span class="nx">Expire</span>
+              <span class="mi">86400</span> <span class="p">)</span>   <span class="p">;</span> <span class="nx">Negative</span> <span class="nx">Cache</span> <span class="nx">TTL</span>
+<span class="p">;</span>
+<span class="p">@</span>               <span class="nx">IN</span>  <span class="nx">NS</span>  <span class="nx">freston</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span><span class="p">.</span>
+
+<span class="nx">$ORIGIN</span> <span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span><span class="p">.</span>
+<span class="nx">dulcinea</span>        <span class="nx">IN</span>      <span class="nx">A</span>       <span class="mf">10.0</span><span class="p">.</span><span class="mf">1.4</span>
+<span class="nx">sancho</span>          <span class="nx">IN</span>      <span class="nx">A</span>       <span class="mf">10.0</span><span class="p">.</span><span class="mf">1.11</span>
+<span class="nx">freston</span>         <span class="nx">IN</span>      <span class="nx">A</span>       <span class="mf">10.0</span><span class="p">.</span><span class="mf">1.10</span>
+<span class="nx">quijote</span>         <span class="nx">IN</span>      <span class="nx">A</span>       <span class="mf">10.0</span><span class="p">.</span><span class="mf">2.10</span>
+<span class="nx">www</span>             <span class="nx">IN</span>      <span class="nx">CNAME</span>   <span class="nx">quijote</span>
+<span class="nx">bd</span>              <span class="nx">IN</span>      <span class="nx">CNAME</span>   <span class="nx">sancho</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<ul>
+  <li>db.externa.gonzalonazareno.org</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="code"><pre><span class="nx">$TTL</span>    <span class="mi">86400</span>
+<span class="p">@</span>   <span class="nx">IN</span>  <span class="nx">SOA</span> <span class="nx">freston</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span><span class="p">.</span> <span class="nx">manuelloraroman</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span><span class="p">.</span> <span class="p">{</span>
+                  <span class="mi">1</span>     <span class="p">;</span> <span class="nx">Serial</span>
+             <span class="mi">604800</span>     <span class="p">;</span> <span class="nx">Refresh</span>
+              <span class="mi">86400</span>     <span class="p">;</span> <span class="nx">Retry</span>
+            <span class="mi">2419200</span>     <span class="p">;</span> <span class="nx">Expire</span>
+              <span class="mi">86400</span> <span class="p">)</span>   <span class="p">;</span> <span class="nx">Negative</span> <span class="nx">Cache</span> <span class="nx">TTL</span>
+<span class="p">;</span>
+<span class="p">@</span>               <span class="nx">IN</span>      <span class="nx">NS</span>      <span class="nx">dulcinea</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span><span class="p">.</span>
+
+<span class="nx">$ORIGIN</span> <span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span><span class="p">.</span>
+<span class="nx">dulcinea</span>        <span class="nx">IN</span>      <span class="nx">A</span>       <span class="mf">172.22</span><span class="p">.</span><span class="mf">200.146</span>
+<span class="nx">www</span>             <span class="nx">IN</span>      <span class="nx">CNAME</span>   <span class="nx">dulcinea</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<ul>
+  <li>db.DMZ.gonzalonazareno.org</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td><td class="code"><pre><span class="nx">$TTL</span>    <span class="mi">86400</span>
+<span class="p">@</span>   <span class="nx">IN</span>  <span class="nx">SOA</span> <span class="nx">freston</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span><span class="p">.</span> <span class="nx">manuelloraroman</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span><span class="p">.</span> <span class="p">{</span>
+                  <span class="mi">1</span>     <span class="p">;</span> <span class="nx">Serial</span>
+             <span class="mi">604800</span>     <span class="p">;</span> <span class="nx">Refresh</span>
+              <span class="mi">86400</span>     <span class="p">;</span> <span class="nx">Retry</span>
+            <span class="mi">2419200</span>     <span class="p">;</span> <span class="nx">Expire</span>
+              <span class="mi">86400</span> <span class="p">)</span>   <span class="p">;</span> <span class="nx">Negative</span> <span class="nx">Cache</span> <span class="nx">TTL</span>
+<span class="p">;</span>
+<span class="p">@</span>               <span class="nx">IN</span>      <span class="nx">NS</span>      <span class="nx">freston</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span><span class="p">.</span>
+
+<span class="nx">$ORIGIN</span> <span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span><span class="p">.</span>
+<span class="nx">dulcinea</span>        <span class="nx">IN</span>      <span class="nx">A</span>       <span class="mf">10.0</span><span class="p">.</span><span class="mf">2.11</span>
+<span class="nx">sancho</span>          <span class="nx">IN</span>      <span class="nx">A</span>       <span class="mf">10.0</span><span class="p">.</span><span class="mf">1.11</span>
+<span class="nx">freston</span>         <span class="nx">IN</span>      <span class="nx">A</span>       <span class="mf">10.0</span><span class="p">.</span><span class="mf">1.10</span>
+<span class="nx">quijote</span>         <span class="nx">IN</span>      <span class="nx">A</span>       <span class="mf">10.0</span><span class="p">.</span><span class="mf">2.10</span>
+<span class="nx">www</span>             <span class="nx">IN</span>      <span class="nx">CNAME</span>   <span class="nx">quijote</span>
+<span class="nx">bd</span>              <span class="nx">IN</span>      <span class="nx">CNAME</span>   <span class="nx">sancho</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<ul>
+  <li>db.1.0.10</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="code"><pre><span class="nx">$TTL</span>    <span class="mi">86400</span>
+<span class="p">@</span>   <span class="nx">IN</span>  <span class="nx">SOA</span> <span class="nx">freston</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span><span class="p">.</span> <span class="nx">manuelloraroman</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span><span class="p">.</span> <span class="p">{</span>
+                  <span class="mi">1</span>     <span class="p">;</span> <span class="nx">Serial</span>
+             <span class="mi">604800</span>     <span class="p">;</span> <span class="nx">Refresh</span>
+              <span class="mi">86400</span>     <span class="p">;</span> <span class="nx">Retry</span>
+            <span class="mi">2419200</span>     <span class="p">;</span> <span class="nx">Expire</span>
+              <span class="mi">86400</span> <span class="p">)</span>   <span class="p">;</span> <span class="nx">Negative</span> <span class="nx">Cache</span> <span class="nx">TTL</span>
+<span class="p">;</span>
+<span class="p">@</span>                       <span class="nx">IN</span>      <span class="nx">NS</span>  <span class="nx">freston</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span><span class="p">.</span>
+
+<span class="nx">$ORIGIN</span> <span class="mf">1.0</span><span class="p">.</span><span class="mi">10</span><span class="p">.</span><span class="k">in</span><span class="o">-</span><span class="nx">addr</span><span class="p">.</span><span class="nx">arpa</span><span class="p">.</span>
+<span class="mi">4</span>       <span class="nx">IN</span>      <span class="nx">PTR</span>     <span class="nx">dulcinea</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span><span class="p">.</span>
+<span class="mi">11</span>      <span class="nx">IN</span>      <span class="nx">PTR</span>     <span class="nx">sancho</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span><span class="p">.</span>
+<span class="mi">10</span>      <span class="nx">IN</span>      <span class="nx">PTR</span>     <span class="nx">freston</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span><span class="p">.</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<ul>
+  <li>db.2.0.10</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="code"><pre><span class="nx">$TTL</span>    <span class="mi">86400</span>
+<span class="p">@</span>   <span class="nx">IN</span>  <span class="nx">SOA</span> <span class="nx">freston</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span><span class="p">.</span> <span class="nx">manuelloraroman</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span><span class="p">.</span> <span class="p">{</span>
+                  <span class="mi">1</span>     <span class="p">;</span> <span class="nx">Serial</span>
+             <span class="mi">604800</span>     <span class="p">;</span> <span class="nx">Refresh</span>
+              <span class="mi">86400</span>     <span class="p">;</span> <span class="nx">Retry</span>
+            <span class="mi">2419200</span>     <span class="p">;</span> <span class="nx">Expire</span>
+              <span class="mi">86400</span> <span class="p">)</span>   <span class="p">;</span> <span class="nx">Negative</span> <span class="nx">Cache</span> <span class="nx">TTL</span>
+<span class="p">;</span>
+<span class="p">@</span>                       <span class="nx">IN</span>      <span class="nx">NS</span>  <span class="nx">freston</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span><span class="p">.</span>
+
+<span class="nx">$ORIGIN</span> <span class="mf">2.0</span><span class="p">.</span><span class="mi">10</span><span class="p">.</span><span class="k">in</span><span class="o">-</span><span class="nx">addr</span><span class="p">.</span><span class="nx">arpa</span><span class="p">.</span>
+<span class="mi">10</span>      <span class="nx">IN</span>      <span class="nx">PTR</span>     <span class="nx">quijote</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span><span class="p">.</span>
+<span class="mi">11</span>      <span class="nx">IN</span>      <span class="nx">PTR</span>     <span class="nx">dulcinea</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span><span class="p">.</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<p>Configuramos también las reglas de iptable DNAT en dulcinea:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="code"><pre><span class="nx">debian</span><span class="p">@</span><span class="nd">dulcinea</span><span class="p">:</span><span class="o">~</span><span class="nx">$</span> <span class="nx">sudo</span> <span class="nx">iptables</span> <span class="o">-</span><span class="nx">t</span> <span class="nx">nat</span> <span class="o">-</span><span class="nx">A</span> <span class="nx">PREROUTING</span> <span class="o">-</span><span class="nx">p</span> <span class="nx">udp</span> <span class="o">--</span><span class="nx">dport</span> <span class="mi">53</span> <span class="o">-</span><span class="nx">i</span> <span class="nx">eth1</span> <span class="o">-</span><span class="nx">j</span> <span class="nx">DNAT</span> <span class="o">--</span><span class="nx">to</span> <span class="mf">10.0</span><span class="p">.</span><span class="mf">1.10</span>
+<span class="nx">debian</span><span class="p">@</span><span class="nd">dulcinea</span><span class="p">:</span><span class="o">~</span><span class="nx">$</span> <span class="nx">sudo</span> <span class="nx">iptables</span> <span class="o">-</span><span class="nx">t</span> <span class="nx">nat</span> <span class="o">-</span><span class="nx">A</span> <span class="nx">PREROUTING</span> <span class="o">-</span><span class="nx">p</span> <span class="nx">tcp</span> <span class="o">--</span><span class="nx">dport</span> <span class="mi">53</span> <span class="o">-</span><span class="nx">i</span> <span class="nx">eth1</span> <span class="o">-</span><span class="nx">j</span> <span class="nx">DNAT</span> <span class="o">--</span><span class="nx">to</span> <span class="mf">10.0</span><span class="p">.</span><span class="mf">1.10</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<p>Y ahora vamos a comprobar que funciona el DNS. 
+Instalamos en las diferentes máquinas el paquete <em>dnsutils</em>
+y para CentOS 8 instalaremos <em>bind-utils</em> y comprobamos:</p>
+
+<ul>
+  <li>Consulta desde el exterior:</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+</pre></td><td class="code"><pre><span class="nx">manuel</span><span class="p">@</span><span class="nd">debian</span><span class="p">:</span><span class="o">~</span><span class="sr">/.ssh$ dig @10.0.0.4 dulcinea.manuel-lora.gonzalonazareno.or</span><span class="err">g
+</span>
+<span class="p">;</span> <span class="o">&lt;&lt;&gt;&gt;</span> <span class="nx">DiG</span> <span class="mf">9.11</span><span class="p">.</span><span class="mi">5</span><span class="o">-</span><span class="nx">P4</span><span class="o">-</span><span class="mf">5.1</span><span class="o">+</span><span class="nx">deb10u2</span><span class="o">-</span><span class="nx">Debian</span> <span class="o">&lt;&lt;&gt;&gt;</span> <span class="p">@</span><span class="nd">10</span><span class="p">.</span><span class="mf">0.0</span><span class="p">.</span><span class="mi">4</span> <span class="nx">dulcinea</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span>
+<span class="p">;</span> <span class="p">(</span><span class="mi">1</span> <span class="nx">server</span> <span class="nx">found</span><span class="p">)</span>
+<span class="p">;;</span> <span class="nb">global</span> <span class="nx">options</span><span class="p">:</span> <span class="o">+</span><span class="nx">cmd</span>
+<span class="p">;;</span> <span class="nx">Got</span> <span class="nx">answer</span><span class="p">:</span>
+<span class="p">;;</span> <span class="o">-&gt;&gt;</span><span class="nx">HEADER</span><span class="o">&lt;&lt;-</span> <span class="nx">opcode</span><span class="p">:</span> <span class="nx">QUERY</span><span class="p">,</span> <span class="nx">status</span><span class="p">:</span> <span class="nx">NOERROR</span><span class="p">,</span> <span class="nx">id</span><span class="p">:</span> <span class="mi">60514</span>
+<span class="p">;;</span> <span class="nl">flags</span><span class="p">:</span> <span class="nx">qr</span> <span class="nx">rd</span> <span class="nx">ra</span><span class="p">;</span> <span class="nl">QUERY</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">ANSWER</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">AUTHORITY</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">ADDITIONAL</span><span class="p">:</span> <span class="mi">1</span>
+
+<span class="p">;;</span> <span class="nx">OPT</span> <span class="nx">PSEUDOSECTION</span><span class="p">:</span>
+<span class="p">;</span> <span class="nl">EDNS</span><span class="p">:</span> <span class="nl">version</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">flags</span><span class="p">:;</span> <span class="nl">udp</span><span class="p">:</span> <span class="mi">4096</span>
+<span class="p">;;</span> <span class="nx">QUESTION</span> <span class="nx">SECTION</span><span class="p">:</span>
+<span class="p">;</span><span class="nx">dulcinea</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span><span class="p">.</span> <span class="nx">IN</span> <span class="nx">A</span>
+
+<span class="p">;;</span> <span class="nx">ANSWER</span> <span class="nx">SECTION</span><span class="p">:</span>
+<span class="nx">dulcinea</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span><span class="p">.</span> <span class="mi">900</span> <span class="nx">IN</span> <span class="nx">CNAME</span> <span class="nx">macaco</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span><span class="p">.</span>
+<span class="nx">macaco</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span><span class="p">.</span> <span class="mi">900</span>	<span class="nx">IN</span>	<span class="nx">A</span>	<span class="mf">80.59</span><span class="p">.</span><span class="mf">1.152</span>
+
+<span class="p">;;</span> <span class="nx">Query</span> <span class="nx">time</span><span class="p">:</span> <span class="mi">70</span> <span class="nx">msec</span>
+<span class="p">;;</span> <span class="nl">SERVER</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">.</span><span class="mf">0.4</span><span class="err">#</span><span class="mi">53</span><span class="p">(</span><span class="mf">10.0</span><span class="p">.</span><span class="mf">0.4</span><span class="p">)</span>
+<span class="p">;;</span> <span class="nl">WHEN</span><span class="p">:</span> <span class="nx">mar</span> <span class="nx">dic</span> <span class="mi">15</span> <span class="mi">21</span><span class="p">:</span><span class="mi">24</span><span class="p">:</span><span class="mi">44</span> <span class="nx">CET</span> <span class="mi">2020</span>
+<span class="p">;;</span> <span class="nx">MSG</span> <span class="nx">SIZE</span>  <span class="nx">rcvd</span><span class="p">:</span> <span class="mi">106</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<ul>
+  <li>Consulta red interna:</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+</pre></td><td class="code"><pre><span class="nx">debian</span><span class="p">@</span><span class="nd">dulcinea</span><span class="p">:</span><span class="o">~</span><span class="nx">$</span> <span class="nx">dig</span> <span class="nx">sancho</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span>
+
+<span class="p">;</span> <span class="o">&lt;&lt;&gt;&gt;</span> <span class="nx">DiG</span> <span class="mf">9.11</span><span class="p">.</span><span class="mi">5</span><span class="o">-</span><span class="nx">P4</span><span class="o">-</span><span class="mf">5.1</span><span class="o">+</span><span class="nx">deb10u2</span><span class="o">-</span><span class="nx">Debian</span> <span class="o">&lt;&lt;&gt;&gt;</span> <span class="nx">sancho</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span>
+<span class="p">;;</span> <span class="nb">global</span> <span class="nx">options</span><span class="p">:</span> <span class="o">+</span><span class="nx">cmd</span>
+<span class="p">;;</span> <span class="nx">Got</span> <span class="nx">answer</span><span class="p">:</span>
+<span class="p">;;</span> <span class="o">-&gt;&gt;</span><span class="nx">HEADER</span><span class="o">&lt;&lt;-</span> <span class="nx">opcode</span><span class="p">:</span> <span class="nx">QUERY</span><span class="p">,</span> <span class="nx">status</span><span class="p">:</span> <span class="nx">NOERROR</span><span class="p">,</span> <span class="nx">id</span><span class="p">:</span> <span class="mi">14762</span>
+<span class="p">;;</span> <span class="nl">flags</span><span class="p">:</span> <span class="nx">qr</span> <span class="nx">aa</span> <span class="nx">rd</span> <span class="nx">ra</span><span class="p">;</span> <span class="nl">QUERY</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">ANSWER</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">AUTHORITY</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">ADDITIONAL</span><span class="p">:</span> <span class="mi">2</span>
+
+<span class="p">;;</span> <span class="nx">OPT</span> <span class="nx">PSEUDOSECTION</span><span class="p">:</span>
+<span class="p">;</span> <span class="nl">EDNS</span><span class="p">:</span> <span class="nl">version</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">flags</span><span class="p">:;</span> <span class="nl">udp</span><span class="p">:</span> <span class="mi">4096</span>
+<span class="p">;</span> <span class="nl">COOKIE</span><span class="p">:</span> <span class="nx">dd68191eca0b4aa4cf0109a75fd91c5ed2043e2f1a1f6045</span> <span class="p">(</span><span class="nx">good</span><span class="p">)</span>
+<span class="p">;;</span> <span class="nx">QUESTION</span> <span class="nx">SECTION</span><span class="p">:</span>
+<span class="p">;</span><span class="nx">sancho</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span><span class="p">.</span>	<span class="nx">IN</span> <span class="nx">A</span>
+
+<span class="p">;;</span> <span class="nx">ANSWER</span> <span class="nx">SECTION</span><span class="p">:</span>
+<span class="nx">sancho</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span><span class="p">.</span>	<span class="mi">86400</span> <span class="nx">IN</span> <span class="nx">A</span> <span class="mf">10.0</span><span class="p">.</span><span class="mf">1.11</span>
+
+<span class="p">;;</span> <span class="nx">AUTHORITY</span> <span class="nx">SECTION</span><span class="p">:</span>
+<span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span><span class="p">.</span> <span class="mi">86400</span> <span class="nx">IN</span> <span class="nx">NS</span>	<span class="nx">freston</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span><span class="p">.</span>
+
+<span class="p">;;</span> <span class="nx">ADDITIONAL</span> <span class="nx">SECTION</span><span class="p">:</span>
+<span class="nx">freston</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span><span class="p">.</span> <span class="mi">86400</span> <span class="nx">IN</span> <span class="nx">A</span> <span class="mf">10.0</span><span class="p">.</span><span class="mf">1.10</span>
+
+<span class="p">;;</span> <span class="nx">Query</span> <span class="nx">time</span><span class="p">:</span> <span class="mi">3</span> <span class="nx">msec</span>
+<span class="p">;;</span> <span class="nl">SERVER</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">.</span><span class="mf">1.10</span><span class="err">#</span><span class="mi">53</span><span class="p">(</span><span class="mf">10.0</span><span class="p">.</span><span class="mf">1.10</span><span class="p">)</span>
+<span class="p">;;</span> <span class="nl">WHEN</span><span class="p">:</span> <span class="nx">Tue</span> <span class="nx">Dec</span> <span class="mi">15</span> <span class="mi">20</span><span class="p">:</span><span class="mi">28</span><span class="p">:</span><span class="mi">14</span> <span class="nx">UTC</span> <span class="mi">2020</span>
+<span class="p">;;</span> <span class="nx">MSG</span> <span class="nx">SIZE</span>  <span class="nx">rcvd</span><span class="p">:</span> <span class="mi">149</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+</pre></td><td class="code"><pre><span class="nx">debian</span><span class="p">@</span><span class="nd">dulcinea</span><span class="p">:</span><span class="o">~</span><span class="nx">$</span> <span class="nx">dig</span> <span class="nx">quijote</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span>
+
+<span class="p">;</span> <span class="o">&lt;&lt;&gt;&gt;</span> <span class="nx">DiG</span> <span class="mf">9.11</span><span class="p">.</span><span class="mi">5</span><span class="o">-</span><span class="nx">P4</span><span class="o">-</span><span class="mf">5.1</span><span class="o">+</span><span class="nx">deb10u2</span><span class="o">-</span><span class="nx">Debian</span> <span class="o">&lt;&lt;&gt;&gt;</span> <span class="nx">quijote</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span>
+<span class="p">;;</span> <span class="nb">global</span> <span class="nx">options</span><span class="p">:</span> <span class="o">+</span><span class="nx">cmd</span>
+<span class="p">;;</span> <span class="nx">Got</span> <span class="nx">answer</span><span class="p">:</span>
+<span class="p">;;</span> <span class="o">-&gt;&gt;</span><span class="nx">HEADER</span><span class="o">&lt;&lt;-</span> <span class="nx">opcode</span><span class="p">:</span> <span class="nx">QUERY</span><span class="p">,</span> <span class="nx">status</span><span class="p">:</span> <span class="nx">NOERROR</span><span class="p">,</span> <span class="nx">id</span><span class="p">:</span> <span class="mi">10735</span>
+<span class="p">;;</span> <span class="nl">flags</span><span class="p">:</span> <span class="nx">qr</span> <span class="nx">aa</span> <span class="nx">rd</span> <span class="nx">ra</span><span class="p">;</span> <span class="nl">QUERY</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">ANSWER</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">AUTHORITY</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">ADDITIONAL</span><span class="p">:</span> <span class="mi">2</span>
+
+<span class="p">;;</span> <span class="nx">OPT</span> <span class="nx">PSEUDOSECTION</span><span class="p">:</span>
+<span class="p">;</span> <span class="nl">EDNS</span><span class="p">:</span> <span class="nl">version</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">flags</span><span class="p">:;</span> <span class="nl">udp</span><span class="p">:</span> <span class="mi">4096</span>
+<span class="p">;</span> <span class="nl">COOKIE</span><span class="p">:</span> <span class="mi">0082</span><span class="nx">ee534b89bf367c0e3dd25fd91c9773d8a40649424ca3</span> <span class="p">(</span><span class="nx">good</span><span class="p">)</span>
+<span class="p">;;</span> <span class="nx">QUESTION</span> <span class="nx">SECTION</span><span class="p">:</span>
+<span class="p">;</span><span class="nx">quijote</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span><span class="p">.</span> <span class="nx">IN</span> <span class="nx">A</span>
+
+<span class="p">;;</span> <span class="nx">ANSWER</span> <span class="nx">SECTION</span><span class="p">:</span>
+<span class="nx">quijote</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span><span class="p">.</span> <span class="mi">86400</span> <span class="nx">IN</span> <span class="nx">A</span> <span class="mf">10.0</span><span class="p">.</span><span class="mf">2.10</span>
+
+<span class="p">;;</span> <span class="nx">AUTHORITY</span> <span class="nx">SECTION</span><span class="p">:</span>
+<span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span><span class="p">.</span> <span class="mi">86400</span> <span class="nx">IN</span> <span class="nx">NS</span>	<span class="nx">freston</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span><span class="p">.</span>
+
+<span class="p">;;</span> <span class="nx">ADDITIONAL</span> <span class="nx">SECTION</span><span class="p">:</span>
+<span class="nx">freston</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span><span class="p">.</span> <span class="mi">86400</span> <span class="nx">IN</span> <span class="nx">A</span> <span class="mf">10.0</span><span class="p">.</span><span class="mf">1.10</span>
+
+<span class="p">;;</span> <span class="nx">Query</span> <span class="nx">time</span><span class="p">:</span> <span class="mi">1</span> <span class="nx">msec</span>
+<span class="p">;;</span> <span class="nl">SERVER</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">.</span><span class="mf">1.10</span><span class="err">#</span><span class="mi">53</span><span class="p">(</span><span class="mf">10.0</span><span class="p">.</span><span class="mf">1.10</span><span class="p">)</span>
+<span class="p">;;</span> <span class="nl">WHEN</span><span class="p">:</span> <span class="nx">Tue</span> <span class="nx">Dec</span> <span class="mi">15</span> <span class="mi">20</span><span class="p">:</span><span class="mi">29</span><span class="p">:</span><span class="mi">11</span> <span class="nx">UTC</span> <span class="mi">2020</span>
+<span class="p">;;</span> <span class="nx">MSG</span> <span class="nx">SIZE</span>  <span class="nx">rcvd</span><span class="p">:</span> <span class="mi">150</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+</pre></td><td class="code"><pre><span class="nx">debian</span><span class="p">@</span><span class="nd">dulcinea</span><span class="p">:</span><span class="o">~</span><span class="nx">$</span> <span class="nx">dig</span> <span class="nx">freston</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span>
+
+<span class="p">;</span> <span class="o">&lt;&lt;&gt;&gt;</span> <span class="nx">DiG</span> <span class="mf">9.11</span><span class="p">.</span><span class="mi">5</span><span class="o">-</span><span class="nx">P4</span><span class="o">-</span><span class="mf">5.1</span><span class="o">+</span><span class="nx">deb10u2</span><span class="o">-</span><span class="nx">Debian</span> <span class="o">&lt;&lt;&gt;&gt;</span> <span class="nx">freston</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span>
+<span class="p">;;</span> <span class="nb">global</span> <span class="nx">options</span><span class="p">:</span> <span class="o">+</span><span class="nx">cmd</span>
+<span class="p">;;</span> <span class="nx">Got</span> <span class="nx">answer</span><span class="p">:</span>
+<span class="p">;;</span> <span class="o">-&gt;&gt;</span><span class="nx">HEADER</span><span class="o">&lt;&lt;-</span> <span class="nx">opcode</span><span class="p">:</span> <span class="nx">QUERY</span><span class="p">,</span> <span class="nx">status</span><span class="p">:</span> <span class="nx">NOERROR</span><span class="p">,</span> <span class="nx">id</span><span class="p">:</span> <span class="mi">53459</span>
+<span class="p">;;</span> <span class="nl">flags</span><span class="p">:</span> <span class="nx">qr</span> <span class="nx">aa</span> <span class="nx">rd</span> <span class="nx">ra</span><span class="p">;</span> <span class="nl">QUERY</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">ANSWER</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">AUTHORITY</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">ADDITIONAL</span><span class="p">:</span> <span class="mi">1</span>
+
+<span class="p">;;</span> <span class="nx">OPT</span> <span class="nx">PSEUDOSECTION</span><span class="p">:</span>
+<span class="p">;</span> <span class="nl">EDNS</span><span class="p">:</span> <span class="nl">version</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">flags</span><span class="p">:;</span> <span class="nl">udp</span><span class="p">:</span> <span class="mi">4096</span>
+<span class="p">;</span> <span class="nl">COOKIE</span><span class="p">:</span> <span class="nx">f9d421dca3d711b0375bf3e55fd9224a92998c96eb0fbb29</span> <span class="p">(</span><span class="nx">good</span><span class="p">)</span>
+<span class="p">;;</span> <span class="nx">QUESTION</span> <span class="nx">SECTION</span><span class="p">:</span>
+<span class="p">;</span><span class="nx">freston</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span><span class="p">.</span> <span class="nx">IN</span> <span class="nx">A</span>
+
+<span class="p">;;</span> <span class="nx">ANSWER</span> <span class="nx">SECTION</span><span class="p">:</span>
+<span class="nx">freston</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span><span class="p">.</span> <span class="mi">86400</span> <span class="nx">IN</span> <span class="nx">A</span> <span class="mf">10.0</span><span class="p">.</span><span class="mf">1.10</span>
+
+<span class="p">;;</span> <span class="nx">AUTHORITY</span> <span class="nx">SECTION</span><span class="p">:</span>
+<span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span><span class="p">.</span> <span class="mi">86400</span> <span class="nx">IN</span> <span class="nx">NS</span>	<span class="nx">freston</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span><span class="p">.</span>
+
+<span class="p">;;</span> <span class="nx">Query</span> <span class="nx">time</span><span class="p">:</span> <span class="mi">2</span> <span class="nx">msec</span>
+<span class="p">;;</span> <span class="nl">SERVER</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">.</span><span class="mf">1.10</span><span class="err">#</span><span class="mi">53</span><span class="p">(</span><span class="mf">10.0</span><span class="p">.</span><span class="mf">1.10</span><span class="p">)</span>
+<span class="p">;;</span> <span class="nl">WHEN</span><span class="p">:</span> <span class="nx">Tue</span> <span class="nx">Dec</span> <span class="mi">15</span> <span class="mi">20</span><span class="p">:</span><span class="mi">53</span><span class="p">:</span><span class="mi">30</span> <span class="nx">UTC</span> <span class="mi">2020</span>
+<span class="p">;;</span> <span class="nx">MSG</span> <span class="nx">SIZE</span>  <span class="nx">rcvd</span><span class="p">:</span> <span class="mi">126</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<ul>
+  <li>Red DMZ:</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+</pre></td><td class="code"><pre><span class="p">[</span><span class="nx">centos</span><span class="p">@</span><span class="nd">quijote</span> <span class="o">~</span><span class="p">]</span><span class="nx">$</span> <span class="nx">dig</span> <span class="nx">dulcinea</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span>
+
+<span class="p">;</span> <span class="o">&lt;&lt;&gt;&gt;</span> <span class="nx">DiG</span> <span class="mf">9.11</span><span class="p">.</span><span class="mi">20</span><span class="o">-</span><span class="nx">RedHat</span><span class="o">-</span><span class="mf">9.11</span><span class="p">.</span><span class="mi">20</span><span class="o">-</span><span class="mi">5</span><span class="p">.</span><span class="nx">el8</span> <span class="o">&lt;&lt;&gt;&gt;</span> <span class="nx">dulcinea</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span>
+<span class="p">;;</span> <span class="nb">global</span> <span class="nx">options</span><span class="p">:</span> <span class="o">+</span><span class="nx">cmd</span>
+<span class="p">;;</span> <span class="nx">Got</span> <span class="nx">answer</span><span class="p">:</span>
+<span class="p">;;</span> <span class="o">-&gt;&gt;</span><span class="nx">HEADER</span><span class="o">&lt;&lt;-</span> <span class="nx">opcode</span><span class="p">:</span> <span class="nx">QUERY</span><span class="p">,</span> <span class="nx">status</span><span class="p">:</span> <span class="nx">NOERROR</span><span class="p">,</span> <span class="nx">id</span><span class="p">:</span> <span class="mi">18991</span>
+<span class="p">;;</span> <span class="nl">flags</span><span class="p">:</span> <span class="nx">qr</span> <span class="nx">aa</span> <span class="nx">rd</span> <span class="nx">ra</span><span class="p">;</span> <span class="nl">QUERY</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">ANSWER</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">AUTHORITY</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">ADDITIONAL</span><span class="p">:</span> <span class="mi">2</span>
+
+<span class="p">;;</span> <span class="nx">OPT</span> <span class="nx">PSEUDOSECTION</span><span class="p">:</span>
+<span class="p">;</span> <span class="nl">EDNS</span><span class="p">:</span> <span class="nl">version</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">flags</span><span class="p">:;</span> <span class="nl">udp</span><span class="p">:</span> <span class="mi">4096</span>
+<span class="p">;</span> <span class="nl">COOKIE</span><span class="p">:</span> <span class="mi">5</span><span class="nx">d083a5d3662a33ed2f1e3c15fd93e942e144f5ad63b409e</span> <span class="p">(</span><span class="nx">good</span><span class="p">)</span>
+<span class="p">;;</span> <span class="nx">QUESTION</span> <span class="nx">SECTION</span><span class="p">:</span>
+<span class="p">;</span><span class="nx">dulcinea</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span><span class="p">.</span> <span class="nx">IN</span> <span class="nx">A</span>
+
+<span class="p">;;</span> <span class="nx">ANSWER</span> <span class="nx">SECTION</span><span class="p">:</span>
+<span class="nx">dulcinea</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span><span class="p">.</span> <span class="mi">86400</span>	<span class="nx">IN</span> <span class="nx">A</span> <span class="mf">10.0</span><span class="p">.</span><span class="mf">2.11</span>
+
+<span class="p">;;</span> <span class="nx">AUTHORITY</span> <span class="nx">SECTION</span><span class="p">:</span>
+<span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span><span class="p">.</span> <span class="mi">86400</span> <span class="nx">IN</span> <span class="nx">NS</span>	<span class="nx">freston</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span><span class="p">.</span>
+
+<span class="p">;;</span> <span class="nx">ADDITIONAL</span> <span class="nx">SECTION</span><span class="p">:</span>
+<span class="nx">freston</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span><span class="p">.</span> <span class="mi">86400</span> <span class="nx">IN</span> <span class="nx">A</span> <span class="mf">10.0</span><span class="p">.</span><span class="mf">1.10</span>
+
+<span class="p">;;</span> <span class="nx">Query</span> <span class="nx">time</span><span class="p">:</span> <span class="mi">2</span> <span class="nx">msec</span>
+<span class="p">;;</span> <span class="nl">SERVER</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">.</span><span class="mf">1.10</span><span class="err">#</span><span class="mi">53</span><span class="p">(</span><span class="mf">10.0</span><span class="p">.</span><span class="mf">1.10</span><span class="p">)</span>
+<span class="p">;;</span> <span class="nl">WHEN</span><span class="p">:</span> <span class="nx">Tue</span> <span class="nx">Dec</span> <span class="mi">15</span> <span class="mi">22</span><span class="p">:</span><span class="mi">54</span><span class="p">:</span><span class="mi">12</span> <span class="nx">UTC</span> <span class="mi">2020</span>
+<span class="p">;;</span> <span class="nx">MSG</span> <span class="nx">SIZE</span>  <span class="nx">rcvd</span><span class="p">:</span> <span class="mi">151</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<ul>
+  <li>Resolución inversa:</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+</pre></td><td class="code"><pre><span class="p">[</span><span class="nx">centos</span><span class="p">@</span><span class="nd">quijote</span> <span class="nx">httpd</span><span class="p">]</span><span class="nx">$</span> <span class="nx">dig</span> <span class="o">-</span><span class="nx">x</span> <span class="mf">10.0</span><span class="p">.</span><span class="mf">1.11</span>
+
+<span class="p">;</span> <span class="o">&lt;&lt;&gt;&gt;</span> <span class="nx">DiG</span> <span class="mf">9.11</span><span class="p">.</span><span class="mi">20</span><span class="o">-</span><span class="nx">RedHat</span><span class="o">-</span><span class="mf">9.11</span><span class="p">.</span><span class="mi">20</span><span class="o">-</span><span class="mi">5</span><span class="p">.</span><span class="nx">el8</span> <span class="o">&lt;&lt;&gt;&gt;</span> <span class="o">-</span><span class="nx">x</span> <span class="mf">10.0</span><span class="p">.</span><span class="mf">1.11</span>
+<span class="p">;;</span> <span class="nb">global</span> <span class="nx">options</span><span class="p">:</span> <span class="o">+</span><span class="nx">cmd</span>
+<span class="p">;;</span> <span class="nx">Got</span> <span class="nx">answer</span><span class="p">:</span>
+<span class="p">;;</span> <span class="o">-&gt;&gt;</span><span class="nx">HEADER</span><span class="o">&lt;&lt;-</span> <span class="nx">opcode</span><span class="p">:</span> <span class="nx">QUERY</span><span class="p">,</span> <span class="nx">status</span><span class="p">:</span> <span class="nx">NOERROR</span><span class="p">,</span> <span class="nx">id</span><span class="p">:</span> <span class="mi">54472</span>
+<span class="p">;;</span> <span class="nl">flags</span><span class="p">:</span> <span class="nx">qr</span> <span class="nx">aa</span> <span class="nx">rd</span> <span class="nx">ra</span><span class="p">;</span> <span class="nl">QUERY</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">ANSWER</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">AUTHORITY</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">ADDITIONAL</span><span class="p">:</span> <span class="mi">2</span>
+
+<span class="p">;;</span> <span class="nx">OPT</span> <span class="nx">PSEUDOSECTION</span><span class="p">:</span>
+<span class="p">;</span> <span class="nl">EDNS</span><span class="p">:</span> <span class="nl">version</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">flags</span><span class="p">:;</span> <span class="nl">udp</span><span class="p">:</span> <span class="mi">4096</span>
+<span class="p">;</span> <span class="nl">COOKIE</span><span class="p">:</span> <span class="mi">0</span><span class="nx">df922daeea4e5861516e74e5fd9f893d5e593d86d3da7b5</span> <span class="p">(</span><span class="nx">good</span><span class="p">)</span>
+<span class="p">;;</span> <span class="nx">QUESTION</span> <span class="nx">SECTION</span><span class="p">:</span>
+<span class="p">;</span><span class="mf">11.1</span><span class="p">.</span><span class="mf">0.10</span><span class="p">.</span><span class="k">in</span><span class="o">-</span><span class="nx">addr</span><span class="p">.</span><span class="nx">arpa</span><span class="p">.</span>		<span class="nx">IN</span>	<span class="nx">PTR</span>
+
+<span class="p">;;</span> <span class="nx">ANSWER</span> <span class="nx">SECTION</span><span class="p">:</span>
+<span class="mf">11.1</span><span class="p">.</span><span class="mf">0.10</span><span class="p">.</span><span class="k">in</span><span class="o">-</span><span class="nx">addr</span><span class="p">.</span><span class="nx">arpa</span><span class="p">.</span>	<span class="mi">86400</span>	<span class="nx">IN</span>	<span class="nx">PTR</span>	<span class="nx">sancho</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span><span class="p">.</span>
+
+<span class="p">;;</span> <span class="nx">AUTHORITY</span> <span class="nx">SECTION</span><span class="p">:</span>
+<span class="mf">1.0</span><span class="p">.</span><span class="mi">10</span><span class="p">.</span><span class="k">in</span><span class="o">-</span><span class="nx">addr</span><span class="p">.</span><span class="nx">arpa</span><span class="p">.</span>	<span class="mi">86400</span>	<span class="nx">IN</span>	<span class="nx">NS</span>	<span class="nx">freston</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span><span class="p">.</span>
+
+<span class="p">;;</span> <span class="nx">ADDITIONAL</span> <span class="nx">SECTION</span><span class="p">:</span>
+<span class="nx">freston</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span><span class="p">.</span> <span class="mi">86400</span> <span class="nx">IN</span> <span class="nx">A</span> <span class="mf">10.0</span><span class="p">.</span><span class="mf">1.10</span>
+
+<span class="p">;;</span> <span class="nx">Query</span> <span class="nx">time</span><span class="p">:</span> <span class="mi">3</span> <span class="nx">msec</span>
+<span class="p">;;</span> <span class="nl">SERVER</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">.</span><span class="mf">1.10</span><span class="err">#</span><span class="mi">53</span><span class="p">(</span><span class="mf">10.0</span><span class="p">.</span><span class="mf">1.10</span><span class="p">)</span>
+<span class="p">;;</span> <span class="nl">WHEN</span><span class="p">:</span> <span class="nx">Wed</span> <span class="nx">Dec</span> <span class="mi">16</span> <span class="mi">12</span><span class="p">:</span><span class="mi">07</span><span class="p">:</span><span class="mi">47</span> <span class="nx">UTC</span> <span class="mi">2020</span>
+<span class="p">;;</span> <span class="nx">MSG</span> <span class="nx">SIZE</span>  <span class="nx">rcvd</span><span class="p">:</span> <span class="mi">169</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+</pre></td><td class="code"><pre><span class="nx">debian</span><span class="p">@</span><span class="nd">dulcinea</span><span class="p">:</span><span class="o">~</span><span class="nx">$</span> <span class="nx">dig</span> <span class="o">-</span><span class="nx">x</span> <span class="mf">10.0</span><span class="p">.</span><span class="mf">1.10</span>
+
+<span class="p">;</span> <span class="o">&lt;&lt;&gt;&gt;</span> <span class="nx">DiG</span> <span class="mf">9.11</span><span class="p">.</span><span class="mi">5</span><span class="o">-</span><span class="nx">P4</span><span class="o">-</span><span class="mf">5.1</span><span class="o">+</span><span class="nx">deb10u2</span><span class="o">-</span><span class="nx">Debian</span> <span class="o">&lt;&lt;&gt;&gt;</span> <span class="o">-</span><span class="nx">x</span> <span class="mf">10.0</span><span class="p">.</span><span class="mf">1.10</span>
+<span class="p">;;</span> <span class="nb">global</span> <span class="nx">options</span><span class="p">:</span> <span class="o">+</span><span class="nx">cmd</span>
+<span class="p">;;</span> <span class="nx">Got</span> <span class="nx">answer</span><span class="p">:</span>
+<span class="p">;;</span> <span class="o">-&gt;&gt;</span><span class="nx">HEADER</span><span class="o">&lt;&lt;-</span> <span class="nx">opcode</span><span class="p">:</span> <span class="nx">QUERY</span><span class="p">,</span> <span class="nx">status</span><span class="p">:</span> <span class="nx">NOERROR</span><span class="p">,</span> <span class="nx">id</span><span class="p">:</span> <span class="mi">6640</span>
+<span class="p">;;</span> <span class="nl">flags</span><span class="p">:</span> <span class="nx">qr</span> <span class="nx">aa</span> <span class="nx">rd</span> <span class="nx">ra</span><span class="p">;</span> <span class="nl">QUERY</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">ANSWER</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">AUTHORITY</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">ADDITIONAL</span><span class="p">:</span> <span class="mi">2</span>
+
+<span class="p">;;</span> <span class="nx">OPT</span> <span class="nx">PSEUDOSECTION</span><span class="p">:</span>
+<span class="p">;</span> <span class="nl">EDNS</span><span class="p">:</span> <span class="nl">version</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">flags</span><span class="p">:;</span> <span class="nl">udp</span><span class="p">:</span> <span class="mi">4096</span>
+<span class="p">;</span> <span class="nl">COOKIE</span><span class="p">:</span> <span class="nx">f247cc74949209a8a83062215fd9fe259350d7c12bb27910</span> <span class="p">(</span><span class="nx">good</span><span class="p">)</span>
+<span class="p">;;</span> <span class="nx">QUESTION</span> <span class="nx">SECTION</span><span class="p">:</span>
+<span class="p">;</span><span class="mf">10.1</span><span class="p">.</span><span class="mf">0.10</span><span class="p">.</span><span class="k">in</span><span class="o">-</span><span class="nx">addr</span><span class="p">.</span><span class="nx">arpa</span><span class="p">.</span>		<span class="nx">IN</span>	<span class="nx">PTR</span>
+
+<span class="p">;;</span> <span class="nx">ANSWER</span> <span class="nx">SECTION</span><span class="p">:</span>
+<span class="mf">10.1</span><span class="p">.</span><span class="mf">0.10</span><span class="p">.</span><span class="k">in</span><span class="o">-</span><span class="nx">addr</span><span class="p">.</span><span class="nx">arpa</span><span class="p">.</span>	<span class="mi">86400</span>	<span class="nx">IN</span>	<span class="nx">PTR</span>	<span class="nx">freston</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span><span class="p">.</span>
+
+<span class="p">;;</span> <span class="nx">AUTHORITY</span> <span class="nx">SECTION</span><span class="p">:</span>
+<span class="mf">1.0</span><span class="p">.</span><span class="mi">10</span><span class="p">.</span><span class="k">in</span><span class="o">-</span><span class="nx">addr</span><span class="p">.</span><span class="nx">arpa</span><span class="p">.</span>	<span class="mi">86400</span>	<span class="nx">IN</span>	<span class="nx">NS</span>	<span class="nx">freston</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span><span class="p">.</span>
+
+<span class="p">;;</span> <span class="nx">ADDITIONAL</span> <span class="nx">SECTION</span><span class="p">:</span>
+<span class="nx">freston</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span><span class="p">.</span> <span class="mi">86400</span> <span class="nx">IN</span> <span class="nx">A</span> <span class="mf">10.0</span><span class="p">.</span><span class="mf">1.10</span>
+
+<span class="p">;;</span> <span class="nx">Query</span> <span class="nx">time</span><span class="p">:</span> <span class="mi">2</span> <span class="nx">msec</span>
+<span class="p">;;</span> <span class="nl">SERVER</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">.</span><span class="mf">1.10</span><span class="err">#</span><span class="mi">53</span><span class="p">(</span><span class="mf">10.0</span><span class="p">.</span><span class="mf">1.10</span><span class="p">)</span>
+<span class="p">;;</span> <span class="nl">WHEN</span><span class="p">:</span> <span class="nx">Wed</span> <span class="nx">Dec</span> <span class="mi">16</span> <span class="mi">12</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">33</span> <span class="nx">UTC</span> <span class="mi">2020</span>
+<span class="p">;;</span> <span class="nx">MSG</span> <span class="nx">SIZE</span>  <span class="nx">rcvd</span><span class="p">:</span> <span class="mi">162</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+</pre></td><td class="code"><pre><span class="p">[</span><span class="nx">centos</span><span class="p">@</span><span class="nd">quijote</span> <span class="o">~</span><span class="p">]</span><span class="nx">$</span> <span class="nx">dig</span> <span class="o">-</span><span class="nx">x</span> <span class="mf">10.0</span><span class="p">.</span><span class="mf">2.10</span>
+
+<span class="p">;</span> <span class="o">&lt;&lt;&gt;&gt;</span> <span class="nx">DiG</span> <span class="mf">9.11</span><span class="p">.</span><span class="mi">20</span><span class="o">-</span><span class="nx">RedHat</span><span class="o">-</span><span class="mf">9.11</span><span class="p">.</span><span class="mi">20</span><span class="o">-</span><span class="mi">5</span><span class="p">.</span><span class="nx">el8</span> <span class="o">&lt;&lt;&gt;&gt;</span> <span class="o">-</span><span class="nx">x</span> <span class="mf">10.0</span><span class="p">.</span><span class="mf">2.10</span>
+<span class="p">;;</span> <span class="nb">global</span> <span class="nx">options</span><span class="p">:</span> <span class="o">+</span><span class="nx">cmd</span>
+<span class="p">;;</span> <span class="nx">Got</span> <span class="nx">answer</span><span class="p">:</span>
+<span class="p">;;</span> <span class="o">-&gt;&gt;</span><span class="nx">HEADER</span><span class="o">&lt;&lt;-</span> <span class="nx">opcode</span><span class="p">:</span> <span class="nx">QUERY</span><span class="p">,</span> <span class="nx">status</span><span class="p">:</span> <span class="nx">NOERROR</span><span class="p">,</span> <span class="nx">id</span><span class="p">:</span> <span class="mi">3261</span>
+<span class="p">;;</span> <span class="nl">flags</span><span class="p">:</span> <span class="nx">qr</span> <span class="nx">aa</span> <span class="nx">rd</span> <span class="nx">ra</span><span class="p">;</span> <span class="nl">QUERY</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">ANSWER</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">AUTHORITY</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">ADDITIONAL</span><span class="p">:</span> <span class="mi">2</span>
+
+<span class="p">;;</span> <span class="nx">OPT</span> <span class="nx">PSEUDOSECTION</span><span class="p">:</span>
+<span class="p">;</span> <span class="nl">EDNS</span><span class="p">:</span> <span class="nl">version</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">flags</span><span class="p">:;</span> <span class="nl">udp</span><span class="p">:</span> <span class="mi">4096</span>
+<span class="p">;</span> <span class="nl">COOKIE</span><span class="p">:</span> <span class="nx">a5b21089b1f696c39bc3dd445fdb153c59aec44eefcbd838</span> <span class="p">(</span><span class="nx">good</span><span class="p">)</span>
+<span class="p">;;</span> <span class="nx">QUESTION</span> <span class="nx">SECTION</span><span class="p">:</span>
+<span class="p">;</span><span class="mf">10.2</span><span class="p">.</span><span class="mf">0.10</span><span class="p">.</span><span class="k">in</span><span class="o">-</span><span class="nx">addr</span><span class="p">.</span><span class="nx">arpa</span><span class="p">.</span>		<span class="nx">IN</span>	<span class="nx">PTR</span>
+
+<span class="p">;;</span> <span class="nx">ANSWER</span> <span class="nx">SECTION</span><span class="p">:</span>
+<span class="mf">10.2</span><span class="p">.</span><span class="mf">0.10</span><span class="p">.</span><span class="k">in</span><span class="o">-</span><span class="nx">addr</span><span class="p">.</span><span class="nx">arpa</span><span class="p">.</span>	<span class="mi">86400</span>	<span class="nx">IN</span>	<span class="nx">PTR</span>	<span class="nx">quijote</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span><span class="p">.</span>
+
+<span class="p">;;</span> <span class="nx">AUTHORITY</span> <span class="nx">SECTION</span><span class="p">:</span>
+<span class="mf">2.0</span><span class="p">.</span><span class="mi">10</span><span class="p">.</span><span class="k">in</span><span class="o">-</span><span class="nx">addr</span><span class="p">.</span><span class="nx">arpa</span><span class="p">.</span>	<span class="mi">86400</span>	<span class="nx">IN</span>	<span class="nx">NS</span>	<span class="nx">freston</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span><span class="p">.</span>
+
+<span class="p">;;</span> <span class="nx">ADDITIONAL</span> <span class="nx">SECTION</span><span class="p">:</span>
+<span class="nx">freston</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span><span class="p">.</span> <span class="mi">86400</span> <span class="nx">IN</span> <span class="nx">A</span> <span class="mf">10.0</span><span class="p">.</span><span class="mf">1.10</span>
+
+<span class="p">;;</span> <span class="nx">Query</span> <span class="nx">time</span><span class="p">:</span> <span class="mi">3</span> <span class="nx">msec</span>
+<span class="p">;;</span> <span class="nl">SERVER</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">.</span><span class="mf">1.10</span><span class="err">#</span><span class="mi">53</span><span class="p">(</span><span class="mf">10.0</span><span class="p">.</span><span class="mf">1.10</span><span class="p">)</span>
+<span class="p">;;</span> <span class="nl">WHEN</span><span class="p">:</span> <span class="nx">Thu</span> <span class="nx">Dec</span> <span class="mi">17</span> <span class="mi">08</span><span class="p">:</span><span class="mi">22</span><span class="p">:</span><span class="mi">20</span> <span class="nx">UTC</span> <span class="mi">2020</span>
+<span class="p">;;</span> <span class="nx">MSG</span> <span class="nx">SIZE</span>  <span class="nx">rcvd</span><span class="p">:</span> <span class="mi">170</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<p>Ahora vamos a configurar las máquinas para que usen el DNS (configuramos el fichero <em>/etc/resolv.conf</em>.</p>
+
+<ul>
+  <li>Dulcinea</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="code"><pre><span class="nx">nameserver</span> <span class="mf">10.0</span><span class="p">.</span><span class="mf">1.10</span>
+<span class="nx">nameserver</span> <span class="mf">192.168</span><span class="p">.</span><span class="mf">202.2</span>
+<span class="nx">domain</span> <span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span>
+<span class="nx">search</span> <span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<ul>
+  <li>Freston</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="code"><pre><span class="nx">nameserver</span> <span class="mf">10.0</span><span class="p">.</span><span class="mf">1.10</span>
+<span class="nx">nameserver</span> <span class="mf">192.168</span><span class="p">.</span><span class="mf">202.2</span>
+<span class="nx">domain</span> <span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span>
+<span class="nx">search</span> <span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<ul>
+  <li>Sancho</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="code"><pre><span class="nx">nameserver</span> <span class="mf">10.0</span><span class="p">.</span><span class="mf">1.10</span>
+<span class="nx">nameserver</span> <span class="mf">192.168</span><span class="p">.</span><span class="mf">202.2</span>
+<span class="nx">domain</span> <span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span>
+<span class="nx">search</span> <span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<ul>
+  <li>Quijote</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="code"><pre><span class="nx">search</span> <span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span>
+<span class="nx">nameserver</span> <span class="mf">10.0</span><span class="p">.</span><span class="mf">1.10</span> 
+<span class="nx">search</span> <span class="nx">openstacklocal</span>
+<span class="nx">nameserver</span> <span class="mf">192.168</span><span class="p">.</span><span class="mf">202.2</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<p>Hemos configurado el FQDN de cada máquina para que al ejecutar el comando <code class="language-plaintext highlighter-rouge">hostname -f</code>
+nos salga lo siguiente:</p>
+
+<ul>
+  <li>Dulcinea</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="code"><pre><span class="nx">debian</span><span class="p">@</span><span class="nd">dulcinea</span><span class="p">:</span><span class="o">~</span><span class="nx">$</span> <span class="nx">hostname</span> <span class="o">-</span><span class="nx">f</span>
+<span class="nx">dulcinea</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<ul>
+  <li>Freston</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="code"><pre><span class="nx">debian</span><span class="p">@</span><span class="nd">freston</span><span class="p">:</span><span class="o">/</span><span class="nx">etc</span><span class="o">/</span><span class="nx">bind$</span> <span class="nx">hostname</span> <span class="o">-</span><span class="nx">f</span>
+<span class="nx">freston</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<ul>
+  <li>Sancho</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="code"><pre><span class="nx">ubuntu</span><span class="p">@</span><span class="nd">sancho</span><span class="p">:</span><span class="o">~</span><span class="nx">$</span> <span class="nx">hostname</span> <span class="o">-</span><span class="nx">f</span>
+<span class="nx">sancho</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<ul>
+  <li>Quijote</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="code"><pre><span class="p">[</span><span class="nx">centos</span><span class="p">@</span><span class="nd">quijote</span> <span class="o">~</span><span class="p">]</span><span class="nx">$</span> <span class="nx">hostname</span> <span class="o">-</span><span class="nx">f</span>
+<span class="nx">quijote</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<p>Y por último, delegamos la zona a Papion. Una vez hecho esto, vamos a realizar
+las consultas preguntando a papion:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+</pre></td><td class="code"><pre><span class="nx">manuel</span><span class="p">@</span><span class="nd">debian</span><span class="p">:</span><span class="o">~</span><span class="sr">/.ssh$ dig dulcinea.manuel-lora.gonzalonazareno.or</span><span class="err">g
+</span>
+<span class="p">;</span> <span class="o">&lt;&lt;&gt;&gt;</span> <span class="nx">DiG</span> <span class="mf">9.11</span><span class="p">.</span><span class="mi">5</span><span class="o">-</span><span class="nx">P4</span><span class="o">-</span><span class="mf">5.1</span><span class="o">+</span><span class="nx">deb10u2</span><span class="o">-</span><span class="nx">Debian</span> <span class="o">&lt;&lt;&gt;&gt;</span> <span class="nx">dulcinea</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span>
+<span class="p">;;</span> <span class="nb">global</span> <span class="nx">options</span><span class="p">:</span> <span class="o">+</span><span class="nx">cmd</span>
+<span class="p">;;</span> <span class="nx">Got</span> <span class="nx">answer</span><span class="p">:</span>
+<span class="p">;;</span> <span class="o">-&gt;&gt;</span><span class="nx">HEADER</span><span class="o">&lt;&lt;-</span> <span class="nx">opcode</span><span class="p">:</span> <span class="nx">QUERY</span><span class="p">,</span> <span class="nx">status</span><span class="p">:</span> <span class="nx">NOERROR</span><span class="p">,</span> <span class="nx">id</span><span class="p">:</span> <span class="mi">58292</span>
+<span class="p">;;</span> <span class="nl">flags</span><span class="p">:</span> <span class="nx">qr</span> <span class="nx">rd</span> <span class="nx">ra</span><span class="p">;</span> <span class="nl">QUERY</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">ANSWER</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">AUTHORITY</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">ADDITIONAL</span><span class="p">:</span> <span class="mi">1</span>
+
+<span class="p">;;</span> <span class="nx">OPT</span> <span class="nx">PSEUDOSECTION</span><span class="p">:</span>
+<span class="p">;</span> <span class="nl">EDNS</span><span class="p">:</span> <span class="nl">version</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">flags</span><span class="p">:;</span> <span class="nl">udp</span><span class="p">:</span> <span class="mi">4096</span>
+<span class="p">;</span> <span class="nl">COOKIE</span><span class="p">:</span> <span class="mi">820</span><span class="nx">e6ffb07fa032bfd35d79b5fdb15c79c2d3466f2f6d16f</span> <span class="p">(</span><span class="nx">good</span><span class="p">)</span>
+<span class="p">;;</span> <span class="nx">QUESTION</span> <span class="nx">SECTION</span><span class="p">:</span>
+<span class="p">;</span><span class="nx">dulcinea</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span><span class="p">.</span> <span class="nx">IN</span> <span class="nx">A</span>
+
+<span class="p">;;</span> <span class="nx">ANSWER</span> <span class="nx">SECTION</span><span class="p">:</span>
+<span class="nx">dulcinea</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span><span class="p">.</span> <span class="mi">85610</span>	<span class="nx">IN</span> <span class="nx">A</span> <span class="mf">172.22</span><span class="p">.</span><span class="mf">200.146</span>
+
+<span class="p">;;</span> <span class="nx">AUTHORITY</span> <span class="nx">SECTION</span><span class="p">:</span>
+<span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span><span class="p">.</span> <span class="mi">85590</span> <span class="nx">IN</span> <span class="nx">NS</span>	<span class="nx">dulcinea</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span><span class="p">.</span>
+
+<span class="p">;;</span> <span class="nx">Query</span> <span class="nx">time</span><span class="p">:</span> <span class="mi">0</span> <span class="nx">msec</span>
+<span class="p">;;</span> <span class="nl">SERVER</span><span class="p">:</span> <span class="mf">192.168</span><span class="p">.</span><span class="mf">202.2</span><span class="err">#</span><span class="mi">53</span><span class="p">(</span><span class="mf">192.168</span><span class="p">.</span><span class="mf">202.2</span><span class="p">)</span>
+<span class="p">;;</span> <span class="nl">WHEN</span><span class="p">:</span> <span class="nx">jue</span> <span class="nx">dic</span> <span class="mi">17</span> <span class="mi">09</span><span class="p">:</span><span class="mi">24</span><span class="p">:</span><span class="mi">39</span> <span class="nx">CET</span> <span class="mi">2020</span>
+<span class="p">;;</span> <span class="nx">MSG</span> <span class="nx">SIZE</span>  <span class="nx">rcvd</span><span class="p">:</span> <span class="mi">127</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<h2 id="servidor-web">Servidor Web</h2>
+
+<p>En quijote (CentOs)(Servidor que está en la DMZ) vamos a instalar un servidor 
+web apache. Configura el servidor para que sea capaz de ejecutar código php 
+(para ello vamos a usar un servidor de aplicaciones php-fpm). Entrega una 
+captura de pantalla accediendo a www.tunombre.gonzalonazareno.org/info.php donde
+se vea la salida del fichero info.php. Investiga la reglas DNAT de cortafuegos 
+que tienes que configurar en dulcinea para, cuando accedemos a la IP flotante 
+se acceda al servidor web.</p>
+
+<p>Para instalar el servidor web de Apache2 en CentOS 8 debemos instalar los
+siguientes paquetes:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+</pre></td><td class="code"><pre><span class="p">[</span><span class="nx">centos</span><span class="p">@</span><span class="nd">quijote</span> <span class="o">~</span><span class="p">]</span><span class="nx">$</span> <span class="nx">sudo</span> <span class="nx">dnf</span> <span class="nx">install</span> <span class="nx">httpd</span> <span class="nx">php</span><span class="o">-</span><span class="nx">fpm</span>
+<span class="nx">Last</span> <span class="nx">metadata</span> <span class="nx">expiration</span> <span class="nx">check</span><span class="p">:</span> <span class="mi">0</span><span class="p">:</span><span class="mi">54</span><span class="p">:</span><span class="mi">04</span> <span class="nx">ago</span> <span class="nx">on</span> <span class="nx">Tue</span> <span class="mi">15</span> <span class="nx">Dec</span> <span class="mi">2020</span> <span class="mi">10</span><span class="p">:</span><span class="mi">17</span><span class="p">:</span><span class="mi">14</span> <span class="nx">PM</span> <span class="nx">UTC</span><span class="p">.</span>
+<span class="nx">Dependencies</span> <span class="nx">resolved</span><span class="p">.</span>
+<span class="o">================================================================================</span>
+ <span class="nx">Package</span>           <span class="nx">Arch</span>   <span class="nx">Version</span>                               <span class="nx">Repo</span>       <span class="nx">Size</span>
+<span class="o">================================================================================</span>
+<span class="nx">Installing</span><span class="p">:</span>
+ <span class="nx">httpd</span>             <span class="nx">x86_64</span> <span class="mf">2.4</span><span class="p">.</span><span class="mi">37</span><span class="o">-</span><span class="mi">30</span><span class="p">.</span><span class="nx">module_el8</span><span class="p">.</span><span class="mf">3.0</span><span class="o">+</span><span class="mi">561</span><span class="o">+</span><span class="mi">97</span><span class="nx">fdbbcc</span> <span class="nx">AppStream</span> <span class="mf">1.7</span> <span class="nx">M</span>
+<span class="nx">Installing</span> <span class="nx">dependencies</span><span class="p">:</span>
+ <span class="nx">apr</span>               <span class="nx">x86_64</span> <span class="mf">1.6</span><span class="p">.</span><span class="mi">3</span><span class="o">-</span><span class="mi">11</span><span class="p">.</span><span class="nx">el8</span>                          <span class="nx">AppStream</span> <span class="mi">125</span> <span class="nx">k</span>
+ <span class="nx">apr</span><span class="o">-</span><span class="nx">util</span>          <span class="nx">x86_64</span> <span class="mf">1.6</span><span class="p">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">6</span><span class="p">.</span><span class="nx">el8</span>                           <span class="nx">AppStream</span> <span class="mi">105</span> <span class="nx">k</span>
+ <span class="nx">centos</span><span class="o">-</span><span class="nx">logos</span><span class="o">-</span><span class="nx">httpd</span>
+                   <span class="nx">noarch</span> <span class="mf">80.5</span><span class="o">-</span><span class="mi">2</span><span class="p">.</span><span class="nx">el8</span>                            <span class="nx">BaseOS</span>     <span class="mi">24</span> <span class="nx">k</span>
+ <span class="nx">httpd</span><span class="o">-</span><span class="nx">filesystem</span>  <span class="nx">noarch</span> <span class="mf">2.4</span><span class="p">.</span><span class="mi">37</span><span class="o">-</span><span class="mi">30</span><span class="p">.</span><span class="nx">module_el8</span><span class="p">.</span><span class="mf">3.0</span><span class="o">+</span><span class="mi">561</span><span class="o">+</span><span class="mi">97</span><span class="nx">fdbbcc</span> <span class="nx">AppStream</span>  <span class="mi">37</span> <span class="nx">k</span>
+ <span class="nx">httpd</span><span class="o">-</span><span class="nx">tools</span>       <span class="nx">x86_64</span> <span class="mf">2.4</span><span class="p">.</span><span class="mi">37</span><span class="o">-</span><span class="mi">30</span><span class="p">.</span><span class="nx">module_el8</span><span class="p">.</span><span class="mf">3.0</span><span class="o">+</span><span class="mi">561</span><span class="o">+</span><span class="mi">97</span><span class="nx">fdbbcc</span> <span class="nx">AppStream</span> <span class="mi">104</span> <span class="nx">k</span>
+ <span class="nx">mailcap</span>           <span class="nx">noarch</span> <span class="mf">2.1</span><span class="p">.</span><span class="mi">48</span><span class="o">-</span><span class="mi">3</span><span class="p">.</span><span class="nx">el8</span>                          <span class="nx">BaseOS</span>     <span class="mi">39</span> <span class="nx">k</span>
+ <span class="nx">mod_http2</span>         <span class="nx">x86_64</span> <span class="mf">1.15</span><span class="p">.</span><span class="mi">7</span><span class="o">-</span><span class="mi">2</span><span class="p">.</span><span class="nx">module_el8</span><span class="p">.</span><span class="mf">3.0</span><span class="o">+</span><span class="mi">477</span><span class="o">+</span><span class="mi">498</span><span class="nx">bb568</span>  <span class="nx">AppStream</span> <span class="mi">154</span> <span class="nx">k</span>
+<span class="nx">Installing</span> <span class="nx">weak</span> <span class="nx">dependencies</span><span class="p">:</span>
+ <span class="nx">apr</span><span class="o">-</span><span class="nx">util</span><span class="o">-</span><span class="nx">bdb</span>      <span class="nx">x86_64</span> <span class="mf">1.6</span><span class="p">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">6</span><span class="p">.</span><span class="nx">el8</span>                           <span class="nx">AppStream</span>  <span class="mi">25</span> <span class="nx">k</span>
+ <span class="nx">apr</span><span class="o">-</span><span class="nx">util</span><span class="o">-</span><span class="nx">openssl</span>  <span class="nx">x86_64</span> <span class="mf">1.6</span><span class="p">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">6</span><span class="p">.</span><span class="nx">el8</span>                           <span class="nx">AppStream</span>  <span class="mi">27</span> <span class="nx">k</span>
+<span class="nx">Enabling</span> <span class="nx">module</span> <span class="nx">streams</span><span class="p">:</span>
+ <span class="nx">httpd</span>                    <span class="mf">2.4</span>                                                  
+
+<span class="nx">Transaction</span> <span class="nx">Summary</span>
+<span class="o">================================================================================</span>
+<span class="nx">Install</span>  <span class="mi">10</span> <span class="nb">Packages</span>
+
+<span class="nx">Total</span> <span class="nx">download</span> <span class="nx">size</span><span class="p">:</span> <span class="mf">2.3</span> <span class="nx">M</span>
+<span class="nx">Installed</span> <span class="nx">size</span><span class="p">:</span> <span class="mf">6.0</span> <span class="nx">M</span>
+<span class="nx">Is</span> <span class="k">this</span> <span class="nx">ok</span> <span class="p">[</span><span class="nx">y</span><span class="o">/</span><span class="nx">N</span><span class="p">]:</span> <span class="nx">y</span>
+<span class="p">.</span>
+<span class="p">.</span>
+<span class="p">.</span>
+<span class="nx">Installed</span><span class="p">:</span>
+  <span class="nx">apr</span><span class="o">-</span><span class="mf">1.6</span><span class="p">.</span><span class="mi">3</span><span class="o">-</span><span class="mi">11</span><span class="p">.</span><span class="nx">el8</span><span class="p">.</span><span class="nx">x86_64</span>                                                       
+  <span class="nx">apr</span><span class="o">-</span><span class="nx">util</span><span class="o">-</span><span class="mf">1.6</span><span class="p">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">6</span><span class="p">.</span><span class="nx">el8</span><span class="p">.</span><span class="nx">x86_64</span>                                                   
+  <span class="nx">apr</span><span class="o">-</span><span class="nx">util</span><span class="o">-</span><span class="nx">bdb</span><span class="o">-</span><span class="mf">1.6</span><span class="p">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">6</span><span class="p">.</span><span class="nx">el8</span><span class="p">.</span><span class="nx">x86_64</span>                                               
+  <span class="nx">apr</span><span class="o">-</span><span class="nx">util</span><span class="o">-</span><span class="nx">openssl</span><span class="o">-</span><span class="mf">1.6</span><span class="p">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">6</span><span class="p">.</span><span class="nx">el8</span><span class="p">.</span><span class="nx">x86_64</span>                                           
+  <span class="nx">centos</span><span class="o">-</span><span class="nx">logos</span><span class="o">-</span><span class="nx">httpd</span><span class="o">-</span><span class="mf">80.5</span><span class="o">-</span><span class="mi">2</span><span class="p">.</span><span class="nx">el8</span><span class="p">.</span><span class="nx">noarch</span>                                          
+  <span class="nx">httpd</span><span class="o">-</span><span class="mf">2.4</span><span class="p">.</span><span class="mi">37</span><span class="o">-</span><span class="mi">30</span><span class="p">.</span><span class="nx">module_el8</span><span class="p">.</span><span class="mf">3.0</span><span class="o">+</span><span class="mi">561</span><span class="o">+</span><span class="mi">97</span><span class="nx">fdbbcc</span><span class="p">.</span><span class="nx">x86_64</span>                            
+  <span class="nx">httpd</span><span class="o">-</span><span class="nx">filesystem</span><span class="o">-</span><span class="mf">2.4</span><span class="p">.</span><span class="mi">37</span><span class="o">-</span><span class="mi">30</span><span class="p">.</span><span class="nx">module_el8</span><span class="p">.</span><span class="mf">3.0</span><span class="o">+</span><span class="mi">561</span><span class="o">+</span><span class="mi">97</span><span class="nx">fdbbcc</span><span class="p">.</span><span class="nx">noarch</span>                 
+  <span class="nx">httpd</span><span class="o">-</span><span class="nx">tools</span><span class="o">-</span><span class="mf">2.4</span><span class="p">.</span><span class="mi">37</span><span class="o">-</span><span class="mi">30</span><span class="p">.</span><span class="nx">module_el8</span><span class="p">.</span><span class="mf">3.0</span><span class="o">+</span><span class="mi">561</span><span class="o">+</span><span class="mi">97</span><span class="nx">fdbbcc</span><span class="p">.</span><span class="nx">x86_64</span>                      
+  <span class="nx">mailcap</span><span class="o">-</span><span class="mf">2.1</span><span class="p">.</span><span class="mi">48</span><span class="o">-</span><span class="mi">3</span><span class="p">.</span><span class="nx">el8</span><span class="p">.</span><span class="nx">noarch</span>                                                   
+  <span class="nx">mod_http2</span><span class="o">-</span><span class="mf">1.15</span><span class="p">.</span><span class="mi">7</span><span class="o">-</span><span class="mi">2</span><span class="p">.</span><span class="nx">module_el8</span><span class="p">.</span><span class="mf">3.0</span><span class="o">+</span><span class="mi">477</span><span class="o">+</span><span class="mi">498</span><span class="nx">bb568</span><span class="p">.</span><span class="nx">x86_64</span>                         
+
+<span class="nx">Complete</span><span class="o">!</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<p>Una vez terminada la instalación, iniciamos el servicio <em>httpd</em>:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="code"><pre><span class="p">[</span><span class="nx">centos</span><span class="p">@</span><span class="nd">quijote</span> <span class="o">~</span><span class="p">]</span><span class="nx">$</span> <span class="nx">sudo</span> <span class="nx">systemctl</span> <span class="nx">enable</span> <span class="nx">httpd</span>
+<span class="nx">Created</span> <span class="nx">symlink</span> <span class="o">/</span><span class="nx">etc</span><span class="o">/</span><span class="nx">systemd</span><span class="o">/</span><span class="nx">system</span><span class="o">/</span><span class="nx">multi</span><span class="o">-</span><span class="nx">user</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">wants</span><span class="o">/</span><span class="nx">httpd</span><span class="p">.</span><span class="nx">service</span> <span class="err">→</span> <span class="o">/</span><span class="nx">usr</span><span class="o">/</span><span class="nx">lib</span><span class="o">/</span><span class="nx">systemd</span><span class="o">/</span><span class="nx">system</span><span class="o">/</span><span class="nx">httpd</span><span class="p">.</span><span class="nx">service</span><span class="p">.</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<p>CentOS 8 tiene activado el firewall por defecto, así que si queremos permitir
+el acceso tendremos que añadir los servicios http y https a la
+configuración del firewall:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="code"><pre><span class="p">[</span><span class="nx">centos</span><span class="p">@</span><span class="nd">quijote</span> <span class="o">~</span><span class="p">]</span><span class="nx">$</span> <span class="nx">sudo</span> <span class="nx">firewall</span><span class="o">-</span><span class="nx">cmd</span> <span class="o">--</span><span class="nx">permanent</span> <span class="o">--</span><span class="nx">add</span><span class="o">-</span><span class="nx">service</span><span class="o">=</span><span class="p">{</span><span class="nx">http</span><span class="p">,</span><span class="nx">https</span><span class="p">}</span>
+<span class="nx">success</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<p>Y ya tendríamos acceso al servidor web de Apache desde fuera de la máquina CentOS.</p>
+
+<p>Y para crear el VirtualHost debemos hacer lo siguiente:</p>
+
+<ol>
+  <li>Creamos un directorio <em>/etc/httpd/sites-available/</em> y <em>/etc/httpd/sites-enabled</em>:</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="code"><pre><span class="p">[</span><span class="nx">centos</span><span class="p">@</span><span class="nd">quijote</span> <span class="o">~</span><span class="p">]</span><span class="nx">$</span> <span class="nx">sudo</span> <span class="nx">mkdir</span> <span class="o">/</span><span class="nx">etc</span><span class="o">/</span><span class="nx">httpd</span><span class="o">/</span><span class="nx">sites</span><span class="o">-</span><span class="nx">available</span>
+<span class="p">[</span><span class="nx">centos</span><span class="p">@</span><span class="nd">quijote</span> <span class="o">~</span><span class="p">]</span><span class="nx">$</span> <span class="nx">sudo</span> <span class="nx">mkdir</span> <span class="o">/</span><span class="nx">etc</span><span class="o">/</span><span class="nx">httpd</span><span class="o">/</span><span class="nx">sites</span><span class="o">-</span><span class="nx">enabled</span>
+<span class="p">[</span><span class="nx">centos</span><span class="p">@</span><span class="nd">quijote</span> <span class="nx">httpd</span><span class="p">]</span><span class="nx">$</span> <span class="nx">ls</span>
+<span class="nx">conf</span>    <span class="nx">conf</span><span class="p">.</span><span class="nx">modules</span><span class="p">.</span><span class="nx">d</span>  <span class="nx">modules</span>  <span class="nx">sites</span><span class="o">-</span><span class="nx">available</span>  <span class="nx">state</span>
+<span class="nx">conf</span><span class="p">.</span><span class="nx">d</span>  <span class="nx">logs</span>            <span class="nx">run</span>      <span class="nx">sites</span><span class="o">-</span><span class="nx">enabled</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<p>Y volveremos a editar el fichero <em>httpd.conf</em> y añadimos la siguiente
+línea al final del mismo:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+</pre></td><td class="code"><pre><span class="nx">IncludeOptional</span>	<span class="nx">sites</span><span class="o">-</span><span class="nx">enabled</span><span class="cm">/*.conf</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<ol>
+  <li>Creamos el bloque en el directorio <em>/etc/httpd/conf.d/www.manuel-lora.gonzalonazareno.conf</em>:</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="code"><pre><span class="o">&lt;</span><span class="nx">VirtualHost</span> <span class="o">*</span><span class="p">:</span><span class="mi">80</span><span class="o">&gt;</span>
+        <span class="nx">ServerName</span> <span class="nx">www</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span>
+        <span class="nx">DocumentRoot</span> <span class="o">/</span><span class="kd">var</span><span class="sr">/www/m</span><span class="nx">anuel</span><span class="o">-</span><span class="nx">lora</span>
+        <span class="nx">ErrorLog</span> <span class="o">/</span><span class="kd">var</span><span class="sr">/www/m</span><span class="nx">anuel</span><span class="o">-</span><span class="nx">lora</span><span class="o">/</span><span class="nx">log</span><span class="o">/</span><span class="nx">error</span><span class="p">.</span><span class="nx">log</span>
+        <span class="nx">CustomLog</span> <span class="o">/</span><span class="kd">var</span><span class="sr">/www/m</span><span class="nx">anuel</span><span class="o">-</span><span class="nx">lora</span><span class="o">/</span><span class="nx">log</span><span class="o">/</span><span class="nx">requests</span><span class="p">.</span><span class="nx">log</span> <span class="nx">combined</span>
+<span class="o">&lt;</span><span class="sr">/VirtualHost&gt;</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<p>Asignamos los permisos correspondientes y los propietarios a los directorios:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="code"><pre><span class="p">[</span><span class="nx">centos</span><span class="p">@</span><span class="nd">quijote</span> <span class="nx">www</span><span class="p">]</span><span class="nx">$</span> <span class="nx">sudo</span> <span class="nx">chown</span> <span class="o">-</span><span class="nx">R</span> <span class="nx">$USER</span><span class="p">:</span><span class="nx">$USER</span> <span class="o">/</span><span class="kd">var</span><span class="sr">/www/m</span><span class="nx">anuel</span><span class="o">-</span><span class="nx">lora</span><span class="o">/</span>
+<span class="p">[</span><span class="nx">centos</span><span class="p">@</span><span class="nd">quijote</span> <span class="nx">www</span><span class="p">]</span><span class="nx">$</span> <span class="nx">sudo</span> <span class="nx">chmod</span> <span class="o">-</span><span class="nx">R</span> <span class="mi">755</span> <span class="o">/</span><span class="kd">var</span><span class="sr">/www</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<p>Nos instalaremos el paquete <em>policycoreutils-python-utils</em> y ejecutamos
+las siguientes instrucciones:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="code"><pre><span class="p">[</span><span class="nx">root</span><span class="p">@</span><span class="nd">quijote</span> <span class="nx">www</span><span class="p">]</span><span class="err">#</span> <span class="nx">semanage</span> <span class="nx">fcontext</span> <span class="o">-</span><span class="nx">a</span> <span class="o">-</span><span class="nx">t</span> <span class="nx">httpd_log_t</span> <span class="dl">"</span><span class="s2">/var/www/manuel-lora/log(/.*)?</span><span class="dl">"</span>
+<span class="p">[</span><span class="nx">root</span><span class="p">@</span><span class="nd">quijote</span> <span class="nx">www</span><span class="p">]</span><span class="err">#</span> <span class="nx">restorecon</span> <span class="o">-</span><span class="nx">R</span> <span class="o">-</span><span class="nx">v</span> <span class="o">/</span><span class="kd">var</span><span class="sr">/www/m</span><span class="nx">anuel</span><span class="o">-</span><span class="nx">lora</span><span class="o">/</span><span class="nx">log</span>
+<span class="nx">Relabeled</span> <span class="o">/</span><span class="kd">var</span><span class="sr">/www/m</span><span class="nx">anuel</span><span class="o">-</span><span class="nx">lora</span><span class="o">/</span><span class="nx">log</span> <span class="k">from</span> <span class="nx">unconfined_u</span><span class="p">:</span><span class="nx">object_r</span><span class="p">:</span><span class="nx">httpd_sys_content_t</span><span class="p">:</span><span class="nx">s0</span> <span class="nx">to</span> <span class="nx">unconfined_u</span><span class="p">:</span><span class="nx">object_r</span><span class="p">:</span><span class="nx">httpd_log_t</span><span class="p">:</span><span class="nx">s0</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<p>Esto permitirá al servicio de apache usar el directorio log. Hecho esto,
+reiniciamos el servicio de apache2.</p>
+
+<p>Y comprobamos la conexión desde dulcinea:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="code"><pre>             <span class="nx">Página</span> <span class="nx">web</span> <span class="nx">de</span> <span class="nx">quijote</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span>
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="nx">Commands</span><span class="p">:</span> <span class="nx">Use</span> <span class="nx">arrow</span> <span class="nx">keys</span> <span class="nx">to</span> <span class="nx">move</span><span class="p">,</span> <span class="dl">'</span><span class="s1">?</span><span class="dl">'</span> <span class="k">for</span> <span class="nx">help</span><span class="p">,</span> <span class="dl">'</span><span class="s1">q</span><span class="dl">'</span> <span class="nx">to</span> <span class="nx">quit</span><span class="p">,</span> <span class="dl">'</span><span class="s1">&lt;-</span><span class="dl">'</span> <span class="nx">to</span> <span class="nx">go</span> <span class="nx">back</span><span class="p">.</span>
+  <span class="nx">Arrow</span> <span class="nx">keys</span><span class="p">:</span> <span class="nx">Up</span> <span class="nx">and</span> <span class="nx">Down</span> <span class="nx">to</span> <span class="nx">move</span><span class="p">.</span>  <span class="nx">Right</span> <span class="nx">to</span> <span class="nx">follow</span> <span class="nx">a</span> <span class="nx">link</span><span class="p">;</span> <span class="nx">Left</span> <span class="nx">to</span> <span class="nx">go</span> <span class="nx">back</span><span class="p">.</span>
+ <span class="nx">H</span><span class="p">)</span><span class="nx">elp</span> <span class="nx">O</span><span class="p">)</span><span class="nx">ptions</span> <span class="nx">P</span><span class="p">)</span><span class="nx">rint</span> <span class="nx">G</span><span class="p">)</span><span class="nx">o</span> <span class="nx">M</span><span class="p">)</span><span class="nx">ain</span> <span class="nx">screen</span> <span class="nx">Q</span><span class="p">)</span><span class="nx">uit</span> <span class="o">/=</span><span class="nx">search</span> <span class="p">[</span><span class="k">delete</span><span class="p">]</span><span class="o">=</span><span class="nx">history</span> <span class="nx">list</span> 
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<p>Ahora procedemos a instalarnos el paquete <em>php</em>. Una vez instalado, creamos
+un fichero llamado info.php en nuestro DocumentRoot que contiene las 
+siguientes líneas:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="code"><pre><span class="o">&lt;</span><span class="p">?</span><span class="nx">php</span>
+
+<span class="nx">phpinfo</span><span class="p">();</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<p>Reiniciamos el servicio y comprobamos que funciona:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+</pre></td><td class="code"><pre>                                                            <span class="nx">phpinfo</span><span class="p">()</span> <span class="p">(</span><span class="nx">p1</span> <span class="k">of</span> <span class="mi">34</span><span class="p">)</span>
+   <span class="nx">PHP</span> <span class="nx">logo</span>
+
+<span class="nx">PHP</span> <span class="nx">Version</span> <span class="mf">7.2</span><span class="p">.</span><span class="mi">24</span>
+
+   <span class="nx">System</span> <span class="nx">Linux</span> <span class="nx">quijote</span> <span class="mf">4.18</span><span class="p">.</span><span class="mi">0</span><span class="o">-</span><span class="mf">193.28</span><span class="p">.</span><span class="mi">1</span><span class="p">.</span><span class="nx">el8_2</span><span class="p">.</span><span class="nx">x86_64</span> <span class="err">#</span><span class="mi">1</span> <span class="nx">SMP</span> <span class="nx">Thu</span> <span class="nx">Oct</span> <span class="mi">22</span>
+   <span class="mi">00</span><span class="p">:</span><span class="mi">20</span><span class="p">:</span><span class="mi">22</span> <span class="nx">UTC</span> <span class="mi">2020</span> <span class="nx">x86_64</span>
+   <span class="nx">Build</span> <span class="nb">Date</span> <span class="nx">Oct</span> <span class="mi">22</span> <span class="mi">2019</span> <span class="mi">08</span><span class="p">:</span><span class="mi">28</span><span class="p">:</span><span class="mi">36</span>
+   <span class="nx">Server</span> <span class="nx">API</span> <span class="nx">FPM</span><span class="o">/</span><span class="nx">FastCGI</span>
+   <span class="nx">Virtual</span> <span class="nx">Directory</span> <span class="nx">Support</span> <span class="nx">disabled</span>
+   <span class="nx">Configuration</span> <span class="nx">File</span> <span class="p">(</span><span class="nx">php</span><span class="p">.</span><span class="nx">ini</span><span class="p">)</span> <span class="nx">Path</span> <span class="o">/</span><span class="nx">etc</span>
+   <span class="nx">Loaded</span> <span class="nx">Configuration</span> <span class="nx">File</span> <span class="o">/</span><span class="nx">etc</span><span class="o">/</span><span class="nx">php</span><span class="p">.</span><span class="nx">ini</span>
+   <span class="nx">Scan</span> <span class="k">this</span> <span class="nx">dir</span> <span class="k">for</span> <span class="nx">additional</span> <span class="p">.</span><span class="nx">ini</span> <span class="nx">files</span> <span class="o">/</span><span class="nx">etc</span><span class="o">/</span><span class="nx">php</span><span class="p">.</span><span class="nx">d</span>
+   <span class="nx">Additional</span> <span class="p">.</span><span class="nx">ini</span> <span class="nx">files</span> <span class="nx">parsed</span> <span class="o">/</span><span class="nx">etc</span><span class="o">/</span><span class="nx">php</span><span class="p">.</span><span class="nx">d</span><span class="o">/</span><span class="mi">20</span><span class="o">-</span><span class="nx">bz2</span><span class="p">.</span><span class="nx">ini</span><span class="p">,</span>
+   <span class="sr">/etc/</span><span class="nx">php</span><span class="p">.</span><span class="nx">d</span><span class="o">/</span><span class="mi">20</span><span class="o">-</span><span class="nx">calendar</span><span class="p">.</span><span class="nx">ini</span><span class="p">,</span> <span class="sr">/etc/</span><span class="nx">php</span><span class="p">.</span><span class="nx">d</span><span class="o">/</span><span class="mi">20</span><span class="o">-</span><span class="nx">ctype</span><span class="p">.</span><span class="nx">ini</span><span class="p">,</span>
+   <span class="sr">/etc/</span><span class="nx">php</span><span class="p">.</span><span class="nx">d</span><span class="o">/</span><span class="mi">20</span><span class="o">-</span><span class="nx">curl</span><span class="p">.</span><span class="nx">ini</span><span class="p">,</span> <span class="sr">/etc/</span><span class="nx">php</span><span class="p">.</span><span class="nx">d</span><span class="o">/</span><span class="mi">20</span><span class="o">-</span><span class="nx">exif</span><span class="p">.</span><span class="nx">ini</span><span class="p">,</span>
+   <span class="sr">/etc/</span><span class="nx">php</span><span class="p">.</span><span class="nx">d</span><span class="o">/</span><span class="mi">20</span><span class="o">-</span><span class="nx">fileinfo</span><span class="p">.</span><span class="nx">ini</span><span class="p">,</span> <span class="sr">/etc/</span><span class="nx">php</span><span class="p">.</span><span class="nx">d</span><span class="o">/</span><span class="mi">20</span><span class="o">-</span><span class="nx">ftp</span><span class="p">.</span><span class="nx">ini</span><span class="p">,</span>
+   <span class="sr">/etc/</span><span class="nx">php</span><span class="p">.</span><span class="nx">d</span><span class="o">/</span><span class="mi">20</span><span class="o">-</span><span class="nx">gettext</span><span class="p">.</span><span class="nx">ini</span><span class="p">,</span> <span class="sr">/etc/</span><span class="nx">php</span><span class="p">.</span><span class="nx">d</span><span class="o">/</span><span class="mi">20</span><span class="o">-</span><span class="nx">iconv</span><span class="p">.</span><span class="nx">ini</span><span class="p">,</span>
+   <span class="sr">/etc/</span><span class="nx">php</span><span class="p">.</span><span class="nx">d</span><span class="o">/</span><span class="mi">20</span><span class="o">-</span><span class="nx">phar</span><span class="p">.</span><span class="nx">ini</span><span class="p">,</span> <span class="sr">/etc/</span><span class="nx">php</span><span class="p">.</span><span class="nx">d</span><span class="o">/</span><span class="mi">20</span><span class="o">-</span><span class="nx">sockets</span><span class="p">.</span><span class="nx">ini</span><span class="p">,</span>
+   <span class="sr">/etc/</span><span class="nx">php</span><span class="p">.</span><span class="nx">d</span><span class="o">/</span><span class="mi">20</span><span class="o">-</span><span class="nx">tokenizer</span><span class="p">.</span><span class="nx">ini</span>
+<span class="o">--</span> <span class="nx">press</span> <span class="nx">space</span> <span class="k">for</span> <span class="nx">next</span> <span class="nx">page</span> <span class="o">--</span>
+  <span class="nx">Arrow</span> <span class="nx">keys</span><span class="p">:</span> <span class="nx">Up</span> <span class="nx">and</span> <span class="nx">Down</span> <span class="nx">to</span> <span class="nx">move</span><span class="p">.</span>  <span class="nx">Right</span> <span class="nx">to</span> <span class="nx">follow</span> <span class="nx">a</span> <span class="nx">link</span><span class="p">;</span> <span class="nx">Left</span> <span class="nx">to</span> <span class="nx">go</span> <span class="nx">back</span><span class="p">.</span>
+ <span class="nx">H</span><span class="p">)</span><span class="nx">elp</span> <span class="nx">O</span><span class="p">)</span><span class="nx">ptions</span> <span class="nx">P</span><span class="p">)</span><span class="nx">rint</span> <span class="nx">G</span><span class="p">)</span><span class="nx">o</span> <span class="nx">M</span><span class="p">)</span><span class="nx">ain</span> <span class="nx">screen</span> <span class="nx">Q</span><span class="p">)</span><span class="nx">uit</span> <span class="o">/=</span><span class="nx">search</span> <span class="p">[</span><span class="k">delete</span><span class="p">]</span><span class="o">=</span><span class="nx">history</span> <span class="nx">list</span> 
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<h2 id="servidor-de-base-de-datos">Servidor de Base de Datos</h2>
+
+<p>En sancho (Ubuntu) vamos a instalar un servidor de base de datos mariadb 
+(bd.tu_nombre.gonzalonazareno.org). Entrega una prueba de funcionamiento donde 
+se vea como se realiza una conexión a la base de datos desde quijote.</p>
+
+<p>En primer lugar, en sancho nos instalaremos un servidor MariaDB:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+</pre></td><td class="code"><pre><span class="nx">ubuntu</span><span class="p">@</span><span class="nd">sancho</span><span class="p">:</span><span class="o">~</span><span class="nx">$</span> <span class="nx">sudo</span> <span class="nx">apt</span><span class="o">-</span><span class="kd">get</span> <span class="nx">install</span> <span class="nx">mariadb</span><span class="o">-</span><span class="nx">server</span>
+<span class="nx">Reading</span> <span class="kr">package</span> <span class="nx">lists</span><span class="p">...</span> <span class="nx">Done</span>
+<span class="nx">Building</span> <span class="nx">dependency</span> <span class="nx">tree</span>       
+<span class="nx">Reading</span> <span class="nx">state</span> <span class="nx">information</span><span class="p">...</span> <span class="nx">Done</span>
+<span class="nx">The</span> <span class="nx">following</span> <span class="nx">additional</span> <span class="nx">packages</span> <span class="nx">will</span> <span class="nx">be</span> <span class="nx">installed</span><span class="p">:</span>
+  <span class="nx">galera</span><span class="o">-</span><span class="mi">3</span> <span class="nx">libcgi</span><span class="o">-</span><span class="nx">fast</span><span class="o">-</span><span class="nx">perl</span> <span class="nx">libcgi</span><span class="o">-</span><span class="nx">pm</span><span class="o">-</span><span class="nx">perl</span> <span class="nx">libconfig</span><span class="o">-</span><span class="nx">inifiles</span><span class="o">-</span><span class="nx">perl</span>
+  <span class="nx">libdbd</span><span class="o">-</span><span class="nx">mysql</span><span class="o">-</span><span class="nx">perl</span> <span class="nx">libdbi</span><span class="o">-</span><span class="nx">perl</span> <span class="nx">libencode</span><span class="o">-</span><span class="nx">locale</span><span class="o">-</span><span class="nx">perl</span> <span class="nx">libfcgi</span><span class="o">-</span><span class="nx">perl</span>
+  <span class="nx">libhtml</span><span class="o">-</span><span class="nx">parser</span><span class="o">-</span><span class="nx">perl</span> <span class="nx">libhtml</span><span class="o">-</span><span class="nx">tagset</span><span class="o">-</span><span class="nx">perl</span> <span class="nx">libhtml</span><span class="o">-</span><span class="nx">template</span><span class="o">-</span><span class="nx">perl</span>
+  <span class="nx">libhttp</span><span class="o">-</span><span class="nx">date</span><span class="o">-</span><span class="nx">perl</span> <span class="nx">libhttp</span><span class="o">-</span><span class="nx">message</span><span class="o">-</span><span class="nx">perl</span> <span class="nx">libio</span><span class="o">-</span><span class="nx">html</span><span class="o">-</span><span class="nx">perl</span>
+  <span class="nx">liblwp</span><span class="o">-</span><span class="nx">mediatypes</span><span class="o">-</span><span class="nx">perl</span> <span class="nx">libmysqlclient21</span> <span class="nx">libsnappy1v5</span> <span class="nx">libterm</span><span class="o">-</span><span class="nx">readkey</span><span class="o">-</span><span class="nx">perl</span>
+  <span class="nx">libtimedate</span><span class="o">-</span><span class="nx">perl</span> <span class="nx">liburi</span><span class="o">-</span><span class="nx">perl</span> <span class="nx">mariadb</span><span class="o">-</span><span class="nx">client</span><span class="o">-</span><span class="mf">10.3</span> <span class="nx">mariadb</span><span class="o">-</span><span class="nx">client</span><span class="o">-</span><span class="nx">core</span><span class="o">-</span><span class="mf">10.3</span>
+  <span class="nx">mariadb</span><span class="o">-</span><span class="nx">common</span> <span class="nx">mariadb</span><span class="o">-</span><span class="nx">server</span><span class="o">-</span><span class="mf">10.3</span> <span class="nx">mariadb</span><span class="o">-</span><span class="nx">server</span><span class="o">-</span><span class="nx">core</span><span class="o">-</span><span class="mf">10.3</span> <span class="nx">mysql</span><span class="o">-</span><span class="nx">common</span>
+  <span class="nx">socat</span>
+<span class="nx">Suggested</span> <span class="nx">packages</span><span class="p">:</span>
+  <span class="nx">libclone</span><span class="o">-</span><span class="nx">perl</span> <span class="nx">libmldbm</span><span class="o">-</span><span class="nx">perl</span> <span class="nx">libnet</span><span class="o">-</span><span class="nx">daemon</span><span class="o">-</span><span class="nx">perl</span> <span class="nx">libsql</span><span class="o">-</span><span class="nx">statement</span><span class="o">-</span><span class="nx">perl</span>
+  <span class="nx">libdata</span><span class="o">-</span><span class="nx">dump</span><span class="o">-</span><span class="nx">perl</span> <span class="nx">libipc</span><span class="o">-</span><span class="nx">sharedcache</span><span class="o">-</span><span class="nx">perl</span> <span class="nx">libwww</span><span class="o">-</span><span class="nx">perl</span> <span class="nx">mailx</span> <span class="nx">mariadb</span><span class="o">-</span><span class="nx">test</span>
+  <span class="nx">tinyca</span>
+<span class="nx">The</span> <span class="nx">following</span> <span class="nx">NEW</span> <span class="nx">packages</span> <span class="nx">will</span> <span class="nx">be</span> <span class="nx">installed</span><span class="p">:</span>
+  <span class="nx">galera</span><span class="o">-</span><span class="mi">3</span> <span class="nx">libcgi</span><span class="o">-</span><span class="nx">fast</span><span class="o">-</span><span class="nx">perl</span> <span class="nx">libcgi</span><span class="o">-</span><span class="nx">pm</span><span class="o">-</span><span class="nx">perl</span> <span class="nx">libconfig</span><span class="o">-</span><span class="nx">inifiles</span><span class="o">-</span><span class="nx">perl</span>
+  <span class="nx">libdbd</span><span class="o">-</span><span class="nx">mysql</span><span class="o">-</span><span class="nx">perl</span> <span class="nx">libdbi</span><span class="o">-</span><span class="nx">perl</span> <span class="nx">libencode</span><span class="o">-</span><span class="nx">locale</span><span class="o">-</span><span class="nx">perl</span> <span class="nx">libfcgi</span><span class="o">-</span><span class="nx">perl</span>
+  <span class="nx">libhtml</span><span class="o">-</span><span class="nx">parser</span><span class="o">-</span><span class="nx">perl</span> <span class="nx">libhtml</span><span class="o">-</span><span class="nx">tagset</span><span class="o">-</span><span class="nx">perl</span> <span class="nx">libhtml</span><span class="o">-</span><span class="nx">template</span><span class="o">-</span><span class="nx">perl</span>
+  <span class="nx">libhttp</span><span class="o">-</span><span class="nx">date</span><span class="o">-</span><span class="nx">perl</span> <span class="nx">libhttp</span><span class="o">-</span><span class="nx">message</span><span class="o">-</span><span class="nx">perl</span> <span class="nx">libio</span><span class="o">-</span><span class="nx">html</span><span class="o">-</span><span class="nx">perl</span>
+  <span class="nx">liblwp</span><span class="o">-</span><span class="nx">mediatypes</span><span class="o">-</span><span class="nx">perl</span> <span class="nx">libmysqlclient21</span> <span class="nx">libsnappy1v5</span> <span class="nx">libterm</span><span class="o">-</span><span class="nx">readkey</span><span class="o">-</span><span class="nx">perl</span>
+  <span class="nx">libtimedate</span><span class="o">-</span><span class="nx">perl</span> <span class="nx">liburi</span><span class="o">-</span><span class="nx">perl</span> <span class="nx">mariadb</span><span class="o">-</span><span class="nx">client</span><span class="o">-</span><span class="mf">10.3</span> <span class="nx">mariadb</span><span class="o">-</span><span class="nx">client</span><span class="o">-</span><span class="nx">core</span><span class="o">-</span><span class="mf">10.3</span>
+  <span class="nx">mariadb</span><span class="o">-</span><span class="nx">common</span> <span class="nx">mariadb</span><span class="o">-</span><span class="nx">server</span> <span class="nx">mariadb</span><span class="o">-</span><span class="nx">server</span><span class="o">-</span><span class="mf">10.3</span> <span class="nx">mariadb</span><span class="o">-</span><span class="nx">server</span><span class="o">-</span><span class="nx">core</span><span class="o">-</span><span class="mf">10.3</span>
+  <span class="nx">mysql</span><span class="o">-</span><span class="nx">common</span> <span class="nx">socat</span>
+<span class="mi">0</span> <span class="nx">upgraded</span><span class="p">,</span> <span class="mi">28</span> <span class="nx">newly</span> <span class="nx">installed</span><span class="p">,</span> <span class="mi">0</span> <span class="nx">to</span> <span class="nx">remove</span> <span class="nx">and</span> <span class="mi">46</span> <span class="nx">not</span> <span class="nx">upgraded</span><span class="p">.</span>
+<span class="nx">Need</span> <span class="nx">to</span> <span class="kd">get</span> <span class="mf">21.1</span> <span class="nx">MB</span> <span class="k">of</span> <span class="nx">archives</span><span class="p">.</span>
+<span class="nx">After</span> <span class="k">this</span> <span class="nx">operation</span><span class="p">,</span> <span class="mi">173</span> <span class="nx">MB</span> <span class="k">of</span> <span class="nx">additional</span> <span class="nx">disk</span> <span class="nx">space</span> <span class="nx">will</span> <span class="nx">be</span> <span class="nx">used</span><span class="p">.</span>
+<span class="nx">Do</span> <span class="nx">you</span> <span class="nx">want</span> <span class="nx">to</span> <span class="k">continue</span><span class="p">?</span> <span class="p">[</span><span class="nx">Y</span><span class="o">/</span><span class="nx">n</span><span class="p">]</span> 
+<span class="p">.</span>
+<span class="p">.</span>
+<span class="p">.</span>
+<span class="nx">Setting</span> <span class="nx">up</span> <span class="nx">libhtml</span><span class="o">-</span><span class="nx">template</span><span class="o">-</span><span class="nx">perl</span> <span class="p">(</span><span class="mf">2.97</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">...</span>
+<span class="nx">Setting</span> <span class="nx">up</span> <span class="nx">mariadb</span><span class="o">-</span><span class="nx">server</span> <span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mf">10.3</span><span class="p">.</span><span class="mi">25</span><span class="o">-</span><span class="mi">0</span><span class="nx">ubuntu0</span><span class="p">.</span><span class="mf">20.04</span><span class="p">.</span><span class="mi">1</span><span class="p">)</span> <span class="p">...</span>
+<span class="nx">Setting</span> <span class="nx">up</span> <span class="nx">libcgi</span><span class="o">-</span><span class="nx">fast</span><span class="o">-</span><span class="nx">perl</span> <span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mf">2.15</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">...</span>
+<span class="nx">Processing</span> <span class="nx">triggers</span> <span class="k">for</span> <span class="nx">systemd</span> <span class="p">(</span><span class="mf">245.4</span><span class="o">-</span><span class="mi">4</span><span class="nx">ubuntu3</span><span class="p">.</span><span class="mi">2</span><span class="p">)</span> <span class="p">...</span>
+<span class="nx">Processing</span> <span class="nx">triggers</span> <span class="k">for</span> <span class="nx">man</span><span class="o">-</span><span class="nx">db</span> <span class="p">(</span><span class="mf">2.9</span><span class="p">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">...</span>
+<span class="nx">Processing</span> <span class="nx">triggers</span> <span class="k">for</span> <span class="nx">libc</span><span class="o">-</span><span class="nx">bin</span> <span class="p">(</span><span class="mf">2.31</span><span class="o">-</span><span class="mi">0</span><span class="nx">ubuntu9</span><span class="p">.</span><span class="mi">1</span><span class="p">)</span> <span class="p">...</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<p>Terminada la descarga, vamos a proceder como con la pila LAMP, a crear la 
+contraseña de root, borrar usuarios por defecto, etc….:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+</pre></td><td class="code"><pre><span class="nx">ubuntu</span><span class="p">@</span><span class="nd">sancho</span><span class="p">:</span><span class="o">~</span><span class="nx">$</span> <span class="nx">sudo</span> <span class="nx">mysql_secure_installation</span> 
+
+<span class="nx">NOTE</span><span class="p">:</span> <span class="nx">RUNNING</span> <span class="nx">ALL</span> <span class="nx">PARTS</span> <span class="nx">OF</span> <span class="nx">THIS</span> <span class="nx">SCRIPT</span> <span class="nx">IS</span> <span class="nx">RECOMMENDED</span> <span class="nx">FOR</span> <span class="nx">ALL</span> <span class="nx">MariaDB</span>
+      <span class="nx">SERVERS</span> <span class="nx">IN</span> <span class="nx">PRODUCTION</span> <span class="nx">USE</span><span class="o">!</span>  <span class="nx">PLEASE</span> <span class="nx">READ</span> <span class="nx">EACH</span> <span class="nx">STEP</span> <span class="nx">CAREFULLY</span><span class="o">!</span>
+
+<span class="nx">In</span> <span class="nx">order</span> <span class="nx">to</span> <span class="nx">log</span> <span class="nx">into</span> <span class="nx">MariaDB</span> <span class="nx">to</span> <span class="nx">secure</span> <span class="nx">it</span><span class="p">,</span> <span class="nx">we</span><span class="dl">'</span><span class="s1">ll need the current
+password for the root user.  If you</span><span class="dl">'</span><span class="nx">ve</span> <span class="nx">just</span> <span class="nx">installed</span> <span class="nx">MariaDB</span><span class="p">,</span> <span class="nx">and</span>
+<span class="nx">you</span> <span class="nx">haven</span><span class="dl">'</span><span class="s1">t set the root password yet, the password will be blank,
+so you should just press enter here.
+
+Enter current password for root (enter for none): 
+OK, successfully used password, moving on...
+
+Setting the root password ensures that nobody can log into the MariaDB
+root user without the proper authorisation.
+
+Set root password? [Y/n] Y
+New password: 
+Re-enter new password: 
+Password updated successfully!
+Reloading privilege tables..
+ ... Success!
+
+
+By default, a MariaDB installation has an anonymous user, allowing anyone
+to log into MariaDB without having to have a user account created for
+them.  This is intended only for testing, and to make the installation
+go a bit smoother.  You should remove them before moving into a
+production environment.
+
+Remove anonymous users? [Y/n] Y
+ ... Success!
+
+Normally, root should only be allowed to connect from </span><span class="dl">'</span><span class="nx">localhost</span><span class="dl">'</span><span class="s1">.  This
+ensures that someone cannot guess at the root password from the network.
+
+Disallow root login remotely? [Y/n] Y
+ ... Success!
+
+By default, MariaDB comes with a database named </span><span class="dl">'</span><span class="nx">test</span><span class="dl">'</span><span class="s1"> that anyone can
+access.  This is also intended only for testing, and should be removed
+before moving into a production environment.
+
+Remove test database and access to it? [Y/n] Y
+ - Dropping test database...
+ ... Success!
+ - Removing privileges on test database...
+ ... Success!
+
+Reloading the privilege tables will ensure that all changes made so far
+will take effect immediately.
+
+Reload privilege tables now? [Y/n] Y
+ ... Success!
+
+Cleaning up...
+
+All done!  If you</span><span class="dl">'</span><span class="nx">ve</span> <span class="nx">completed</span> <span class="nx">all</span> <span class="k">of</span> <span class="nx">the</span> <span class="nx">above</span> <span class="nx">steps</span><span class="p">,</span> <span class="nx">your</span> <span class="nx">MariaDB</span>
+<span class="nx">installation</span> <span class="nx">should</span> <span class="nx">now</span> <span class="nx">be</span> <span class="nx">secure</span><span class="p">.</span>
+
+<span class="nx">Thanks</span> <span class="k">for</span> <span class="nx">using</span> <span class="nx">MariaDB</span><span class="o">!</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<p>Ahora, para acceder de forma remota, tenemos que configurar el fichero
+<em>/etc/mysql/mariadb.conf.d/50-server.cnf</em>:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+</pre></td><td class="code"><pre><span class="nx">bind</span><span class="o">-</span><span class="nx">address</span>            <span class="o">=</span> <span class="mf">0.0</span><span class="p">.</span><span class="mf">0.0</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<p>Y reiniciamos el servicio para guardar los cambios.</p>
+
+<p>Ahora procedemos a crear un usuario, la base de datos y los privilegios al mismo.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td><td class="code"><pre><span class="nx">ubuntu</span><span class="p">@</span><span class="nd">sancho</span><span class="p">:</span><span class="o">~</span><span class="nx">$</span> <span class="nx">sudo</span> <span class="nx">mysql</span> <span class="o">-</span><span class="nx">u</span> <span class="nx">root</span>
+<span class="nx">Welcome</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">MariaDB</span> <span class="nx">monitor</span><span class="p">.</span>  <span class="nx">Commands</span> <span class="nx">end</span> <span class="kd">with</span> <span class="p">;</span> <span class="nx">or</span> <span class="err">\</span><span class="nx">g</span><span class="p">.</span>
+<span class="nx">Your</span> <span class="nx">MariaDB</span> <span class="nx">connection</span> <span class="nx">id</span> <span class="nx">is</span> <span class="mi">36</span>
+<span class="nx">Server</span> <span class="nx">version</span><span class="p">:</span> <span class="mf">10.3</span><span class="p">.</span><span class="mi">25</span><span class="o">-</span><span class="nx">MariaDB</span><span class="o">-</span><span class="mi">0</span><span class="nx">ubuntu0</span><span class="p">.</span><span class="mf">20.04</span><span class="p">.</span><span class="mi">1</span> <span class="nx">Ubuntu</span> <span class="mf">20.04</span>
+
+<span class="nx">Copyright</span> <span class="p">(</span><span class="nx">c</span><span class="p">)</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">2018</span><span class="p">,</span> <span class="nx">Oracle</span><span class="p">,</span> <span class="nx">MariaDB</span> <span class="nx">Corporation</span> <span class="nx">Ab</span> <span class="nx">and</span> <span class="nx">others</span><span class="p">.</span>
+
+<span class="nx">Type</span> <span class="dl">'</span><span class="s1">help;</span><span class="dl">'</span> <span class="nx">or</span> <span class="dl">'</span><span class="se">\</span><span class="s1">h</span><span class="dl">'</span> <span class="k">for</span> <span class="nx">help</span><span class="p">.</span> <span class="nx">Type</span> <span class="dl">'</span><span class="se">\</span><span class="s1">c</span><span class="dl">'</span> <span class="nx">to</span> <span class="nx">clear</span> <span class="nx">the</span> <span class="nx">current</span> <span class="nx">input</span> <span class="nx">statement</span><span class="p">.</span>
+
+<span class="nx">MariaDB</span> <span class="p">[(</span><span class="nx">none</span><span class="p">)]</span><span class="o">&gt;</span> <span class="nx">CREATE</span> <span class="nx">USER</span> <span class="dl">'</span><span class="s1">cliente</span><span class="dl">'</span> <span class="nx">identified</span> <span class="nx">by</span> <span class="dl">'</span><span class="s1">cliente</span><span class="dl">'</span><span class="p">;</span>
+<span class="nx">Query</span> <span class="nx">OK</span><span class="p">,</span> <span class="mi">0</span> <span class="nx">rows</span> <span class="nx">affected</span> <span class="p">(</span><span class="mf">0.001</span> <span class="nx">sec</span><span class="p">)</span>
+
+<span class="nx">MariaDB</span> <span class="p">[(</span><span class="nx">none</span><span class="p">)]</span><span class="o">&gt;</span> <span class="nx">CREATE</span> <span class="nx">DATABASE</span> <span class="nx">sanchodb</span><span class="p">;</span>
+<span class="nx">Query</span> <span class="nx">OK</span><span class="p">,</span> <span class="mi">1</span> <span class="nx">row</span> <span class="nx">affected</span> <span class="p">(</span><span class="mf">0.001</span> <span class="nx">sec</span><span class="p">)</span>
+
+<span class="nx">MariaDB</span> <span class="p">[(</span><span class="nx">none</span><span class="p">)]</span><span class="o">&gt;</span> <span class="nx">GRANT</span> <span class="nx">USAGE</span> <span class="nx">ON</span> <span class="o">*</span><span class="p">.</span><span class="o">*</span> <span class="nx">TO</span> <span class="dl">'</span><span class="s1">cliente</span><span class="dl">'</span><span class="p">@</span><span class="dl">'</span><span class="s1">%</span><span class="dl">'</span> <span class="nx">IDENTIFIED</span> <span class="nx">BY</span> <span class="dl">'</span><span class="s1">cliente</span><span class="dl">'</span><span class="p">;</span>
+<span class="nx">Query</span> <span class="nx">OK</span><span class="p">,</span> <span class="mi">0</span> <span class="nx">rows</span> <span class="nx">affected</span> <span class="p">(</span><span class="mf">0.002</span> <span class="nx">sec</span><span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<p>En dulcinea, instalamos el paquete <em>mariadb-client</em> y comprobamos que 
+tenemos conexión con la base de datos:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="code"><pre><span class="nx">debian</span><span class="p">@</span><span class="nd">dulcinea</span><span class="p">:</span><span class="o">~</span><span class="nx">$</span> <span class="nx">sudo</span> <span class="nx">mysql</span> <span class="o">-</span><span class="nx">u</span> <span class="nx">cliente_serv</span> <span class="o">-</span><span class="nx">p</span> <span class="nx">sanchodb</span> <span class="o">-</span><span class="nx">h</span> <span class="nx">bd</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span>
+<span class="nx">Enter</span> <span class="nx">password</span><span class="p">:</span> 
+<span class="nx">Welcome</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">MariaDB</span> <span class="nx">monitor</span><span class="p">.</span>  <span class="nx">Commands</span> <span class="nx">end</span> <span class="kd">with</span> <span class="p">;</span> <span class="nx">or</span> <span class="err">\</span><span class="nx">g</span><span class="p">.</span>
+<span class="nx">Your</span> <span class="nx">MariaDB</span> <span class="nx">connection</span> <span class="nx">id</span> <span class="nx">is</span> <span class="mi">38</span>
+<span class="nx">Server</span> <span class="nx">version</span><span class="p">:</span> <span class="mf">10.3</span><span class="p">.</span><span class="mi">25</span><span class="o">-</span><span class="nx">MariaDB</span><span class="o">-</span><span class="mi">0</span><span class="nx">ubuntu0</span><span class="p">.</span><span class="mf">20.04</span><span class="p">.</span><span class="mi">1</span> <span class="nx">Ubuntu</span> <span class="mf">20.04</span>
+
+<span class="nx">Copyright</span> <span class="p">(</span><span class="nx">c</span><span class="p">)</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">2018</span><span class="p">,</span> <span class="nx">Oracle</span><span class="p">,</span> <span class="nx">MariaDB</span> <span class="nx">Corporation</span> <span class="nx">Ab</span> <span class="nx">and</span> <span class="nx">others</span><span class="p">.</span>
+
+<span class="nx">Type</span> <span class="dl">'</span><span class="s1">help;</span><span class="dl">'</span> <span class="nx">or</span> <span class="dl">'</span><span class="se">\</span><span class="s1">h</span><span class="dl">'</span> <span class="k">for</span> <span class="nx">help</span><span class="p">.</span> <span class="nx">Type</span> <span class="dl">'</span><span class="se">\</span><span class="s1">c</span><span class="dl">'</span> <span class="nx">to</span> <span class="nx">clear</span> <span class="nx">the</span> <span class="nx">current</span> <span class="nx">input</span> <span class="nx">statement</span><span class="p">.</span>
+
+<span class="nx">MariaDB</span> <span class="p">[</span><span class="nx">sanchodb</span><span class="p">]</span><span class="o">&gt;</span> 
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<p>Y para quijote, debemos realizar los siguiente antes de poder conectarnos:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre></td><td class="code"><pre><span class="p">[</span><span class="nx">centos</span><span class="p">@</span><span class="nd">quijote</span> <span class="o">~</span><span class="p">]</span><span class="nx">$</span> <span class="nx">sudo</span> <span class="nx">dnf</span> <span class="o">-</span><span class="nx">y</span> <span class="nx">install</span> <span class="nx">mariadb</span><span class="o">-</span><span class="nx">server</span>
+<span class="nx">Last</span> <span class="nx">metadata</span> <span class="nx">expiration</span> <span class="nx">check</span><span class="p">:</span> <span class="mi">2</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">47</span> <span class="nx">ago</span> <span class="nx">on</span> <span class="nx">Thu</span> <span class="mi">17</span> <span class="nx">Dec</span> <span class="mi">2020</span> <span class="mi">07</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">28</span> <span class="nx">AM</span> <span class="nx">UTC</span><span class="p">.</span>
+<span class="nx">Dependencies</span> <span class="nx">resolved</span><span class="p">.</span>
+<span class="o">================================================================================</span>
+ <span class="nx">Package</span>                <span class="nx">Arch</span>   <span class="nx">Version</span>                          <span class="nx">Repo</span>       <span class="nx">Size</span>
+<span class="o">================================================================================</span>
+<span class="nx">Installing</span><span class="p">:</span>
+ <span class="nx">mariadb</span><span class="o">-</span><span class="nx">server</span>         <span class="nx">x86_64</span> <span class="mi">3</span><span class="p">:</span><span class="mf">10.3</span><span class="p">.</span><span class="mi">17</span><span class="o">-</span><span class="mi">1</span><span class="p">.</span><span class="nx">module_el8</span><span class="p">.</span><span class="mf">1.0</span><span class="o">+</span><span class="mi">257</span><span class="o">+</span><span class="mi">48736</span><span class="nx">ea6</span>
+                                                                <span class="nx">AppStream</span>  <span class="mi">16</span> <span class="nx">M</span>
+<span class="nx">Installing</span> <span class="nx">dependencies</span><span class="p">:</span>
+ <span class="nx">libaio</span>                 <span class="nx">x86_64</span> <span class="mf">0.3</span><span class="p">.</span><span class="mi">112</span><span class="o">-</span><span class="mi">1</span><span class="p">.</span><span class="nx">el8</span>                    <span class="nx">BaseOS</span>     <span class="mi">33</span> <span class="nx">k</span>
+ <span class="nx">mariadb</span>                <span class="nx">x86_64</span> <span class="mi">3</span><span class="p">:</span><span class="mf">10.3</span><span class="p">.</span><span class="mi">17</span><span class="o">-</span><span class="mi">1</span><span class="p">.</span><span class="nx">module_el8</span><span class="p">.</span><span class="mf">1.0</span><span class="o">+</span><span class="mi">257</span><span class="o">+</span><span class="mi">48736</span><span class="nx">ea6</span>
+<span class="p">.</span>
+<span class="p">.</span>
+<span class="p">.</span>
+  <span class="nx">perl</span><span class="o">-</span><span class="nx">podlators</span><span class="o">-</span><span class="mf">4.11</span><span class="o">-</span><span class="mi">1</span><span class="p">.</span><span class="nx">el8</span><span class="p">.</span><span class="nx">noarch</span>                                              
+  <span class="nx">perl</span><span class="o">-</span><span class="nx">threads</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="mf">2.21</span><span class="o">-</span><span class="mi">2</span><span class="p">.</span><span class="nx">el8</span><span class="p">.</span><span class="nx">x86_64</span>                                              
+  <span class="nx">perl</span><span class="o">-</span><span class="nx">threads</span><span class="o">-</span><span class="nx">shared</span><span class="o">-</span><span class="mf">1.58</span><span class="o">-</span><span class="mi">2</span><span class="p">.</span><span class="nx">el8</span><span class="p">.</span><span class="nx">x86_64</span>                                         
+
+<span class="nx">Complete</span><span class="o">!</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="code"><pre><span class="p">[</span><span class="nx">centos</span><span class="p">@</span><span class="nd">quijote</span> <span class="o">~</span><span class="p">]</span><span class="nx">$</span> <span class="nx">sudo</span> <span class="nx">mysql</span> <span class="o">-</span><span class="nx">u</span> <span class="nx">cliente_serv</span> <span class="o">-</span><span class="nx">p</span> <span class="nx">sanchodb</span> <span class="o">-</span><span class="nx">h</span> <span class="nx">bd</span><span class="p">.</span><span class="nx">manuel</span><span class="o">-</span><span class="nx">lora</span><span class="p">.</span><span class="nx">gonzalonazareno</span><span class="p">.</span><span class="nx">org</span>
+<span class="nx">Enter</span> <span class="nx">password</span><span class="p">:</span> 
+<span class="nx">Welcome</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">MariaDB</span> <span class="nx">monitor</span><span class="p">.</span>  <span class="nx">Commands</span> <span class="nx">end</span> <span class="kd">with</span> <span class="p">;</span> <span class="nx">or</span> <span class="err">\</span><span class="nx">g</span><span class="p">.</span>
+<span class="nx">Your</span> <span class="nx">MariaDB</span> <span class="nx">connection</span> <span class="nx">id</span> <span class="nx">is</span> <span class="mi">39</span>
+<span class="nx">Server</span> <span class="nx">version</span><span class="p">:</span> <span class="mf">10.3</span><span class="p">.</span><span class="mi">25</span><span class="o">-</span><span class="nx">MariaDB</span><span class="o">-</span><span class="mi">0</span><span class="nx">ubuntu0</span><span class="p">.</span><span class="mf">20.04</span><span class="p">.</span><span class="mi">1</span> <span class="nx">Ubuntu</span> <span class="mf">20.04</span>
+
+<span class="nx">Copyright</span> <span class="p">(</span><span class="nx">c</span><span class="p">)</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">2018</span><span class="p">,</span> <span class="nx">Oracle</span><span class="p">,</span> <span class="nx">MariaDB</span> <span class="nx">Corporation</span> <span class="nx">Ab</span> <span class="nx">and</span> <span class="nx">others</span><span class="p">.</span>
+
+<span class="nx">Type</span> <span class="dl">'</span><span class="s1">help;</span><span class="dl">'</span> <span class="nx">or</span> <span class="dl">'</span><span class="se">\</span><span class="s1">h</span><span class="dl">'</span> <span class="k">for</span> <span class="nx">help</span><span class="p">.</span> <span class="nx">Type</span> <span class="dl">'</span><span class="se">\</span><span class="s1">c</span><span class="dl">'</span> <span class="nx">to</span> <span class="nx">clear</span> <span class="nx">the</span> <span class="nx">current</span> <span class="nx">input</span> <span class="nx">statement</span><span class="p">.</span>
+
+<span class="nx">MariaDB</span> <span class="p">[</span><span class="nx">sanchodb</span><span class="p">]</span><span class="o">&gt;</span> 
+</pre></td></tr></tbody></table></code></pre></figure>
+
+
+
+  
+    
+      <div class="post-tags-section">
+  <i class="post-tags-icon fas fa-tags"></i>
+  <ul class="post-tags"><li>
+        <a class="post-tag" href="/tags/#bind9">bind9</a></li><li>
+        <a class="post-tag" href="/tags/#mysql">mysql</a></li><li>
+        <a class="post-tag" href="/tags/#bbdd">bbdd</a></li><li>
+        <a class="post-tag" href="/tags/#dns">dns</a></li><li>
+        <a class="post-tag" href="/tags/#web">web</a></li><li>
+        <a class="post-tag" href="/tags/#apache2">apache2</a></li><li>
+        <a class="post-tag" href="/tags/#tutorial">tutorial</a></li></ul>
+</div>
+
+  
+
+  
+</article>
+
+
+<aside class="related">
+  <h2>Related posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <a href="/2021/03/16/configuracion-maquinas/">
+          Instalación y configuración inicial de los servidores
+          <small><time datetime="2021-03-16T12:31:00+01:00">16 Mar 2021</time></small>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/2021/03/15/rocketchat-docker/">
+          Rocket.Chat implementado con Docker
+          <small><time datetime="2021-03-15T06:31:00+01:00">15 Mar 2021</time></small>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/2021/03/11/introducci%C3%B3n-a-docusaurus/">
+          Introducción a Docusaurus y Surge
+          <small><time datetime="2021-03-11T15:31:00+01:00">11 Mar 2021</time></small>
+        </a>
+      </li>
+    
+  </ul>
+</aside>
+
+
+</main>
+
+<footer class="footer"><small>
+    &copy; 2020&nbsp;-&nbsp;2021 <a href="https://github.com/ManuelLoraRoman">Manuel Lora Román</a>. All rights reserved.
+    Powered by <a href="https://jekyllrb.com/">Jekyll</a> & <a href="https://github.com/vszhub/not-pure-poole">Not Pure Poole</a>.
+  </small>
+</footer>
+</div>
+      <div class="sidebar-right pure-u-1 pure-u-md-1-4">
+<div  class="toc-wrapper">
+  <h2 class="toc-title">Table of Contents</h2>
+    <nav class="toc-nav">
+      <ul class="toc">
+  <li><a href="#servidor-dns">Servidor DNS</a></li>
+  <li><a href="#servidor-web">Servidor Web</a></li>
+  <li><a href="#servidor-de-base-de-datos">Servidor de Base de Datos</a></li>
+</ul>
+
+  </nav>
+</div>
+
+</div>
+    </div>
+
+    <script async src="https://use.fontawesome.com/releases/v5.0.12/js/all.js"></script><script>
+  function strip(str, remove) {
+    while (str.length > 0 && remove.indexOf(str.charAt(0)) != -1) {
+      str = str.substr(1);
+    }
+    while (str.length > 0 && remove.indexOf(str.charAt(str.length - 1)) != -1) {
+      str = str.substr(0, str.length - 1);
+    }
+    return str;
+  }
+
+  function scroll() {
+    console.log('scroll');
+    window.scrollTo({
+      left: 0, 
+      top: window.innerHeight,
+      behavior: 'smooth'
+    });
+    sessionStorage.removeItem('forceCheckScroll');
+  }
+
+  const forceCheckScroll = sessionStorage.getItem('forceCheckScroll') === 'true';
+  const checkScroll = strip(window.location.pathname, '/') !== strip('', '/');
+
+  if (forceCheckScroll || checkScroll) {
+    const maxWidth = "(max-width: 48rem)";
+    const result = window.matchMedia(maxWidth);
+    if (result.matches) {
+      scroll();
+    } else {
+      result.addListener((match) => {
+        if (match.media == maxWidth) {
+          if (match.matches) {
+            scroll();
+          }
+        }
+      });
+    }
+  }
+</script>
+</body>
+</html>
