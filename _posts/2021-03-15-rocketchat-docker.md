@@ -9,109 +9,232 @@ toc:  true
 Rocket.Chat es una herramienta que permite de manera segura, mantener los datos y las comunicaciones centralizadas.
 {: .message }
 
-## 1. Introducción
+## Recomendaciones
 
-En primer lugar, deberás tener una cuenta de Github. Como habitualmente se suele
-acceder al mismo mediante SSH, haremos lo siguiente:
+Antes de empezar a hablar sobre Rocket.chat, voy a explicar un poco el porqué utilizar Rocket.Chat con contenedores.
 
-1. Copia el contenido del fichero *~/.ssh/id_rsa.pub* y añadelo en el apartado
-de:
- 
-> _Settings --> SSH and GPG keys --> SSH keys --> New SSH key_  
+En principio, los contenedores y las máquinas virtuales difieren en varios aspectos pero el principal
+es que los contenedores ofrecen una forma de virtualizar un sistema operativo haciendo que múltiples cargas de
+trabajo puedan correr en una sencilla instancia de dicho sistema operativo, mientras que las máquinas virtuales
+todo el hardware es virtualizado para correr en diferentes sistemas operativos. 
 
-y añadimos dicho contenido.    
+Esto hace que los contenedores sean más ágiles, veloces y que tengan mayor portabilidad. Además de los siguientes beneficios:
 
-2. Instala git en tu PC:
+* Requieren menos tiempo para iniciarse
+
+* Mejor distribución de recursos
+
+* Acceso directo al hardware
+
+* Menos redundante
+
+Aparte son más sencillos de orquestar, con diferentes sistemas como Kubernetes, Rancher, Openshift o Docker-compose.
+
+Otra de las recomendaciones es usar un sistema de monitorización, si es posible el estándar Prometheus + Grafana.
+
+
+## Requerimientos
+
+Los requerimientos han sido ya tratados en dicha sección en el pre-proyecto. Puedes visualizarlo aquí:
+
+https://github.com/ManuelLoraRoman/ApuntesASIR/blob/master/Proyecto.md
+
+Lo único a comentar sería con que voy a trabajar que sería:
+
+* Lenovo Legion Y720
+
+* Debian 10
+
+* 16 GB RAM
+
+* Intel(R) Core(TM) i7-7700HQ CPU @ 2.80GHz
+
+* 8 procesadores con 4 cores cada uno
+
+* 1 TB disco duro
+
+## Instalaciones
+
+Existen varios tipos de instalaciones para Rocket.Chat. Veremos algunos de ellos, y elegiremos cual es el más adecuado.
+
+1. Ubuntu + Snap
 
 {% highlight js linenos %}
 
-apt-get install git
+sudo apt-get install snapd
+
+sudo snap install rocketchat-server
 
 {% endhighlight %}
 
+Una vez hecho esto, tendríamos desplegado en nuestro _localhost_ Rocket.chat y podremos configurarlo.
 
-3. Para configurar git con tu nombre de usuario y tu email (importante para
-los "commits") debemos hacer lo siguiente:
+Snap actualiza de manera automática cuando hay una nueva version de Rocket.Chat y suele ser una opción más
+segura ya que tanto Rocket.Chat y sus dependencias están separadas del sistema.
+
+2. Despliegue en PaaS
+
+Las recomendadas serían _SandStorm_ y _Cloudron_ pero prácticamente se puede desplegar en cualquier entorno,
+desde _Amazon Web Services_ hasta en _Digital Ocean_ entre otros.
+
+3. Herramientas de automatización
+
+Es posible instalar el servidor con las siguientes herramientas:
+
+* [Ansible](https://docs.rocket.chat/installation/automation-tools/ansible)
+
+* [OpenShift](https://docs.rocket.chat/installation/automation-tools/openshift)
+
+* [Kubernetes + Helm](https://docs.rocket.chat/installation/automation-tools/helm-chart)
+
+* [Vagrant](https://docs.rocket.chat/installation/automation-tools/vagrant)
+
+4. Instalación manual
+
+Prácticamente, es posible instalar el servidor de Rocket.Chat en diferentes entornos. Algunos de ellos son:
+
+* CentOS
+
+* Debian
+
+* RedHat
+
+* Ubuntu
+
+5. Contenedores Docker
+
+Hemos hablado anteriormente de esta opción.
+
+6. Métodos No-oficiales
+
+Los métodos anteriormente comentados, están respaldados por la Rocket.Chat. Es posible instalar el servidor
+en alguno de estos sistemas, pero no se puede asegurar que funcionen o que se actualicen las funcionalidades.
+Por comentar algunas, tenemos:
+
+* FreeBSD
+
+* Windows 10 / Windows Server
+
+* Kali
+
+* OpenSUSE
+
+
+Comentados todos los métodos de instalación, vamos a desarrollar nuestro ejercicio con contenedores Docker. Se ajustan
+bien a nuestro escenario y disponen de la portabilidad que buscamos.
+
+
+## Documentación sobre contenedores Docker y Rocket.Chat
+
+Rocket.Chat dispone de tres imágenes oficiales, siendo la versión _stable_ la que en principio vamos a utilizar. 
+
+Simplemente, para bajarse la imagen, debemos ejecutar lo siguiente:
 
 {% highlight js linenos %}
 
-git config --global user.name "Nombre de usuario"
-git config --global user.email email@ejemplo.com
+docker pull rocket.chat
 
 {% endhighlight %}
 
-Esto solo hay que hacerlo una vez únicamente, ya que especificamos la opción
---global.
-
-
-4. Clona el repositorio remoto en tu PC. Asegúrese de encontrarse en el 
-directorio que usted desea almacenar dicho repositorio para trabajar de manera
-local.
+En caso de querer ejecutar Rocket.Chat sobre _systemd_ vamos a seguir los siguientes pasos:
 
 {% highlight js linenos %}
 
-git clone git@github.com:ManuelLoraRoman/Prueba.git``` 
+docker network create rocketchat_default
 
 {% endhighlight %}
 
-## 2. Comandos básicos de Git
+Crearemos a continuación dos servicios: el servicio de mongo y el servicio de Rocket.Chat.
 
-* _<span style="color:black">git add</span>_ --> permite añadir al repositorio un nuevo fichero.
+* mongo.service
 
-* _<span style="color:black">git rm</span>_ --> se usa para borrar ficheros del repositorio. Se usa de la misma
-               manera que el "_rm_" de la shell.
+{% highlight js linenos %}
 
-* _<span style="color:black">git commit</span>_ --> permite realizar y mandar un commit al repositorio remoto.
-                 Se suele usar los parámetros -am para añadir un fichero
-		 (add) y escribir el contenido del commit al mismo tiempo.
+[Unit]
+Description=mongo
+Requires=docker.service
+After=docker.service
 
-* _<span style="color:black">git mv</span>_ --> cambia el nombre de cierto fichero o mueve un fichero de un
-	       directorio a otro.
-
-* _<span style="color:black">git push</span>_ --> envía los cambios al repositorio remoto.
-
-* _<span style="color:black">git pull</span>_ --> sincroniza el repositorio local con el remoto (en caso de que
-               se trabaje con varios repositorios locales).
-
-* _<span style="color:black">git status</span>_ --> comprueba el estado del repositorio local.
-
-
-## 3. Git Avanzado
+[Service]
+EnvironmentFile=/etc/environment
+User=dockeruser
+Restart=always
+TimeoutStartSec=0
+ExecStartPre=-/usr/bin/docker kill mongo
+ExecStartPre=-/usr/bin/docker rm mongo
+ExecStartPre=-/usr/bin/docker pull mongo:3.2
 
 
-* _<span style="color:black">git log</span>_ --> lista las confirmaciones hechas sobre el repositorio en el
-		que trabajamos en orden cronológico. Muestra varios datos como
-		la suma de comprobación SHA-1, nombre, email, fecha, etc.
-		
-Al usar el parámetro -p, muestra las diferencias en cada
-confirmación. Al usar -x(nº), muestras las x últimas entradas.
-		
-Si usamos --pretty, modificaremos el formato de salida. El 
-formato _oneline_ imprime cada confirmación en una única línea.
-Otras opciones de formato son _short_, _full_ o _fuller_.
-Puedes crear tu propio formato con _format_. Para más
-información sobre esto, visita esta 
-[página](https://uniwebsidad.com/libros/pro-git/capitulo-2/viendo-el-historico-de-confirmaciones).
+ExecStart=/usr/bin/docker run \
+    --name mongo \
+    -v .../path/to/data/db:/data/db \
+    -v .../path/to/data/dump:/data/dump \ <--optional
+    --net=rocketchat_default \
+    mongo:3.2 \
+    mongod --smallfiles --oplogSize 128 --replSet rs0 --storageEngine=mmapv1
 
+ExecStop=-/usr/bin/docker kill mongo
+ExecStop=-/usr/bin/docker rm mongo
 
-* _<span style="color:black">git commit --amend</span>_ --> si haces la confirmación demasiado pronto, y te has
-			   olvidado modificar, crear, etc, puedes volver a hacer
-			   la confirmación con este comando. 
- 
-* _<span style="color:black">git remote -v</span>_ --> muestra todos los repositorios remotos que tienes
-		      configurados.
+{% endhighlight %}
 
-* _<span style="color:black">git remote add nombre URL</span>_ --> añade a los repositorios configurados un
-				  repositorio en cuestión. Útil si no quieres
-				  usar toda la URL, y quieres usar un nombre. 
+* rocketchat.service
 
-* _<span style="color:black">git remote show repositorio</span>_ --> permite ver información del repositorio en
-				    cuestión.
+{% highlight js linenos %}
 
-* _<span style="color:black">git remote rename repositorio nombrenuevo</span>_ --> cambia el nombre guardado del
-						  repositorio. 
+[Unit]
+Description=rocketchat
+Requires=docker.service
+Requires=mongo.service
+After=docker.service
+After=mongo.service
 
-* _<span style="color:black">git fetch repositorio</span>_ --> recibe datos de un repositorio en cuestión.
+[Service]
+EnvironmentFile=/etc/environment
+User=dockeruser
+Restart=always
+TimeoutStartSec=0
+ExecStartPre=-/usr/bin/docker kill rocketchat
+ExecStartPre=-/usr/bin/docker rm rocketchat
+ExecStartPre=-/usr/bin/docker pull rocketchat/rocket.chat:latest
+
+ExecStart=/usr/bin/docker run \
+    --name rocketchat \
+    -v .../path/to/uploads:/app/uploads \
+    -e MONGO_OPLOG_URL=mongodb://mongo:27017/local \
+    -e MONGO_URL=mongodb://mongo:27017/rocketchat \
+    -e ROOT_URL=https://sub.domain.xx \
+    --link mongo:mongo \
+    --net=rocketchat_default \
+    --expose 3000 \
+    rocketchat/rocket.chat:latest
+
+ExecStop=-/usr/bin/docker kill rocketchat
+ExecStop=-/usr/bin/docker rm rocketchat
+
+{% endhighlight %}
+
+Una vez creado dichos servicios, iniciamos el servicio de mongo y creamos este contenedor Docker:
+
+{% highlight js linenos %}
+
+docker run \
+      --name mongo-init-replica \
+      --link mongo:mongo \
+      --rm \
+      --net=rocketchat_default \
+      mongo:3.2 \
+      mongo mongo/rocketchat --eval "rs.initiate({ _id: 'rs0', members: [ { _id: 0, host: 'localhost:27017' } ]})"
+
+{% endhighlight %}
+
+E iniciamos el servicio de Rocket.Chat. En caso de tener un _proxy inverso_, nos debemos asegurar que está añadido
+en la red creada anteriormente.
+
+## Bibliografía
+
+* www.blackblaze.com/blog/vm-vs-containers/
+
 
 
 ------
