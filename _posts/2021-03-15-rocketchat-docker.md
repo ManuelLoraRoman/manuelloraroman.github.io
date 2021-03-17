@@ -72,12 +72,12 @@ Una vez hecho esto, tendríamos desplegado en nuestro _localhost_ Rocket.chat y 
 Snap actualiza de manera automática cuando hay una nueva version de Rocket.Chat y suele ser una opción más
 segura ya que tanto Rocket.Chat y sus dependencias están separadas del sistema.
 
-2. Despliegue en PaaS
+1. Despliegue en PaaS
 
 Las recomendadas serían _SandStorm_ y _Cloudron_ pero prácticamente se puede desplegar en cualquier entorno,
 desde _Amazon Web Services_ hasta en _Digital Ocean_ entre otros.
 
-3. Herramientas de automatización
+1. Herramientas de automatización
 
 Es posible instalar el servidor con las siguientes herramientas:
 
@@ -89,7 +89,7 @@ Es posible instalar el servidor con las siguientes herramientas:
 
 * [Vagrant](https://docs.rocket.chat/installation/automation-tools/vagrant)
 
-4. Instalación manual
+1. Instalación manual
 
 Prácticamente, es posible instalar el servidor de Rocket.Chat en diferentes entornos. Algunos de ellos son:
 
@@ -101,11 +101,11 @@ Prácticamente, es posible instalar el servidor de Rocket.Chat en diferentes ent
 
 * Ubuntu
 
-5. Contenedores Docker
+1. Contenedores Docker
 
 Hemos hablado anteriormente de esta opción.
 
-6. Métodos No-oficiales
+1. Métodos No-oficiales
 
 Los métodos anteriormente comentados, están respaldados por la Rocket.Chat. Es posible instalar el servidor
 en alguno de estos sistemas, pero no se puede asegurar que funcionen o que se actualicen las funcionalidades.
