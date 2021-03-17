@@ -92,129 +92,330 @@
 
   <p class="message">Rocket.Chat es una herramienta que permite de manera segura, mantener los datos y las comunicaciones centralizadas.</p>
 
-<h2 id="1-introducción">1. Introducción</h2>
+<h2 id="recomendaciones">Recomendaciones</h2>
 
-<p>En primer lugar, deberás tener una cuenta de Github. Como habitualmente se suele
-acceder al mismo mediante SSH, haremos lo siguiente:</p>
+<p>Antes de empezar a hablar sobre Rocket.chat, voy a explicar un poco el porqué utilizar Rocket.Chat con contenedores.</p>
+
+<p>En principio, los contenedores y las máquinas virtuales difieren en varios aspectos pero el principal
+es que los contenedores ofrecen una forma de virtualizar un sistema operativo haciendo que múltiples cargas de
+trabajo puedan correr en una sencilla instancia de dicho sistema operativo, mientras que las máquinas virtuales
+todo el hardware es virtualizado para correr en diferentes sistemas operativos.</p>
+
+<p>Esto hace que los contenedores sean más ágiles, veloces y que tengan mayor portabilidad. Además de los siguientes beneficios:</p>
+
+<ul>
+  <li>
+    <p>Requieren menos tiempo para iniciarse</p>
+  </li>
+  <li>
+    <p>Mejor distribución de recursos</p>
+  </li>
+  <li>
+    <p>Acceso directo al hardware</p>
+  </li>
+  <li>
+    <p>Menos redundante</p>
+  </li>
+</ul>
+
+<p>Aparte son más sencillos de orquestar, con diferentes sistemas como Kubernetes, Rancher, Openshift o Docker-compose.</p>
+
+<p>Otra de las recomendaciones es usar un sistema de monitorización, si es posible el estándar Prometheus + Grafana.</p>
+
+<h2 id="requerimientos">Requerimientos</h2>
+
+<p>Los requerimientos han sido ya tratados en dicha sección en el pre-proyecto. Puedes visualizarlo aquí:</p>
+
+<p>https://github.com/ManuelLoraRoman/ApuntesASIR/blob/master/Proyecto.md</p>
+
+<p>Lo único a comentar sería con que voy a trabajar que sería:</p>
+
+<ul>
+  <li>
+    <p>Lenovo Legion Y720</p>
+  </li>
+  <li>
+    <p>Debian 10</p>
+  </li>
+  <li>
+    <p>16 GB RAM</p>
+  </li>
+  <li>
+    <p>Intel(R) Core(TM) i7-7700HQ CPU @ 2.80GHz</p>
+  </li>
+  <li>
+    <p>8 procesadores con 4 cores cada uno</p>
+  </li>
+  <li>
+    <p>1 TB disco duro</p>
+  </li>
+</ul>
+
+<h2 id="instalaciones">Instalaciones</h2>
+
+<p>Existen varios tipos de instalaciones para Rocket.Chat. Veremos algunos de ellos, y elegiremos cual es el más adecuado.</p>
 
 <ol>
-  <li>Copia el contenido del fichero <em>~/.ssh/id_rsa.pub</em> y añadelo en el apartado
-de:</li>
-</ol>
-
-<blockquote>
-  <p><em>Settings –&gt; SSH and GPG keys –&gt; SSH keys –&gt; New SSH key</em></p>
-</blockquote>
-
-<p>y añadimos dicho contenido.</p>
-
-<ol>
-  <li>Instala git en tu PC:</li>
-</ol>
-
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
-</pre></td><td class="code"><pre><span class="nx">apt</span><span class="o">-</span><span class="kd">get</span> <span class="nx">install</span> <span class="nx">git</span>
-</pre></td></tr></tbody></table></code></pre></figure>
-
-<ol>
-  <li>Para configurar git con tu nombre de usuario y tu email (importante para
-los “commits”) debemos hacer lo siguiente:</li>
+  <li>Ubuntu + Snap</li>
 </ol>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
-</pre></td><td class="code"><pre><span class="nx">git</span> <span class="nx">config</span> <span class="o">--</span><span class="nb">global</span> <span class="nx">user</span><span class="p">.</span><span class="nx">name</span> <span class="dl">"</span><span class="s2">Nombre de usuario</span><span class="dl">"</span>
-<span class="nx">git</span> <span class="nx">config</span> <span class="o">--</span><span class="nb">global</span> <span class="nx">user</span><span class="p">.</span><span class="nx">email</span> <span class="nx">email</span><span class="p">@</span><span class="nd">ejemplo</span><span class="p">.</span><span class="nx">com</span>
+3
+</pre></td><td class="code"><pre><span class="nx">sudo</span> <span class="nx">apt</span><span class="o">-</span><span class="kd">get</span> <span class="nx">install</span> <span class="nx">snapd</span>
+
+<span class="nx">sudo</span> <span class="nx">snap</span> <span class="nx">install</span> <span class="nx">rocketchat</span><span class="o">-</span><span class="nx">server</span>
 </pre></td></tr></tbody></table></code></pre></figure>
 
-<p>Esto solo hay que hacerlo una vez únicamente, ya que especificamos la opción
-–global.</p>
+<p>Una vez hecho esto, tendríamos desplegado en nuestro <em>localhost</em> Rocket.chat y podremos configurarlo.</p>
+
+<p>Snap actualiza de manera automática cuando hay una nueva version de Rocket.Chat y suele ser una opción más
+segura ya que tanto Rocket.Chat y sus dependencias están separadas del sistema.</p>
 
 <ol>
-  <li>Clona el repositorio remoto en tu PC. Asegúrese de encontrarse en el 
-directorio que usted desea almacenar dicho repositorio para trabajar de manera
-local.</li>
+  <li>Despliegue en PaaS</li>
 </ol>
 
+<p>Las recomendadas serían <em>SandStorm</em> y <em>Cloudron</em> pero prácticamente se puede desplegar en cualquier entorno,
+desde <em>Amazon Web Services</em> hasta en <em>Digital Ocean</em> entre otros.</p>
+
+<ol>
+  <li>Herramientas de automatización</li>
+</ol>
+
+<p>Es posible instalar el servidor con las siguientes herramientas:</p>
+
+<ul>
+  <li>
+    <p><a href="https://docs.rocket.chat/installation/automation-tools/ansible">Ansible</a></p>
+  </li>
+  <li>
+    <p><a href="https://docs.rocket.chat/installation/automation-tools/openshift">OpenShift</a></p>
+  </li>
+  <li>
+    <p><a href="https://docs.rocket.chat/installation/automation-tools/helm-chart">Kubernetes + Helm</a></p>
+  </li>
+  <li>
+    <p><a href="https://docs.rocket.chat/installation/automation-tools/vagrant">Vagrant</a></p>
+  </li>
+</ul>
+
+<ol>
+  <li>Instalación manual</li>
+</ol>
+
+<p>Prácticamente, es posible instalar el servidor de Rocket.Chat en diferentes entornos. Algunos de ellos son:</p>
+
+<ul>
+  <li>
+    <p>CentOS</p>
+  </li>
+  <li>
+    <p>Debian</p>
+  </li>
+  <li>
+    <p>RedHat</p>
+  </li>
+  <li>
+    <p>Ubuntu</p>
+  </li>
+</ul>
+
+<ol>
+  <li>Contenedores Docker</li>
+</ol>
+
+<p>Hemos hablado anteriormente de esta opción.</p>
+
+<ol>
+  <li>Métodos No-oficiales</li>
+</ol>
+
+<p>Los métodos anteriormente comentados, están respaldados por la Rocket.Chat. Es posible instalar el servidor
+en alguno de estos sistemas, pero no se puede asegurar que funcionen o que se actualicen las funcionalidades.
+Por comentar algunas, tenemos:</p>
+
+<ul>
+  <li>
+    <p>FreeBSD</p>
+  </li>
+  <li>
+    <p>Windows 10 / Windows Server</p>
+  </li>
+  <li>
+    <p>Kali</p>
+  </li>
+  <li>
+    <p>OpenSUSE</p>
+  </li>
+</ul>
+
+<p>Comentados todos los métodos de instalación, vamos a desarrollar nuestro ejercicio con contenedores Docker. Se ajustan
+bien a nuestro escenario y disponen de la portabilidad que buscamos.</p>
+
+<h2 id="documentación-sobre-contenedores-docker-y-rocketchat">Documentación sobre contenedores Docker y Rocket.Chat</h2>
+
+<p>Rocket.Chat dispone de tres imágenes oficiales, siendo la versión <em>stable</em> la que en principio vamos a utilizar.</p>
+
+<p>Simplemente, para bajarse la imagen, debemos ejecutar lo siguiente:</p>
+
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
-</pre></td><td class="code"><pre><span class="nx">git</span> <span class="nx">clone</span> <span class="nx">git</span><span class="p">@</span><span class="nd">github</span><span class="p">.</span><span class="nx">com</span><span class="p">:</span><span class="nx">ManuelLoraRoman</span><span class="o">/</span><span class="nx">Prueba</span><span class="p">.</span><span class="nx">git</span><span class="s2">``` </span>
+</pre></td><td class="code"><pre><span class="nx">docker</span> <span class="nx">pull</span> <span class="nx">rocket</span><span class="p">.</span><span class="nx">chat</span>
 </pre></td></tr></tbody></table></code></pre></figure>
 
-<h2 id="2-comandos-básicos-de-git">2. Comandos básicos de Git</h2>
+<p>En caso de querer ejecutar Rocket.Chat sobre <em>systemd</em> vamos a seguir los siguientes pasos:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+</pre></td><td class="code"><pre><span class="nx">docker</span> <span class="nx">network</span> <span class="nx">create</span> <span class="nx">rocketchat_default</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<p>Crearemos a continuación dos servicios: el servicio de mongo y el servicio de Rocket.Chat.</p>
 
 <ul>
-  <li>
-    <p><em><span style="color:black">git add</span></em> –&gt; permite añadir al repositorio un nuevo fichero.</p>
-  </li>
-  <li>
-    <p><em><span style="color:black">git rm</span></em> –&gt; se usa para borrar ficheros del repositorio. Se usa de la misma
-             manera que el “<em>rm</em>” de la shell.</p>
-  </li>
-  <li>
-    <p><em><span style="color:black">git commit</span></em> –&gt; permite realizar y mandar un commit al repositorio remoto.
-               Se suele usar los parámetros -am para añadir un fichero
-       (add) y escribir el contenido del commit al mismo tiempo.</p>
-  </li>
-  <li>
-    <p><em><span style="color:black">git mv</span></em> –&gt; cambia el nombre de cierto fichero o mueve un fichero de un
-         directorio a otro.</p>
-  </li>
-  <li>
-    <p><em><span style="color:black">git push</span></em> –&gt; envía los cambios al repositorio remoto.</p>
-  </li>
-  <li>
-    <p><em><span style="color:black">git pull</span></em> –&gt; sincroniza el repositorio local con el remoto (en caso de que
-             se trabaje con varios repositorios locales).</p>
-  </li>
-  <li>
-    <p><em><span style="color:black">git status</span></em> –&gt; comprueba el estado del repositorio local.</p>
-  </li>
+  <li>mongo.service</li>
 </ul>
 
-<h2 id="3-git-avanzado">3. Git Avanzado</h2>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+</pre></td><td class="code"><pre><span class="p">[</span><span class="nx">Unit</span><span class="p">]</span>
+<span class="nx">Description</span><span class="o">=</span><span class="nx">mongo</span>
+<span class="nx">Requires</span><span class="o">=</span><span class="nx">docker</span><span class="p">.</span><span class="nx">service</span>
+<span class="nx">After</span><span class="o">=</span><span class="nx">docker</span><span class="p">.</span><span class="nx">service</span>
+
+<span class="p">[</span><span class="nx">Service</span><span class="p">]</span>
+<span class="nx">EnvironmentFile</span><span class="o">=</span><span class="sr">/etc/</span><span class="nx">environment</span>
+<span class="nx">User</span><span class="o">=</span><span class="nx">dockeruser</span>
+<span class="nx">Restart</span><span class="o">=</span><span class="nx">always</span>
+<span class="nx">TimeoutStartSec</span><span class="o">=</span><span class="mi">0</span>
+<span class="nx">ExecStartPre</span><span class="o">=-</span><span class="sr">/usr/</span><span class="nx">bin</span><span class="o">/</span><span class="nx">docker</span> <span class="nx">kill</span> <span class="nx">mongo</span>
+<span class="nx">ExecStartPre</span><span class="o">=-</span><span class="sr">/usr/</span><span class="nx">bin</span><span class="o">/</span><span class="nx">docker</span> <span class="nx">rm</span> <span class="nx">mongo</span>
+<span class="nx">ExecStartPre</span><span class="o">=-</span><span class="sr">/usr/</span><span class="nx">bin</span><span class="o">/</span><span class="nx">docker</span> <span class="nx">pull</span> <span class="nx">mongo</span><span class="p">:</span><span class="mf">3.2</span>
+
+
+<span class="nx">ExecStart</span><span class="o">=</span><span class="sr">/usr/</span><span class="nx">bin</span><span class="o">/</span><span class="nx">docker</span> <span class="nx">run</span> <span class="o">\</span>
+    <span class="o">--</span><span class="nx">name</span> <span class="nx">mongo</span> <span class="o">\</span>
+    <span class="o">-</span><span class="nx">v</span> <span class="p">...</span><span class="o">/</span><span class="nx">path</span><span class="o">/</span><span class="nx">to</span><span class="o">/</span><span class="nx">data</span><span class="o">/</span><span class="nx">db</span><span class="p">:</span><span class="o">/</span><span class="nx">data</span><span class="o">/</span><span class="nx">db</span> <span class="o">\</span>
+    <span class="o">-</span><span class="nx">v</span> <span class="p">...</span><span class="o">/</span><span class="nx">path</span><span class="o">/</span><span class="nx">to</span><span class="o">/</span><span class="nx">data</span><span class="o">/</span><span class="nx">dump</span><span class="p">:</span><span class="o">/</span><span class="nx">data</span><span class="o">/</span><span class="nx">dump</span> <span class="err">\</span> <span class="o">&lt;--</span><span class="nx">optional</span>
+    <span class="o">--</span><span class="nx">net</span><span class="o">=</span><span class="nx">rocketchat_default</span> <span class="o">\</span>
+    <span class="nx">mongo</span><span class="p">:</span><span class="mf">3.2</span> <span class="o">\</span>
+    <span class="nx">mongod</span> <span class="o">--</span><span class="nx">smallfiles</span> <span class="o">--</span><span class="nx">oplogSize</span> <span class="mi">128</span> <span class="o">--</span><span class="nx">replSet</span> <span class="nx">rs0</span> <span class="o">--</span><span class="nx">storageEngine</span><span class="o">=</span><span class="nx">mmapv1</span>
+
+<span class="nx">ExecStop</span><span class="o">=-</span><span class="sr">/usr/</span><span class="nx">bin</span><span class="o">/</span><span class="nx">docker</span> <span class="nx">kill</span> <span class="nx">mongo</span>
+<span class="nx">ExecStop</span><span class="o">=-</span><span class="sr">/usr/</span><span class="nx">bin</span><span class="o">/</span><span class="nx">docker</span> <span class="nx">rm</span> <span class="nx">mongo</span>
+</pre></td></tr></tbody></table></code></pre></figure>
 
 <ul>
-  <li><em><span style="color:black">git log</span></em> –&gt; lista las confirmaciones hechas sobre el repositorio en el
-      que trabajamos en orden cronológico. Muestra varios datos como
-      la suma de comprobación SHA-1, nombre, email, fecha, etc.</li>
+  <li>rocketchat.service</li>
 </ul>
 
-<p>Al usar el parámetro -p, muestra las diferencias en cada
-confirmación. Al usar -x(nº), muestras las x últimas entradas.</p>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+</pre></td><td class="code"><pre><span class="p">[</span><span class="nx">Unit</span><span class="p">]</span>
+<span class="nx">Description</span><span class="o">=</span><span class="nx">rocketchat</span>
+<span class="nx">Requires</span><span class="o">=</span><span class="nx">docker</span><span class="p">.</span><span class="nx">service</span>
+<span class="nx">Requires</span><span class="o">=</span><span class="nx">mongo</span><span class="p">.</span><span class="nx">service</span>
+<span class="nx">After</span><span class="o">=</span><span class="nx">docker</span><span class="p">.</span><span class="nx">service</span>
+<span class="nx">After</span><span class="o">=</span><span class="nx">mongo</span><span class="p">.</span><span class="nx">service</span>
 
-<p>Si usamos –pretty, modificaremos el formato de salida. El 
-formato <em>oneline</em> imprime cada confirmación en una única línea.
-Otras opciones de formato son <em>short</em>, <em>full</em> o <em>fuller</em>.
-Puedes crear tu propio formato con <em>format</em>. Para más
-información sobre esto, visita esta 
-<a href="https://uniwebsidad.com/libros/pro-git/capitulo-2/viendo-el-historico-de-confirmaciones">página</a>.</p>
+<span class="p">[</span><span class="nx">Service</span><span class="p">]</span>
+<span class="nx">EnvironmentFile</span><span class="o">=</span><span class="sr">/etc/</span><span class="nx">environment</span>
+<span class="nx">User</span><span class="o">=</span><span class="nx">dockeruser</span>
+<span class="nx">Restart</span><span class="o">=</span><span class="nx">always</span>
+<span class="nx">TimeoutStartSec</span><span class="o">=</span><span class="mi">0</span>
+<span class="nx">ExecStartPre</span><span class="o">=-</span><span class="sr">/usr/</span><span class="nx">bin</span><span class="o">/</span><span class="nx">docker</span> <span class="nx">kill</span> <span class="nx">rocketchat</span>
+<span class="nx">ExecStartPre</span><span class="o">=-</span><span class="sr">/usr/</span><span class="nx">bin</span><span class="o">/</span><span class="nx">docker</span> <span class="nx">rm</span> <span class="nx">rocketchat</span>
+<span class="nx">ExecStartPre</span><span class="o">=-</span><span class="sr">/usr/</span><span class="nx">bin</span><span class="o">/</span><span class="nx">docker</span> <span class="nx">pull</span> <span class="nx">rocketchat</span><span class="o">/</span><span class="nx">rocket</span><span class="p">.</span><span class="nx">chat</span><span class="p">:</span><span class="nx">latest</span>
+
+<span class="nx">ExecStart</span><span class="o">=</span><span class="sr">/usr/</span><span class="nx">bin</span><span class="o">/</span><span class="nx">docker</span> <span class="nx">run</span> <span class="o">\</span>
+    <span class="o">--</span><span class="nx">name</span> <span class="nx">rocketchat</span> <span class="o">\</span>
+    <span class="o">-</span><span class="nx">v</span> <span class="p">...</span><span class="o">/</span><span class="nx">path</span><span class="o">/</span><span class="nx">to</span><span class="o">/</span><span class="nx">uploads</span><span class="p">:</span><span class="o">/</span><span class="nx">app</span><span class="o">/</span><span class="nx">uploads</span> <span class="o">\</span>
+    <span class="o">-</span><span class="nx">e</span> <span class="nx">MONGO_OPLOG_URL</span><span class="o">=</span><span class="nx">mongodb</span><span class="p">:</span><span class="c1">//mongo:27017/local \</span>
+    <span class="o">-</span><span class="nx">e</span> <span class="nx">MONGO_URL</span><span class="o">=</span><span class="nx">mongodb</span><span class="p">:</span><span class="c1">//mongo:27017/rocketchat \</span>
+    <span class="o">-</span><span class="nx">e</span> <span class="nx">ROOT_URL</span><span class="o">=</span><span class="nx">https</span><span class="p">:</span><span class="c1">//sub.domain.xx \</span>
+    <span class="o">--</span><span class="nx">link</span> <span class="nx">mongo</span><span class="p">:</span><span class="nx">mongo</span> <span class="o">\</span>
+    <span class="o">--</span><span class="nx">net</span><span class="o">=</span><span class="nx">rocketchat_default</span> <span class="o">\</span>
+    <span class="o">--</span><span class="nx">expose</span> <span class="mi">3000</span> <span class="o">\</span>
+    <span class="nx">rocketchat</span><span class="o">/</span><span class="nx">rocket</span><span class="p">.</span><span class="nx">chat</span><span class="p">:</span><span class="nx">latest</span>
+
+<span class="nx">ExecStop</span><span class="o">=-</span><span class="sr">/usr/</span><span class="nx">bin</span><span class="o">/</span><span class="nx">docker</span> <span class="nx">kill</span> <span class="nx">rocketchat</span>
+<span class="nx">ExecStop</span><span class="o">=-</span><span class="sr">/usr/</span><span class="nx">bin</span><span class="o">/</span><span class="nx">docker</span> <span class="nx">rm</span> <span class="nx">rocketchat</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<p>Una vez creado dichos servicios, iniciamos el servicio de mongo y creamos este contenedor Docker:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="code"><pre><span class="nx">docker</span> <span class="nx">run</span> <span class="o">\</span>
+      <span class="o">--</span><span class="nx">name</span> <span class="nx">mongo</span><span class="o">-</span><span class="nx">init</span><span class="o">-</span><span class="nx">replica</span> <span class="o">\</span>
+      <span class="o">--</span><span class="nx">link</span> <span class="nx">mongo</span><span class="p">:</span><span class="nx">mongo</span> <span class="o">\</span>
+      <span class="o">--</span><span class="nx">rm</span> <span class="o">\</span>
+      <span class="o">--</span><span class="nx">net</span><span class="o">=</span><span class="nx">rocketchat_default</span> <span class="o">\</span>
+      <span class="nx">mongo</span><span class="p">:</span><span class="mf">3.2</span> <span class="o">\</span>
+      <span class="nx">mongo</span> <span class="nx">mongo</span><span class="o">/</span><span class="nx">rocketchat</span> <span class="o">--</span><span class="nb">eval</span> <span class="dl">"</span><span class="s2">rs.initiate({ _id: 'rs0', members: [ { _id: 0, host: 'localhost:27017' } ]})</span><span class="dl">"</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<p>E iniciamos el servicio de Rocket.Chat. En caso de tener un <em>proxy inverso</em>, nos debemos asegurar que está añadido
+en la red creada anteriormente.</p>
+
+<h2 id="bibliografía">Bibliografía</h2>
 
 <ul>
-  <li>
-    <p><em><span style="color:black">git commit –amend</span></em> –&gt; si haces la confirmación demasiado pronto, y te has
-             olvidado modificar, crear, etc, puedes volver a hacer
-             la confirmación con este comando.</p>
-  </li>
-  <li>
-    <p><em><span style="color:black">git remote -v</span></em> –&gt; muestra todos los repositorios remotos que tienes
-            configurados.</p>
-  </li>
-  <li>
-    <p><em><span style="color:black">git remote add nombre URL</span></em> –&gt; añade a los repositorios configurados un
-                repositorio en cuestión. Útil si no quieres
-                usar toda la URL, y quieres usar un nombre.</p>
-  </li>
-  <li>
-    <p><em><span style="color:black">git remote show repositorio</span></em> –&gt; permite ver información del repositorio en
-                  cuestión.</p>
-  </li>
-  <li>
-    <p><em><span style="color:black">git remote rename repositorio nombrenuevo</span></em> –&gt; cambia el nombre guardado del
-                        repositorio.</p>
-  </li>
-  <li>
-    <p><em><span style="color:black">git fetch repositorio</span></em> –&gt; recibe datos de un repositorio en cuestión.</p>
-  </li>
+  <li>www.blackblaze.com/blog/vm-vs-containers/</li>
 </ul>
 
 <hr />
@@ -280,9 +481,11 @@ información sobre esto, visita esta
   <h2 class="toc-title">Table of Contents</h2>
     <nav class="toc-nav">
       <ul class="toc">
-  <li><a href="#1-introducción">1. Introducción</a></li>
-  <li><a href="#2-comandos-básicos-de-git">2. Comandos básicos de Git</a></li>
-  <li><a href="#3-git-avanzado">3. Git Avanzado</a></li>
+  <li><a href="#recomendaciones">Recomendaciones</a></li>
+  <li><a href="#requerimientos">Requerimientos</a></li>
+  <li><a href="#instalaciones">Instalaciones</a></li>
+  <li><a href="#documentación-sobre-contenedores-docker-y-rocketchat">Documentación sobre contenedores Docker y Rocket.Chat</a></li>
+  <li><a href="#bibliografía">Bibliografía</a></li>
 </ul>
 
   </nav>
